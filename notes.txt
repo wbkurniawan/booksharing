@@ -1,5 +1,5 @@
 
-Next:
+Next 6/8/16:
 loadBooks.json.php
     - get param
         - recommended
@@ -11,3 +11,9 @@ Books.php
 
 index.php
     - latest template
+
+Next 7/8/16:
+borrow.js
+    - on klick button call mode/borrow.php
+        - if user not loged-in, redirect to login.php
+        - success login back to book.php or to success.php? Posted parameter?

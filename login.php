@@ -167,7 +167,7 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 
 <!-- Get the data -->
 <script src="assets/js/jsrender.js"></script>
-<script src="assets/js/app/category.js"></script>
+<script src="assets/js/app/header.js"></script>
 <script src="assets/js/app/login.js"></script>
 
 <!-- JS Implementing Plugins -->

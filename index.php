@@ -224,7 +224,7 @@ include_once(__DIR__.'/header.php');
 
 <!-- Get the data -->
 <script src="assets/js/jsrender.js"></script>
-<script src="assets/js/app/category.js"></script>
+<script src="assets/js/app/header.js"></script>
 <script src="assets/js/app/index.js"></script>
 
 <!-- JS Implementing Plugins -->

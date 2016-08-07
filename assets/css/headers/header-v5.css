@@ -376,9 +376,9 @@
     .header-v5 .badge-open {
     	top: 57px;
     }
-/*    .header-v5 .shop-badge:hover .badge-open {
-    	display: none; /* optional */
-    }*/
+    /*.header-v5 .shop-badge:hover .badge-open {*/
+    	/*display: none;*/
+    /*}*/
 }
 
 @media (min-width: 993px) and (max-width: 999px) {

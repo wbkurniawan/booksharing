@@ -110,7 +110,9 @@ if(isset($_SESSION["user"])){
 
                 <!-- Shopping Cart -->
                 <div class="shop-badge badge-icons pull-right">
-                    <a href="#"><?=$userGreeting?><i class="fa fa-user" id="userIcon" <?=$loginIconStyle?> ></i></a><br>
+                    <a href="#"><?=$userGreeting?><i class="fa fa-user" id="userIcon" <?=$loginIconStyle?> ></i></a>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i><span id="newNotification" class="badge badge-notification">0</span>
+                    <br>
                     <div class="badge-open">
                         <ul class="list-unstyled mCustomScrollbar" data-mcs-theme="minimal-dark">
                             <li>

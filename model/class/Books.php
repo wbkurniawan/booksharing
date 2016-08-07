@@ -8,6 +8,7 @@
  */
 include_once(__DIR__.'/../../config/global.php');
 include_once(__DIR__.'/../../library/db/Connect.class.php');
+include_once(__DIR__.'/../../library/db/TableAdapter.class.php');
 include_once(__DIR__.'/../../model/class/Categories.php');
 include_once(__DIR__.'/../../model/class/Authors.php');
 include_once(__DIR__.'/../../model/class/User.php');
@@ -44,9 +45,6 @@ class Books
         $this->returnStats = $returnStats;
     }
 
-    /**
-     * @return array
-     */
     public function getBook()
     {
         if(isset($this->bookId)){
@@ -171,6 +169,34 @@ class Books
         }
         foreach ($this->books as $index => $book){
             $this->books[$index] = array_map("utf8_encode",$book);
+        }
+    }
+
+    public function borrowBook($userId)
+    {
+        if(isset($this->bookId)){
+            if($this->checkBookStatus()==BOOK_STATUS_AVAILABLE){
+                $ta = new TableAdapter($this->db,'booksharing','loan');
+                $newLoan = ["book_id"=>$this->bookId,
+                            "user_id"=>$userId,
+                            "status"=>LOAN_STATUS_REQUESTED];
+                $ta->insert($newLoan);
+                $query = "UPDATE `booksharing`.`book` SET `status` = '".BOOK_STATUS_RESERVED."' WHERE `book_id` = " .$this->bookId;
+                $this->db->execute($query);
+            }else{
+                throw new Exception ("Book not available");
+            }
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+
+    public function checkBookStatus(){
+        if(isset($this->bookId)){
+            $query = "SELECT status FROM `booksharing`.`book` WHERE `book_id` = ".$this->bookId;
+            return $this->db->selectValue($query);
+        }else{
+            throw new Exception ("bookId required");
         }
     }
 

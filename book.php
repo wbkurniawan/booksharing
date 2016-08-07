@@ -12,7 +12,7 @@ include_once(__DIR__.'/header.php');
             <ul class="breadcrumb-v5">
                 <li><a href="index.html"><i class="fa fa-home"></i></a></li>
                 <li><a href="#">Books</a></li>
-                <li class="active">Apologetik</li>
+                <li class="active"><a href="#" id="breadcrumbCategoryName"></a></li>
             </ul>
         </div>
         <!-- End Breadcrumbs v5 -->
@@ -80,7 +80,7 @@ include_once(__DIR__.'/header.php');
 
 <!-- Get the data -->
 <script src="assets/js/jsrender.js"></script>
-<script src="assets/js/app/category.js"></script>
+<script src="assets/js/app/header.js"></script>
 <script src="assets/js/app/book.js"></script>
 
 <!-- JS Implementing Plugins -->
