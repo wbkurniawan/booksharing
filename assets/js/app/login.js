@@ -14,7 +14,7 @@
         // });
         $("#sky-form1").validate({
             submitHandler: function(form) {
-
+                var referer = $("#referer").val();
                 var data = $("#sky-form1").serialize();
                 $.ajax({
                     method: "GET",
@@ -22,7 +22,7 @@
                     data : data
                 }).done(function( data ) {
                     if(data==1){
-
+                        window.location.href = referer;
                     }
                 });
             },

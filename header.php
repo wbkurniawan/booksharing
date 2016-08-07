@@ -12,8 +12,8 @@ $loginIconStyle = "";
 $userGreeting = "";
 if(isset($_SESSION["user"])){
     $loginIconStyle = "style='color:#18ba9b !important'";
-    $userSession = $_SESSION["user"];
-    $userGreeting = "Hi, " .$userSession->firstName;
+    $userSession = unserialize($_SESSION["user"]);
+    $userGreeting = "Hi, " .$userSession->firstName . " ";
 }
 
 ?>
@@ -103,7 +103,7 @@ if(isset($_SESSION["user"])){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="index.php">
                         <img id="logo-header" src="assets/img/full_logo.png" alt="Logo">
                     </a>
                 </div>

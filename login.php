@@ -1,7 +1,7 @@
 <?php
 $lock = false;
 include_once(__DIR__.'/header.php');
-$refferer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"";
+$referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"";
 
 ?>
 <!-- CSS Page Style -->
@@ -60,7 +60,7 @@ $refferer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):
                 <div class="col-md-5">
                     <form id="sky-form1" class="log-reg-block sky-form">
                         <h2>Log in to your account</h2>
-						<input type="hidden" name="refferer" value="<?=$refferer?>">
+						<input type="hidden" id="referer" name="referer" value="<?=$referer?>">
                         <section>
                             <label class="input login-input">
                                 <div class="input-group">
