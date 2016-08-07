@@ -17,8 +17,9 @@ $book->setInJson();
 header('Content-Type: application/json');
 //echo($book->getBooksRecomended());
 //echo($book->getBooksByCategory(1));
-echo($book->getBooksLatest());
+//echo($book->getBooksLatest());
 //echo($book->getBookById(2));
+echo($book->getPersonalRecommendation());
 //echo($book->getBooksByPage(1,15));
 
 //$cat = new Categories();

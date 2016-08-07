@@ -11,5 +11,13 @@ include_once(__DIR__.'/../model/class/Categories.php');
 // set content to json
 header('Content-Type: application/json;charset=utf-8');
 
-$cat = new Categories();
-echo $cat->toJSON();
+if ( !isset($_SESSION) ) session_start();
+
+if(!isset($_SESSION["categories"])){
+    $cat = new Categories();
+    $catJSON = $cat->toJSON();
+    $_SESSION["categories"] = $catJSON;
+    echo $catJSON;
+}else{
+    echo $_SESSION["categories"];
+}

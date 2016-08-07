@@ -8,6 +8,7 @@
  */
 include_once(__DIR__.'/../../config/global.php');
 include_once(__DIR__.'/../../library/db/Connect.class.php');
+include_once(__DIR__.'/../../model/class/UserSession.php');
 class User
 {
     private $userId;
@@ -55,5 +56,13 @@ class User
         }
     }
 
-
+    public function getUserSession(){
+        $userSession = new UserSession();
+        $userSession->userId = $this->userId;
+        $userSession->firstName = $this->firstName;
+        $userSession->lastName = $this->lastName;
+        $userSession->status = $this->status;
+        $userSession->email = $this->email;
+        return $userSession;
+    }
 }

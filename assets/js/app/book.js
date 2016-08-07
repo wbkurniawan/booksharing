@@ -6,24 +6,12 @@
 !function(){
 
     $(document).ready(function(){
-        loadCategory();
         loadBook();
         loadPersonalRecommendationBooks();
     });
 
-    function loadCategory() {
-        $.ajax({
-            method: "GET",
-            url: "model/loadCategories.json.php"
-        }).done(function( data ) {
-            var template = $.templates("#categoriesTemplate");
-
-            var htmlOutput = template.render(data);
-            $("#categoryContainer").html(htmlOutput);
-        });
-    }
     function loadBook() {
-        var bookId = $('body').data('book-id');
+        var bookId = $('#bookId').val();
         $.ajax({
             method: "GET",
             url: "model/loadBooks.json.php",
@@ -35,6 +23,7 @@
             $("#bookContainer").html(htmlOutput);
         });
     }
+
     function loadPersonalRecommendationBooks() {
         $.ajax({
             method: "GET",

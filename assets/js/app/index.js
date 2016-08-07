@@ -6,22 +6,10 @@
 !function(){
 
     $(document).ready(function(){
-        loadCategory();
         loadRecommendedBooks();
         loadLatestBooks();
     });
 
-    function loadCategory() {
-        $.ajax({
-            method: "GET",
-            url: "model/loadCategories.json.php"
-        }).done(function( data ) {
-            var template = $.templates("#categoriesTemplate");
-
-            var htmlOutput = template.render(data);
-            $("#categoryContainer").html(htmlOutput);
-        });
-    }
     function loadRecommendedBooks() {
         $.ajax({
             method: "GET",
@@ -37,6 +25,7 @@
             OwlCarousel.initOwlCarousel();
         });
     }
+
     function loadLatestBooks() {
         $.ajax({
             method: "GET",

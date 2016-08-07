@@ -1,163 +1,7 @@
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-<head>
-	<title>Book Sharing | FeG Immanuel Berlin</title>
-
-	<!-- Meta -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="favicon.png">
-
-	<!-- Web Fonts -->
-	<link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,800&amp;subset=cyrillic,latin'>
-
-	<!-- CSS Global Compulsory -->
-	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/shop.style.css">
-
-	<!-- CSS Header and Footer -->
-	<link rel="stylesheet" href="assets/css/headers/header-v5.css">
-	<link rel="stylesheet" href="assets/css/footers/footer-v4.css">
-
-	<!-- CSS Implementing Plugins -->
-	<link rel="stylesheet" href="assets/plugins/animate.css">
-	<link rel="stylesheet" href="assets/plugins/line-icons/line-icons.css">
-	<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
-	<link rel="stylesheet" href="assets/plugins/owl-carousel/owl-carousel/owl.carousel.css">
-	<link rel="stylesheet" href="assets/plugins/revolution-slider/rs-plugin/css/settings.css">
-
-	<!-- CSS Theme -->
-	<link rel="stylesheet" href="assets/css/theme-colors/default.css" id="style_color">
-
-	<!-- CSS Customization -->
-	<link rel="stylesheet" href="assets/css/custom.css">
-</head>
-
-<body class="header-fixed">
-
-<div class="wrapper">
-	<!--=== Header v5 ===-->
-	<div class="header-v5 header-static">
-		<!-- Topbar v3 -->
-		<div class="topbar-v3">
-			<div class="search-open">
-				<div class="container">
-					<input type="text" class="form-control" placeholder="Search">
-					<div class="search-close"><i class="icon-close"></i></div>
-				</div>
-			</div>
-
-			<div class="container">
-				<div class="row">
-					brought to you by <a href="#">Komisi Perpustakaan</a> at <a href="#">FeG Immanuel Berlin</a>
-<!-- 					<div class="col-sm-6"> -->
-						<!-- Topbar Navigation -->
-<!--
-						<ul class="left-topbar">
-							<li><a href="#">FEG Immanuel Website</a></li>
-							<li>
-								<a>Language (EN)</a>
-								<ul class="language">
-									<li class="active">
-										<a href="#">English (EN)<i class="fa fa-check"></i></a>
-									</li>
-									<li><a href="#">Deutsch (DE)</a></li>
-									<li><a href="#">Bahasa (IN)</a></li>
-								</ul>
-							</li>
-						</ul>
--->
-						<!--/end left-topbar-->
-<!--
-					</div>
-					<div class="col-sm-6">
-						<ul class="list-inline right-topbar pull-right">
-							<li><a href="#">Account</a></li>
-							<li><a href="shop-ui-login.html">Login</a> | <a href="shop-ui-register.html">Register</a></li>
-							<li><i class="search fa fa-search search-button"></i></li>
-						</ul>
-					</div>
--->
-				</div>
-			</div><!--/container-->
-		</div>
-		<!-- End Topbar v3 -->
-
-		<!-- Navbar -->
-		<div class="navbar navbar-default mega-menu" role="navigation">
-			<div class="container">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">
-						<img id="logo-header" src="assets/img/full_logo.png" alt="Logo">
-					</a>
-				</div>
-
-				<!-- Shopping Cart -->
-				<div class="shop-badge badge-icons pull-right">
-				  <a href="#"><i class="fa fa-user"></i></a><br>
-				  <div class="badge-open">
-					<ul class="list-unstyled mCustomScrollbar" data-mcs-theme="minimal-dark">
-						<li>
-								<a href="login.html" class="btn-u btn-u-sea-shop btn-block">Login</a>
-								<a href="register.html" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop btn-block">Register</a>
-						</li>
-					</ul>
-				  </div>
-				</div>
-				<!-- End Shopping Cart -->
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse navbar-responsive-collapse">
-					<!-- Nav Menu -->
-					<ul class="nav navbar-nav">
-						<!-- Pages -->
-						<li class="dropdown active">
-							<a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
-								Books
-							</a>
-							<ul class="dropdown-menu" id="categoryContainer">
-							</ul>
-						</li>
-						<!-- End Pages -->
-
-						<!-- Promotion -->
-						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
-								FAQ
-							</a>
-						</li>
-						<!-- End Promotion -->
-
-						<!-- Gifts -->
-						<li class="dropdown mega-menu-fullwidth">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
-								About
-							</a>
-						</li>
-						<!-- End Gifts -->
-					</ul>
-					<!-- End Nav Menu -->
-				</div>
-			</div>
-		</div>
-		<!-- End Navbar -->
-	</div>
-	<!--=== End Header v5 ===-->
-
+<?php
+$lock = false;
+include_once(__DIR__.'/header.php');
+?>
 	<!--=== Slider ===-->
 	<div class="tp-banner-container">
 		<div class="tp-banner">
@@ -380,6 +224,7 @@
 
 <!-- Get the data -->
 <script src="assets/js/jsrender.js"></script>
+<script src="assets/js/app/category.js"></script>
 <script src="assets/js/app/index.js"></script>
 
 <!-- JS Implementing Plugins -->
@@ -407,14 +252,6 @@
 		RevolutionSlider.initRSfullWidth();
 		StyleSwitcher.initStyleSwitcher();
 });
-</script>
-
-
-
-<script id="categoriesTemplate" type="text/x-jsrender">
-	{{for data}}
-		<li><a href="#" data-category-id="{{:category_id}}">{{:name}}</a></li>
-	{{/for}}
 </script>
 
 <script id="recommendedBooksTemplate" type="text/x-jsrender">
