@@ -7,8 +7,8 @@
 
     $(document).ready(function(){
         loadCategory();
-        loadRecommendedBooks();
-        loadLatestBooks();
+        loadBook();
+        loadPersonalRecommendationBooks();
     });
 
     function loadCategory() {
@@ -22,31 +22,29 @@
             $("#categoryContainer").html(htmlOutput);
         });
     }
-    function loadRecommendedBooks() {
+    function loadBook() {
+        var bookId = $('body').data('book-id');
         $.ajax({
             method: "GET",
             url: "model/loadBooks.json.php",
-            data: {recommended:1}
+            data: {bookId:bookId}
         }).done(function( data ) {
-            var template = $.templates("#recommendedBooksTemplate");
+            var template = $.templates("#bookTemplate");
 
             var htmlOutput = template.render(data);
-            $("#recomendedBooksContainer").html(htmlOutput);
-
-            //execute after books loaded
-            OwlCarousel.initOwlCarousel();
+            $("#bookContainer").html(htmlOutput);
         });
     }
-    function loadLatestBooks() {
+    function loadPersonalRecommendationBooks() {
         $.ajax({
             method: "GET",
             url: "model/loadBooks.json.php",
-            data: {latest:1}
+            data: {personal:1}
         }).done(function( data ) {
-            var template = $.templates("#latestBooksTemplate");
+            var template = $.templates("#personalRecommendationBooksTemplate");
 
             var htmlOutput = template.render(data);
-            $("#latestBooksContainer").html(htmlOutput);
+            $("#personalRecommendationBooksContainer").html(htmlOutput);
 
             //execute after books loaded
             OwlCarousel.initOwlCarousel();

@@ -11,7 +11,7 @@ include_once(__DIR__.'/../../library/db/Connect.class.php');
 class Authors
 {
     private $authors;
-    public function __construct($language=LANGUAGE_DEFAULT)
+    public function __construct()
     {
         $this->db = new Connect(Connect::DBSERVER);
     }

@@ -10,6 +10,7 @@ include_once(__DIR__.'/../../config/global.php');
 include_once(__DIR__.'/../../library/db/Connect.class.php');
 include_once(__DIR__.'/../../model/class/Categories.php');
 include_once(__DIR__.'/../../model/class/Authors.php');
+include_once(__DIR__.'/../../model/class/User.php');
 class Books
 {
 
@@ -62,6 +63,10 @@ class Books
         if(isset($this->books[0])){
             $authors = new Authors();
             $this->books[0]["authors"] = $authors->getAuthorsByBookId($bookId);
+            if(!empty($this->books[0]["user_id"])){
+                $user = new User($this->books[0]["user_id"]);
+                $this->books[0]["user"] = $user->getUser();
+            }
         }
         return $this->getResult();
     }
@@ -88,6 +93,14 @@ class Books
 
         $this->orders = ["`book`.`enter_date` DESC"];
         $this->loadBooks(1,BOOKS_VIEW_LIMIT_LATEST);
+        return $this->getResult();
+    }
+
+    public function getBooksPersonalRecommendation($userId = null){
+        $this->filters = ["`book`.`status` = '".BOOK_STATUS_AVAILABLE."'"];
+        $this->orders = ["rand()"];
+
+        $this->loadBooks(1,BOOKS_VIEW_LIMIT_RECOMENDED);
         return $this->getResult();
     }
 

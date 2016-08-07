@@ -342,103 +342,7 @@
 		</div>
 
 		<!--=== Illustration v2 ===-->
-		<div class="row illustration-v2">
-			<div class="col-md-3 col-sm-6 md-margin-bottom-30">
-				<div class="product-img">
-					<a href="book.html"><img class="full-width img-responsive" src="assets/img/blog/41.jpg" alt=""></a>
-					<a class="product-review" href="book.html">Quick review</a>
-					<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Add to list</a>
-				</div>
-				<div class="product-description product-description-brd">
-					<div class="overflow-h margin-bottom-5">
-						<div class="pull-left">
-							<h4 class="title-price"><a href="book.html">Jesus Storybook Bible</a></h4>
-							<span class="gender text-uppercase">Kids</span>
-							<span class="gender">Sally Lloyd-Jones</span>
-						</div>
-					</div>
-					<ul class="list-inline product-ratings">
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating fa fa-star"></i></li>
-						<li><i class="rating fa fa-star"></i></li>
-						<li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 md-margin-bottom-30">
-				<div class="product-img">
-					<a href="book.html"><img class="full-width img-responsive" src="assets/img/blog/42.jpg" alt=""></a>
-					<a class="product-review" href="book.html">Quick review</a>
-					<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Add to list</a>
-				</div>
-				<div class="product-description product-description-brd">
-					<div class="overflow-h margin-bottom-5">
-						<div class="pull-left">
-							<h4 class="title-price"><a href="book.html">You Are What You Love</a></h4>
-							<span class="gender text-uppercase">Spirituality</span>
-							<span class="gender">James K Smith</span>
-						</div>
-					</div>
-					<ul class="list-inline product-ratings">
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating fa fa-star"></i></li>
-						<li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 md-margin-bottom-30">
-				<div class="product-img">
-					<a href="book.html"><img class="full-width img-responsive" src="assets/img/blog/43.jpg" alt=""></a>
-					<a class="product-review" href="book.html">Quick review</a>
-					<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Add to list</a>
-				</div>
-				<div class="product-description product-description-brd">
-					<div class="overflow-h margin-bottom-5">
-						<div class="pull-left">
-							<h4 class="title-price"><a href="book.html">Concise Theology</a></h4>
-							<span class="gender text-uppercase">Theology</span>
-							<span class="gender">J.I.Packer</span>
-						</div>
-					</div>
-					<ul class="list-inline product-ratings">
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating fa fa-star"></i></li>
-						<li><i class="rating fa fa-star"></i></li>
-						<li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 md-margin-bottom-30">
-				<div class="product-img">
-					<a href="book.html"><img class="full-width img-responsive" src="assets/img/blog/44.jpg" alt=""></a>
-					<a class="product-review" href="book.html">Quick review</a>
-					<a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to list</a>
-				</div>
-				<div class="product-description product-description-brd">
-					<div class="overflow-h margin-bottom-5">
-						<div class="pull-left">
-							<h4 class="title-price"><a href="book.html">For the Glory</a></h4>
-							<span class="gender text-uppercase">Spirituality</span>
-							<span class="gender">Duncan Hamilton</span>
-						</div>
-					</div>
-					<ul class="list-inline product-ratings">
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li><i class="rating-selected fa fa-star"></i></li>
-						<li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
-					</ul>
-				</div>
-			</div>
+		<div class="row illustration-v2" id="latestBooksContainer">
 		</div>
 		<!--=== End Illustration v2 ===-->
 	</div>
@@ -513,18 +417,18 @@
 	{{/for}}
 </script>
 
-<script id="bookTemplate" type="text/x-jsrender">
+<script id="recommendedBooksTemplate" type="text/x-jsrender">
 	{{for data}}
 		<li class="item">
 					<div class="product-img">
-						<a href="book.html"><img class="full-width img-responsive" src="assets/img/book/{{:book_id}}.jpg" alt=""></a>
-						<a class="product-review" href="book.html">Quick review</a>
+						<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:book_id}}.jpg" alt=""></a>
+						<a class="product-review" href="book.php?id={{:book_id}}">Quick review</a>
 						<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Add to list</a>
 					</div>
 					<div class="product-description product-description-brd">
 						<div class="overflow-h margin-bottom-5">
 							<div class="pull-left">
-								<h4 class="title-price"><a href="book.html">{{:title}}</a></h4>
+								<h4 class="title-price"><a href="book.php?id={{:book_id}}">{{:title}}</a></h4>
 								<span class="gender text-uppercase">{{for categories}}{{>name}}{{/for}}</span>
 								<span class="gender">{{:authors}}</span>
 							</div>
@@ -539,6 +443,35 @@
 						</ul>
 					</div>
 				</li>
+	{{/for}}
+</script>
+
+<script id="latestBooksTemplate" type="text/x-jsrender">
+	{{for data}}
+		<div class="col-md-3 col-sm-6 md-margin-bottom-30">
+			<div class="product-img">
+				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:book_id}}.jpg" alt=""></a>
+				<a class="product-review" href="book.php?id={{:book_id}}">Quick review</a>
+				<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Add to list</a>
+			</div>
+			<div class="product-description product-description-brd">
+				<div class="overflow-h margin-bottom-5">
+					<div class="pull-left">
+						<h4 class="title-price"><a href="book.php?id={{:book_id}}">{{:title}}</a></h4>
+						<span class="gender text-uppercase">{{for categories}}{{>name}}{{/for}}</span>
+						<span class="gender">{{:authors}}</span>
+					</div>
+				</div>
+				<ul class="list-inline product-ratings">
+					<li><i class="rating{{if rating>=1}}-selected{{/if}} fa fa-star"></i></li>
+					<li><i class="rating{{if rating>=2}}-selected{{/if}} fa fa-star"></i></li>
+					<li><i class="rating{{if rating>=3}}-selected{{/if}} fa fa-star"></i></li>
+					<li><i class="rating{{if rating>=4}}-selected{{/if}} fa fa-star"></i></li>
+					<li><i class="rating{{if rating>=5}}-selected{{/if}} fa fa-star"></i></li>
+					<li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
+				</ul>
+			</div>
+		</div>
 	{{/for}}
 </script>
 
