@@ -6,6 +6,7 @@
     $(document).ready(function(){
         loadCategory();
         checkNotification();
+        // loadUserInfo();
     });
     function loadCategory() {
         $.ajax({
@@ -31,5 +32,15 @@
             }
         });
     }
+    function loadUserInfo() {
+        $.ajax({
+            method: "GET",
+            url: "model/loadUserInfo.json.php"
+        }).done(function( data ) {
+            var template = $.templates("#categoriesTemplate");
 
+            var htmlOutput = template.render(data);
+            $("#categoryContainer").html(htmlOutput);
+        });
+    }
 }();

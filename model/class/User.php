@@ -17,6 +17,7 @@ class User
     private $email;
     private $status;
     private $phone;
+    private $totalBorrowed;
 
     public function __construct($userId=null)
     {
@@ -27,23 +28,34 @@ class User
     }
 
     public function getUser(){
-        return ["user_id"=>$this->userId,
+        if(isset($this->userId)){
+            return ["user_id"=>$this->userId,
                 "first_name"=>$this->firstName,
                 "last_name"=>$this->lastName,
                 "email"=>$this->email,
-                "status"=>$this->status];
+                "status"=>$this->status,
+                "total_borrowed"=>$this->totalBorrowed
+            ];
+        }else{
+            return null;
+        }
+
     }
 
     private function loadUser($userId){
         $query = "SELECT `user`.`user_id`,
-                        `user`.`first_name`,
-                        `user`.`last_name`,
-                        `user`.`email`,
-                        `user`.`status`,
-                        `user`.`password`,
-                        `user`.`phone`,
-                        `user`.`timestamp`
-                    FROM `booksharing`.`user` WHERE `user`.`user_id` = ".$userId."; ";
+                    `user`.`first_name`,
+                    `user`.`last_name`,
+                    `user`.`email`,
+                    `user`.`status`,
+                    `user`.`password`,
+                    `user`.`phone`,
+                    `user`.`timestamp`,
+                    (SELECT count(*) FROM `booksharing`.loan WHERE `user_id` = `user`.`user_id` AND
+                     `status` IN ('REQUESTED','BORROWED'))
+                     as total_borrowed 
+                FROM `booksharing`.`user`                    
+                WHERE `user`.`user_id` = ".$userId."; ";
         $users = $this->db->selectArray($query);
         foreach ($users as $index => $user){
             $users[$index] = array_map("utf8_encode",$user);
@@ -53,6 +65,7 @@ class User
             $this->email = $user["email"];
             $this->status = $user["status"];
             $this->phone = $user["phone"];
+            $this->totalBorrowed= $user["total_borrowed"];
         }
     }
 

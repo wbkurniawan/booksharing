@@ -12,6 +12,7 @@ include_once(__DIR__.'/../../library/db/TableAdapter.class.php');
 include_once(__DIR__.'/../../model/class/Categories.php');
 include_once(__DIR__.'/../../model/class/Authors.php');
 include_once(__DIR__.'/../../model/class/User.php');
+include_once(__DIR__.'/../../model/class/Notifications.php');
 class Books
 {
 
@@ -26,7 +27,7 @@ class Books
     private $returnStats;
 
     /**
-     * Categories constructor.
+     * Books constructor.
      */
     public function __construct($bookId = null)
     {
@@ -34,7 +35,6 @@ class Books
         $this->db = new Connect(Connect::DBSERVER);
         $this->page = 1;
         $this->returnStats = false;
-        $this->bookId = $bookId;
     }
 
     public function setInJson($inJSON=true){
@@ -175,7 +175,19 @@ class Books
     public function borrowBook($userId)
     {
         if(isset($this->bookId)){
-            if($this->checkBookStatus()==BOOK_STATUS_AVAILABLE){
+            $userObj = new User($userId);
+            $user = $userObj->getUser();
+            $totalBorrowed = 0;
+            if(isset($user)){
+                $totalBorrowed = $user["total_borrowed"];
+                if($totalBorrowed>=MAX_BORROWED_BOOK){
+                    throw new Exception ("Maximum book ".MAX_BORROWED_BOOK);
+                }
+            }else{
+                throw new Exception ("User not found");
+            }
+
+            if($this->checkStatus()==BOOK_STATUS_AVAILABLE){
                 $ta = new TableAdapter($this->db,'booksharing','loan');
                 $newLoan = ["book_id"=>$this->bookId,
                             "user_id"=>$userId,
@@ -183,6 +195,13 @@ class Books
                 $ta->insert($newLoan);
                 $query = "UPDATE `booksharing`.`book` SET `status` = '".BOOK_STATUS_RESERVED."' WHERE `book_id` = " .$this->bookId;
                 $this->db->execute($query);
+
+                $message = "Hi, i would like to borrow your book";
+                //todo: get the message from dictionary
+
+                $notification = new Notifications();
+                $notification->add($this->getOwner($this->bookId),$userId,NOTIFICATION_TYPE_BORROW_REQUEST,$message,$this->bookId);
+
             }else{
                 throw new Exception ("Book not available");
             }
@@ -191,9 +210,18 @@ class Books
         }
     }
 
-    public function checkBookStatus(){
+    public function checkStatus(){
         if(isset($this->bookId)){
             $query = "SELECT status FROM `booksharing`.`book` WHERE `book_id` = ".$this->bookId;
+            return $this->db->selectValue($query);
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+
+    public function  getOwner(){
+        if(isset($this->bookId)){
+            $query = "SELECT user_id FROM `booksharing`.`book` WHERE `book_id` = ".$this->bookId;
             return $this->db->selectValue($query);
         }else{
             throw new Exception ("bookId required");

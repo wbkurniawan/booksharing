@@ -8,6 +8,27 @@
     $(document).ready(function(){
         loadBook();
         loadPersonalRecommendationBooks();
+
+        $("#eventWrapper").on('click', '#borrowButton', function(e){
+            e.preventDefault();
+            var bookId = $(this).data('book-id');
+            $.ajax({
+                method: "POST",
+                url: "model/borrow.php",
+                data: {bookId:bookId}
+            }).done(function( data ) {
+                if(!data.error){
+                    window.location.href = "success.php?id="+bookId;
+                }else {
+                    if(data.error_code == 403){
+                        console.log(data);
+                        window.location.href = "login.php";
+                    }else{
+                        alert(data.error_message);
+                    }
+                }
+            });
+        });
     });
 
     function loadBook() {

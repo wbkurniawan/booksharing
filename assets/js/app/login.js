@@ -17,12 +17,14 @@
                 var referer = $("#referer").val();
                 var data = $("#sky-form1").serialize();
                 $.ajax({
-                    method: "GET",
+                    method: "POST",
                     url: "model/login.php",
                     data : data
                 }).done(function( data ) {
-                    if(data==1){
-                        window.location.href = referer;
+                    if(!data.error){
+                        window.location.href = decodeURIComponent(referer);
+                    }else {
+                        alert(data.error_message);
                     }
                 });
             },

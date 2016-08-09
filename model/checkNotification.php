@@ -18,7 +18,7 @@ $userSession =  unserialize($_SESSION["user"]);
 $userId = $userSession->userId;
 
 $db = new Connect(Connect::DBSERVER);
-$query = "SELECT count(*) AS total FROM booksharing.user_notification WHERE user_id = ".$userId." AND status = 'NEW';";
+$query = "SELECT count(*) AS total FROM booksharing.notification WHERE user_id = ".$userId." AND status = 'NEW';";
 $row = $db->selectValue($query);
 if($row!==false){
     echo $row;

@@ -6,7 +6,7 @@ include_once(__DIR__.'/header.php');
 
 	<input type="hidden" id="bookId" value="<?=$bookId?>">
     <!--=== Shop Product ===-->
-    <div class="shop-product">
+    <div class="shop-product" id="eventWrapper">
         <!-- Breadcrumbs v5 -->
         <div class="container">
             <ul class="breadcrumb-v5">
@@ -158,7 +158,7 @@ include_once(__DIR__.'/header.php');
 			</ul><!--/end shop product ratings-->
 			{{:description}}
 			<div class="margin-bottom-40">
-				<button type="button" onclick="location.href='success.html';" class="btn-u btn-u-sea-shop btn-u-lg" >BORROW</button>
+				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="borrowButton" data-book-id='{{:book_id}}'>BORROW</button>
 			</div><!--/end product quantity-->
 
 			<ul class="list-inline add-to-wishlist add-to-wishlist-brd">

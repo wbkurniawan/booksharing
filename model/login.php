@@ -9,11 +9,15 @@
 include_once(__DIR__.'/../model/class/UserSession.php');
 include_once(__DIR__.'/../library/db/Connect.class.php');
 
-$email = isset($_GET["email"])?$_GET["email"]:"";
-$password = isset($_GET["password"])?$_GET["password"]:"";
+header('Content-type: application/json');
+
+$email = isset($_POST["email"])?$_POST["email"]:"";
+$password = isset($_POST["password"])?$_POST["password"]:"";
 
 if(empty($email) or empty($password)){
-    echo 0;
+    $response = array('error' => true,
+                      'error_message' => 'parameter missing');
+    echo json_encode($response);
     die();
 }
 
@@ -27,6 +31,7 @@ $query = "SELECT
                     AND password = AES_ENCRYPT(".$db->quote($password).",
                     SHA2('mCe3AAtKLnRt7NskAXmufJMDCgqA73tQ5sQ4Uc3Wumr4W6QyAe',512));";
 $row = $db->select($query);
+$response = array();
 if(count($row)>0){
     if ( !isset($_SESSION) ) session_start();
 
@@ -38,9 +43,10 @@ if(count($row)>0){
     $userSession->email = $user->email;
     $userSession->status = $user->status;
     $_SESSION["user"] = serialize($userSession);
-    echo 1;
-    die();
+    $response = array('error' => false,
+                      'error_message' => '');
 }else{
-    echo 0;
-    die();
+    $response = array('error' => true,
+                      'error_message' => 'Email and password combination not found');
 }
+echo json_encode($response);
