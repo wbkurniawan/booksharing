@@ -37,10 +37,10 @@
             method: "GET",
             url: "model/loadUserInfo.json.php"
         }).done(function( data ) {
-            var template = $.templates("#categoriesTemplate");
+            var template = $.templates("#userInfoTemplate");
 
             var htmlOutput = template.render(data);
-            $("#categoryContainer").html(htmlOutput);
+            $("#userInfoContainer").html(htmlOutput);
         });
     }
 }();

@@ -8,6 +8,8 @@
 
 include_once(__DIR__.'/../library/db/Connect.class.php');
 include_once(__DIR__.'/../model/class/UserSession.php');
+include_once(__DIR__.'/../model/class/User.php');
+$lock = true;
 include_once(__DIR__.'/../lock.php');
 
 if(!isset($_SESSION["user"])){
@@ -17,11 +19,5 @@ if(!isset($_SESSION["user"])){
 $userSession =  unserialize($_SESSION["user"]);
 $userId = $userSession->userId;
 
-$db = new Connect(Connect::DBSERVER);
-$query = "SELECT count(*) AS total FROM booksharing.notification WHERE user_id = ".$userId." AND status = 'NEW';";
-$row = $db->selectValue($query);
-if($row!==false){
-    echo $row;
-}else{
-    echo 0;
-}
+$user = new User(); //don't pass the id here. We just need total new notification
+echo $user->getTotalNewNotification($userId);

@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89abd6f6-5292-43b7-a071-5beec3688c41" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/js/app/success.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/class/Notifications.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/success.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/app/book.js" afterPath="$PROJECT_DIR$/assets/js/app/book.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/app/header.js" afterPath="$PROJECT_DIR$/assets/js/app/header.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/app/login.js" afterPath="$PROJECT_DIR$/assets/js/app/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/book.php" afterPath="$PROJECT_DIR$/book.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/global.php" afterPath="$PROJECT_DIR$/config/global.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/borrow.php" afterPath="$PROJECT_DIR$/model/borrow.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/checkNotification.php" afterPath="$PROJECT_DIR$/model/checkNotification.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/class/Books.php" afterPath="$PROJECT_DIR$/model/class/Books.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/class/User.php" afterPath="$PROJECT_DIR$/model/class/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/login.php" afterPath="$PROJECT_DIR$/model/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.php" afterPath="$PROJECT_DIR$/test.php" />
     </list>
     <ignored path="booksharingAlt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,7 +24,7 @@
     <favorites_list name="booksharingAlt" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.41169155">
+    <splitter split-orientation="horizontal" split-proportion="0.46268657">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="borrow.php" pinned="false" current-in-tab="false">
@@ -54,12 +42,9 @@
           <file leaf-file-name="checkNotification.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/model/checkNotification.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
-                  <folding>
-                    <marker date="1470771989125" expanded="true" signature="430:500" ph="SELECT count... user_notification" />
-                    <marker date="1470771989125" expanded="true" signature="430:531" ph="SELECT count... user_notification" />
-                  </folding>
+                <state relative-caret-position="306">
+                  <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -67,8 +52,8 @@
           <file leaf-file-name="header.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/assets/js/app/header.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="119">
-                  <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+                <state relative-caret-position="-141">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#42#0" expanded="false" />
                   </folding>
@@ -79,8 +64,8 @@
           <file leaf-file-name="loadCategories.json.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/model/loadCategories.json.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+                <state relative-caret-position="306">
+                  <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -108,7 +93,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="test.php" pinned="false" current-in-tab="true">
+          <file leaf-file-name="test.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="170">
@@ -118,14 +103,15 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/model/class/User.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+                <state relative-caret-position="499">
+                  <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
                   <folding>
-                    <marker date="1470769135982" expanded="true" signature="1091:1687" ph="SELECT `user... user" />
-                    <marker date="1470769135982" expanded="true" signature="1406:1542" ph="SELECT count... loan" />
+                    <marker date="1470777738057" expanded="true" signature="1091:1687" ph="SELECT `user... user" />
+                    <marker date="1470777738057" expanded="true" signature="1406:1542" ph="SELECT count... loan" />
+                    <marker date="1470777738057" expanded="true" signature="2826:2934" ph="SELECT count... notification" />
                   </folding>
                 </state>
               </provider>
@@ -185,11 +171,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Books.php" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Books.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/model/class/Books.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1171">
-                  <caret line="204" column="18" selection-start-line="204" selection-start-column="18" selection-end-line="204" selection-end-column="18" />
+                <state relative-caret-position="372">
+                  <caret line="226" column="52" selection-start-line="226" selection-start-column="9" selection-end-line="226" selection-end-column="52" />
                   <folding>
                     <marker date="1470776178097" expanded="true" signature="6700:6744" ph="UPDATE `book... " />
                     <marker date="1470776178097" expanded="true" signature="6700:6769" ph="UPDATE `book... " />
@@ -203,11 +189,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Notifications.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Notifications.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/model/class/Notifications.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="816">
-                  <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+                <state relative-caret-position="221">
+                  <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
                   <folding>
                     <element signature="e#7#90#0#PHP" expanded="true" />
                     <marker date="1470774659750" expanded="true" signature="2262:2710" ph="SELECT `noti... notification" />
@@ -257,13 +243,13 @@
         <option value="$PROJECT_DIR$/book.php" />
         <option value="$PROJECT_DIR$/success.php" />
         <option value="$PROJECT_DIR$/model/class/UserSession.php" />
-        <option value="$PROJECT_DIR$/model/class/User.php" />
         <option value="$PROJECT_DIR$/config/global.php" />
-        <option value="$PROJECT_DIR$/assets/js/app/header.js" />
-        <option value="$PROJECT_DIR$/model/checkNotification.php" />
         <option value="$PROJECT_DIR$/model/class/Notifications.php" />
         <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/model/class/Books.php" />
+        <option value="$PROJECT_DIR$/assets/js/app/header.js" />
+        <option value="$PROJECT_DIR$/model/class/User.php" />
+        <option value="$PROJECT_DIR$/model/checkNotification.php" />
       </list>
     </option>
   </component>
@@ -361,6 +347,60 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="booksharingAlt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="booksharingAlt" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="booksharingAlt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="booksharingAlt" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="booksharingAlt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="booksharingAlt" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -445,22 +485,22 @@
       <workItem from="1470479169867" duration="29869000" />
       <workItem from="1470555114606" duration="33125000" />
       <workItem from="1470680825307" duration="5856000" />
-      <workItem from="1470766737250" duration="9274000" />
+      <workItem from="1470766737250" duration="10437000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78124000" />
+    <option name="totallyTimeSpent" value="79287000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-627" width="1936" height="1066" extended-state="6" />
+    <frame x="-1928" y="-627" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14285715" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15991472" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32745314" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2061742" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -742,16 +782,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lock.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="41" />
-          <folding>
-            <element signature="e#6#89#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/success.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2025">
@@ -807,8 +837,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/book.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="144" column="42" selection-start-line="144" selection-start-column="42" selection-end-line="144" selection-end-column="42" />
+        <state relative-caret-position="2720">
+          <caret line="160" column="120" selection-start-line="160" selection-start-column="120" selection-end-line="160" selection-end-column="120" />
           <folding />
         </state>
       </provider>
@@ -839,40 +869,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/loadCategories.json.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/app/book.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/app/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/checkNotification.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
-          <folding>
-            <marker date="1470771989125" expanded="true" signature="430:500" ph="SELECT count... user_notification" />
-            <marker date="1470771989125" expanded="true" signature="430:531" ph="SELECT count... user_notification" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -894,29 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/class/Notifications.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
-          <folding>
-            <element signature="e#7#90#0#PHP" expanded="true" />
-            <marker date="1470774659750" expanded="true" signature="2262:2710" ph="SELECT `noti... notification" />
-            <marker date="1470774659750" expanded="true" signature="2262:2788" ph="SELECT `noti... notification" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/class/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-          <folding>
-            <marker date="1470769135982" expanded="true" signature="1091:1687" ph="SELECT `user... user" />
-            <marker date="1470769135982" expanded="true" signature="1406:1542" ph="SELECT count... loan" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -925,10 +903,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/loadCategories.json.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/class/Books.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1171">
-          <caret line="204" column="18" selection-start-line="204" selection-start-column="18" selection-end-line="204" selection-end-column="18" />
+        <state relative-caret-position="372">
+          <caret line="226" column="52" selection-start-line="226" selection-start-column="9" selection-end-line="226" selection-end-column="52" />
           <folding>
             <marker date="1470776178097" expanded="true" signature="6700:6744" ph="UPDATE `book... " />
             <marker date="1470776178097" expanded="true" signature="6700:6769" ph="UPDATE `book... " />
@@ -937,6 +923,56 @@
             <marker date="1470776178097" expanded="true" signature="6700:6789" ph="UPDATE `book... " />
             <marker date="1470776178097" expanded="true" signature="7430:7488" ph="SELECT statu... book" />
             <marker date="1470776178097" expanded="true" signature="7730:7789" ph="SELECT user_... book" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lock.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/class/Notifications.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+          <folding>
+            <element signature="e#7#90#0#PHP" expanded="true" />
+            <marker date="1470774659750" expanded="true" signature="2262:2710" ph="SELECT `noti... notification" />
+            <marker date="1470774659750" expanded="true" signature="2262:2788" ph="SELECT `noti... notification" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/app/header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-141">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/checkNotification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/class/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+          <folding>
+            <marker date="1470777738057" expanded="true" signature="1091:1687" ph="SELECT `user... user" />
+            <marker date="1470777738057" expanded="true" signature="1406:1542" ph="SELECT count... loan" />
+            <marker date="1470777738057" expanded="true" signature="2826:2934" ph="SELECT count... notification" />
           </folding>
         </state>
       </provider>

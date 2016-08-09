@@ -78,4 +78,19 @@ class User
         $userSession->email = $this->email;
         return $userSession;
     }
+
+    public function getTotalNewNotification($userId=null){
+        if(!isset($this->userId) and !isset($userId)){
+            throw new Exception ("userId required");
+        }
+
+        $currentUserId =  isset($userId)?$userId:$this->userId;
+        $query = "SELECT count(*) AS total FROM booksharing.notification WHERE user_id = ".$currentUserId." AND status = 'NEW';";
+        $row = $this->db->selectValue($query);
+        if($row!==false){
+            return $row;
+        }else{
+            return 0;
+        }
+    }
 }
