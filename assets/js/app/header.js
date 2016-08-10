@@ -6,7 +6,7 @@
     $(document).ready(function(){
         loadCategory();
         checkNotification();
-        // loadUserInfo();
+        loadUserInfo();
     });
     function loadCategory() {
         $.ajax({
@@ -37,10 +37,11 @@
             method: "GET",
             url: "model/loadUserInfo.json.php"
         }).done(function( data ) {
-            var template = $.templates("#userInfoTemplate");
-
-            var htmlOutput = template.render(data);
-            $("#userInfoContainer").html(htmlOutput);
+            if(!data.error){
+                var template = $.templates("#userInfoTemplate");
+                var htmlOutput = template.render(data);
+                $("#userInfoContainer").html(htmlOutput);
+            }
         });
     }
 }();

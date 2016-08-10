@@ -71,6 +71,15 @@ if(isset($_SESSION["user"])){
 		<li><a href="#" data-category-id="{{:category_id}}">{{:name}}</a></li>
 	{{/for}}
 </script>
+<script id="userInfoTemplate" type="text/x-jsrender">
+	{{for data}}
+		<div class="header-popup-notification">
+		    <div><i class="fa fa-envelope-o" aria-hidden="true"></i> From:{{:sender.first_name}}{{:sender.last_name}}</div>
+		    <div>{{:type}}</div>
+		</div>
+	{{/for}}
+</script>
+
 
 <div class="wrapper">
     <!--=== Header v5 ===-->
@@ -113,7 +122,7 @@ if(isset($_SESSION["user"])){
                     <a href="#"><?=$userGreeting?><i class="fa fa-user" id="userIcon" <?=$loginIconStyle?> ></i></a>
                     <i class="fa fa-envelope-o" aria-hidden="true"></i><span id="newNotification" class="badge badge-notification">0</span>
                     <br>
-                    <div class="badge-open">
+                    <div class="badge-open" id="userInfoContainer">
                         <ul class="list-unstyled mCustomScrollbar" data-mcs-theme="minimal-dark">
                             <li>
                                 <a href="login.php" class="btn-u btn-u-sea-shop btn-block">Login</a>

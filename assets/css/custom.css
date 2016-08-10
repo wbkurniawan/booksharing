@@ -6,3 +6,8 @@ span#newNotification {
     left: -8px;
     display: none;
 }
+
+.header-popup-notification {
+    margin: 12px;
+    font-size: 12px;
+}

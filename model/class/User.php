@@ -42,6 +42,26 @@ class User
 
     }
 
+    public function login($email,$password){
+        $query = "SELECT 
+                `user_id`, `first_name`, `last_name`, `email`, `status`
+            FROM
+                booksharing.user
+            WHERE
+                email = ".$this->db->quote($email)." AND status IN ('ACTIVE' , 'NOT_VERIFIED')
+                    AND password = AES_ENCRYPT(".$this->db->quote($password).",
+                    SHA2('mCe3AAtKLnRt7NskAXmufJMDCgqA73tQ5sQ4Uc3Wumr4W6QyAe',512));";
+        $row = $this->db->select($query);
+
+        if(count($row)>0){
+            $user = $row[0];
+            $this->loadUser($user->user_id);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     private function loadUser($userId){
         $query = "SELECT `user`.`user_id`,
                     `user`.`first_name`,

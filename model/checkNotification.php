@@ -9,7 +9,7 @@
 include_once(__DIR__.'/../library/db/Connect.class.php');
 include_once(__DIR__.'/../model/class/UserSession.php');
 include_once(__DIR__.'/../model/class/User.php');
-$lock = true;
+$lock = false;
 include_once(__DIR__.'/../lock.php');
 
 if(!isset($_SESSION["user"])){

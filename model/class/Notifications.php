@@ -38,7 +38,7 @@ class Notifications
         $this->loadNotification();
         return $this->getResult();
     }
-    public function getNotificationByUser($userId,$status=null){
+    public function getNotificationByUser($userId,$status=null,$limit){
         $this->loadNotification($userId,$status);
         return $this->getResult();
     }
@@ -54,7 +54,7 @@ class Notifications
         $ta->insert($newNotification);
     }
 
-    private function loadNotification($userId=null,$status=null){
+    private function loadNotification($userId=null,$status=null,$limit=null){
         $filters = array();
         if(isset($this->notificationId)){
             $filters[] = "notification.notification_id = " . $this->notificationId;
@@ -73,6 +73,10 @@ class Notifications
             $filterQuery = " WHERE " . implode(" AND ",$filters);
         }
 
+        $limitQuery = "";
+        if(isset($limit)){
+            $limitQuery = " LIMIT 0,".$limit;
+        }
         $query = " SELECT `notification`.`notification_id`,
                         `notification`.`user_id`,
                         `notification`.`sender_user_id`,
@@ -82,7 +86,7 @@ class Notifications
                         `notification`.`book_id`,
                         `notification`.`timestamp`
                     FROM `booksharing`.`notification`
-                    ".$filterQuery." ORDER by `notification`.`timestamp` DESC;";
+                    ".$filterQuery." ORDER by `notification`.`timestamp` DESC ".$limitQuery.";";
 
         $this->notifications = $this->db->selectArray($query);
         foreach ($this->notifications as $index => $notification){
@@ -103,7 +107,8 @@ class Notifications
     }
 
     public function toJSON(){
-        $result = ['data'=>$this->notifications];
+        $result = ['data'=>$this->notifications,
+                    'error'=>false];
         return json_encode($result);
     }
 
