@@ -11,3 +11,36 @@ span#newNotification {
     margin: 12px;
     font-size: 12px;
 }
+
+table.table.table-hover.table-condensed.notification-popup-table {
+    font-size: 13px;
+}
+
+td.notification-icon-td {
+    width: 25%;
+}
+
+.popup-menu-header {
+    margin: 8px;
+}
+
+.popup-small-icon {
+    font-size: 14px !important;
+    display: inline;
+}
+
+img.loader-popup-img {
+    width: 21px !important;
+    display: none;
+}
+
+.item-list {
+    width: 225px;
+    display: inline-block;
+    margin: 20px;
+    vertical-align: top;
+}
+
+.product-description.product-description-brd {
+    height: 150px;
+}

@@ -22,13 +22,21 @@ class Categories
         $this->language = $language;
         $this->db = new Connect(Connect::DBSERVER);
         $query = "SELECT 
-                        category_id, COALESCE(b.translation, a.name) as name
+                        a.category_id, COALESCE(b.translation, a.name) as name, c.total
                     FROM
                         booksharing.category a
                             LEFT JOIN
                         booksharing.dictionary b ON a.category_id = b.id
-                            AND b.table = 'category'
-                            AND language = '".$language."'";
+							AND b.table = 'category'
+                            AND language = '".$language."'
+						LEFT JOIN (
+							SELECT category_id, count(book_id) AS total FROM
+							booksharing.book 
+							WHERE status in ('".BOOK_STATUS_RESERVED."','".BOOK_STATUS_BORROWED."',
+							'".BOOK_STATUS_AVAILABLE."')
+							GROUP by category_id                                
+						) c ON a.category_id = c.category_id;";
+
         $this->categories = $this->db->selectArray($query,["index"=>"category_id"]);
         foreach ($this->categories as $index => $category){
             $this->categories[$index] = array_map("utf8_encode",$category);

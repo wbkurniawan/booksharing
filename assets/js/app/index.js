@@ -13,8 +13,7 @@
     function loadRecommendedBooks() {
         $.ajax({
             method: "GET",
-            url: "model/loadBooks.json.php",
-            data: {recommended:1}
+            url: "api/books?recommended"
         }).done(function( data ) {
             var template = $.templates("#recommendedBooksTemplate");
 
@@ -29,8 +28,7 @@
     function loadLatestBooks() {
         $.ajax({
             method: "GET",
-            url: "model/loadBooks.json.php",
-            data: {latest:1}
+            url: "api/books?latest"
         }).done(function( data ) {
             var template = $.templates("#latestBooksTemplate");
 

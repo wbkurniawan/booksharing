@@ -35,8 +35,7 @@
         var bookId = $('#bookId').val();
         $.ajax({
             method: "GET",
-            url: "model/loadBooks.json.php",
-            data: {bookId:bookId}
+            url: "api/books/"+bookId
         }).done(function( data ) {
             var template = $.templates("#bookTemplate");
             var htmlOutput = template.render(data);

@@ -104,7 +104,6 @@ class Books
 
     public function toJSON(){
         $categories = new Categories();
-        $booksJSON = array();
         foreach ($this->books as $index => $book){
 
             $categoriesJSON = [$categories->getCategoryById($book["category_id"])];
@@ -186,6 +185,10 @@ class Books
             }else{
                 throw new Exception ("User not found");
             }
+            $owner = $this->getOwner($this->bookId);
+            if($userId==$owner){
+                throw new Exception ("User is the owner of the book");
+            }
 
             if($this->checkStatus()==BOOK_STATUS_AVAILABLE){
                 $ta = new TableAdapter($this->db,'booksharing','loan');
@@ -200,7 +203,7 @@ class Books
                 //todo: get the message from dictionary
 
                 $notification = new Notifications();
-                $notification->add($this->getOwner($this->bookId),$userId,NOTIFICATION_TYPE_BORROW_REQUEST,$message,$this->bookId);
+                $notification->add($owner,$userId,NOTIFICATION_TYPE_BORROW_REQUEST,$message,$this->bookId);
 
             }else{
                 throw new Exception ("Book not available");

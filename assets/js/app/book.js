@@ -35,8 +35,7 @@
         var bookId = $('#bookId').val();
         $.ajax({
             method: "GET",
-            url: "model/loadBooks.json.php",
-            data: {bookId:bookId}
+            url: "api/books/"+bookId
         }).done(function( data ) {
             var template = $.templates("#bookTemplate");
 
@@ -50,7 +49,7 @@
             var categoryId = "";
             if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["category_id"])){
                 categoryId = data["data"][0]["categories"][0]["category_id"];
-                $("#breadcrumbCategoryName").attr("href", "bookList.php?categoryId="+categoryId);
+                $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId="+categoryId);
             }
         });
     }
@@ -58,8 +57,7 @@
     function loadPersonalRecommendationBooks() {
         $.ajax({
             method: "GET",
-            url: "model/loadBooks.json.php",
-            data: {personal:1}
+            url: "api/books?personal"
         }).done(function( data ) {
             var template = $.templates("#personalRecommendationBooksTemplate");
 

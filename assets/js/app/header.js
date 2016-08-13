@@ -11,7 +11,7 @@
     function loadCategory() {
         $.ajax({
             method: "GET",
-            url: "model/loadCategories.json.php"
+            url: "api/categories"
         }).done(function( data ) {
             var template = $.templates("#categoriesTemplate");
 
@@ -20,28 +20,38 @@
         });
     }
     function checkNotification() {
-        $.ajax({
-            method: "GET",
-            url: "model/checkNotification.php"
-        }).done(function( data ) {
-            $("#newNotification").text(data);
-            if(data>0){
-                $("#newNotification").show();
-            }else{
-                $("#newNotification").hide();
-            }
-        });
+        var token=$('body').data("token");
+        if(token.length!=0) {
+            $.ajax({
+                method: "GET",
+                url: "model/checkNotification.php"
+            }).done(function (data) {
+                $("#newNotification").text(data);
+                if (data > 0) {
+                    $("#newNotification").show();
+                } else {
+                    $("#newNotification").hide();
+                }
+            });
+        }
     }
     function loadUserInfo() {
-        $.ajax({
-            method: "GET",
-            url: "model/loadUserInfo.json.php"
-        }).done(function( data ) {
-            if(!data.error){
-                var template = $.templates("#userInfoTemplate");
-                var htmlOutput = template.render(data);
-                $("#userInfoContainer").html(htmlOutput);
-            }
-        });
+        var token=$('body').data("token");
+        if(token.length!=0){
+            $(".loader-popup-img").show();
+            $("#login-popup-ul").hide();
+            $.ajax({
+                method: "GET",
+                url: "model/loadUserInfo.json.php"
+            }).done(function( data ) {
+                if(!data.error){
+                    // $.views.settings.allowCode(true);
+                    var template = $.templates("#userInfoTemplate");
+                    var htmlOutput = template.render(data);
+                    $("#userInfoContainer").html(htmlOutput);
+                }
+            });
+            $(".loader-popup-img").show();
+        }
     }
 }();

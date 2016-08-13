@@ -96,9 +96,24 @@ class Notifications
     }
 
     private function loadNotificationUser(){
+        $users = array();
         foreach ($this->notifications as $index => $notification){
-            $sender = new User($notification["sender_user_id"]);
-            $recipient = new User($notification["user_id"]);
+            $sender = null;
+            if(isset($users[$notification["sender_user_id"]])){
+                $sender = $users[$notification["sender_user_id"]];
+            }else{
+                $sender = new User($notification["sender_user_id"]);
+                $users[$notification["sender_user_id"]] = $sender;
+            }
+
+            $recipient = null;
+            if(isset($users[$notification["user_id"]])){
+                $recipient = $users[$notification["user_id"]];
+            }else{
+                $recipient = new User($notification["user_id"]);
+                $users[$notification["user_id"]] = $recipient;
+            }
+
             $this->notifications[$index]["sender"] = $sender->getUser();
             $this->notifications[$index]["recipient"] = $recipient->getUser();
             unset($this->notifications[$index]["sender_user_id"]);

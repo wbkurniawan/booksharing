@@ -1,10 +1,10 @@
 <?php
-$bookId = isset($_GET["id"])?$_GET["id"]:0;
+$categoryId = isset($_GET["categoryId"])?$_GET["categoryId"]:0;
 $lock = false;
 include_once(__DIR__.'/header.php');
 ?>
 
-	<input type="hidden" id="bookId" value="<?=$bookId?>">
+	<input type="hidden" id="categoryId" value="<?=$categoryId?>">
     <!--=== Shop Product ===-->
     <div class="shop-product" id="eventWrapper">
         <!-- Breadcrumbs v5 -->
@@ -17,11 +17,7 @@ include_once(__DIR__.'/header.php');
         </div>
         <!-- End Breadcrumbs v5 -->
 
-        <div class="container">
-            <div class="row" id="bookContainer">
 
-            </div><!--/end row-->
-        </div>
     </div>
     <!--=== End Shop Product ===-->
 
@@ -31,23 +27,13 @@ include_once(__DIR__.'/header.php');
 
      <!--=== Illustration v2 ===-->
     <div class="container">
-		<div class="heading heading-v1 margin-bottom-20">
-			<h2>Books You May Like</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed odio elit, ultrices vel cursus sed, placerat ut leo. Phasellus in magna erat. Etiam gravida convallis augue non tincidunt. Nunc lobortis dapibus neque quis lacinia. Nam dapibus tellus sit amet odio venenatis</p>
+		<div id="bookListContainer">
 		</div>
+		<div class="container">
+			<div class="row" id="bookListContainer">
 
-		<!--=== Illustration v2 ===-->
-		<div class="illustration-v2 margin-bottom-60">
-			<div class="customNavigation margin-bottom-25">
-				<a class="owl-btn prev rounded-x"><i class="fa fa-angle-left"></i></a>
-				<a class="owl-btn next rounded-x"><i class="fa fa-angle-right"></i></a>
-			</div>
-
-			<ul class="list-inline owl-slider" id="personalRecommendationBooksContainer">
-			</ul>
+			</div><!--/end row-->
 		</div>
-		<!--=== End Illustration v2 ===-->
-
 	<!--=== Footer v4 ===-->
 	<div class="footer-v4">
 		<div class="copyright">
@@ -81,7 +67,7 @@ include_once(__DIR__.'/header.php');
 <!-- Get the data -->
 <script src="assets/js/jsrender.js"></script>
 <script src="assets/js/app/header.js"></script>
-<script src="assets/js/app/book.js"></script>
+<script src="assets/js/app/list.js"></script>
 
 <!-- JS Implementing Plugins -->
 <script src="assets/plugins/back-to-top.js"></script>
@@ -110,13 +96,17 @@ include_once(__DIR__.'/header.php');
     });
 </script>
 
-<script id="personalRecommendationBooksTemplate" type="text/x-jsrender">
+<script id="bookListTemplate" type="text/x-jsrender">
+	<div class="heading heading-v1 margin-bottom-20">
+		<h2>{{if ~root.data[0]}}
+				{{:data[0].categories[0].name}}
+			{{/if}}
+		</h2>
+	</div>
 	{{for data}}
-		<li class="item">
+		<div class="item-list">
 			<div class="product-img">
-				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:book_id}}.jpg" alt=""></a>
-				<a class="product-review" href="book.php?id={{:book_id}}">Quick review</a>
-				<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Add to list</a>
+				<a href="book.php?id={{:book_id}}"><img class="img-responsive" src="assets/img/book/{{:book_id}}.jpg" alt=""></a>
 			</div>
 			<div class="product-description product-description-brd">
 				<div class="overflow-h margin-bottom-5">
@@ -135,42 +125,6 @@ include_once(__DIR__.'/header.php');
 					<li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
 				</ul>
 			</div>
-		</li>
-	{{/for}}
-</script>
-
-<script id="bookTemplate" type="text/x-jsrender">
-	{{for data}}
-		<div class="col-md-4">
-			<img src="assets/img/book/{{:book_id}}.jpg" width="100%" alt="lorem ipsum dolor sit">
-		</div>
-
-		<div class="col-md-8">
-			<div class="shop-product-heading">
-				<h2>{{:title}}</h2>
-				<p class="wishlist-category"><strong>Authors:</strong>
-				{{for authors}}<a href="#">{{>name}}</a> {{/for}}
-				</p>
-			</div><!--/end shop product social-->
-
-			<ul class="list-inline product-ratings margin-bottom-30">
-				<li><small class="shop-bg-green time-day-left">{{:status}}</small></li>
-			</ul><!--/end shop product ratings-->
-			{{:description}}
-			<div class="margin-bottom-40">
-				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="borrowButton" data-book-id='{{:book_id}}'>BORROW</button>
-			</div><!--/end product quantity-->
-
-			<ul class="list-inline add-to-wishlist add-to-wishlist-brd">
-				<li class="wishlist-in">
-					<i class="fa fa-user"></i>
-					Owner: <strong>{{for user}}{{>first_name}} {{>last_name}}{{/for}}</strong>
-				</li>
-				<li class="compare-in">
-					<i class="fa fa-calendar"></i>
-					Loan period: <strong>{{:loan_period}} days</strong>
-				</li>
-			</ul>
 		</div>
 	{{/for}}
 </script>

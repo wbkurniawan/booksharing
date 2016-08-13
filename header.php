@@ -10,10 +10,12 @@ include_once(__DIR__.'/model/class/UserSession.php');
 
 $loginIconStyle = "";
 $userGreeting = "";
+$loginToken = "";
 if(isset($_SESSION["user"])){
     $loginIconStyle = "style='color:#18ba9b !important'";
     $userSession = unserialize($_SESSION["user"]);
     $userGreeting = "Hi, " .$userSession->firstName . " ";
+    $loginToken = uniqid();
 }
 
 ?>
@@ -64,20 +66,48 @@ if(isset($_SESSION["user"])){
     <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 
-<body class="header-fixed">
+<body class="header-fixed" data-token="<?=$loginToken?>">
 
 <script id="categoriesTemplate" type="text/x-jsrender">
 	{{for data}}
-		<li><a href="#" data-category-id="{{:category_id}}">{{:name}}</a></li>
+		<li><a href="/booksharing/list.php?categoryId={{:category_id}}" data-category-id="{{:category_id}}">{{:name}}</a></li>
 	{{/for}}
 </script>
 <script id="userInfoTemplate" type="text/x-jsrender">
-	{{for data}}
-		<div class="header-popup-notification">
-		    <div><i class="fa fa-envelope-o" aria-hidden="true"></i> From:{{:sender.first_name}}{{:sender.last_name}}</div>
-		    <div>{{:type}}</div>
-		</div>
-	{{/for}}
+    <table class="table table-hover table-condensed notification-popup-table">
+        <tr><th colspan="2">New Notifications</th></tr>
+	    {{for data}}
+		    <tr>
+                <td class="notification-icon-td">
+                    <a href="notification.php?id={{:notification_id}}">
+                    {{if type=='BORROW_REQUEST'}}
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        <i class="fa fa-question popup-small-icon" aria-hidden="true"></i>
+                    {{else type=='BORROW_REJECT'}}
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        <i class="fa fa-times popup-small-icon" aria-hidden="true"></i>
+                    {{else type=='BORROW_ACCEPT'}}
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        <i class="fa fa-check popup-small-icon" aria-hidden="true"></i>
+                    {{else type=='BORROW_STATUS'}}
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        <i class="fa fa-exclamation popup-small-icon" aria-hidden="true"></i>
+                    {{else type=='SYSTEM'}}
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    {{else type=='USER_TO_USER'}}
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    {{/if}}
+                    </a>
+                </td>
+                <td class="notification-sender-td"><a href="notification.php?id={{:notification_id}}">{{:sender.first_name}} {{:sender.last_name}}</a></td>
+            </tr>
+	    {{/for}}
+    </table>
+	<div class="popup-menu-header">
+	    <div><a href="/booksharing/index.php">My Books</a><div>
+	    <div><a href="/booksharing/index.php">Notifications</a><div>
+	    <div><a href="/booksharing/model/logout.php">Log out</a><div>
+	</div>
 </script>
 
 
@@ -123,7 +153,8 @@ if(isset($_SESSION["user"])){
                     <i class="fa fa-envelope-o" aria-hidden="true"></i><span id="newNotification" class="badge badge-notification">0</span>
                     <br>
                     <div class="badge-open" id="userInfoContainer">
-                        <ul class="list-unstyled mCustomScrollbar" data-mcs-theme="minimal-dark">
+                        <img class="loader-popup-img" src="assets/plugins/revolution-slider/rs-plugin/assets/loader.gif">
+                        <ul id="login-popup-ul" class="list-unstyled mCustomScrollbar" data-mcs-theme="minimal-dark">
                             <li>
                                 <a href="login.php" class="btn-u btn-u-sea-shop btn-block">Login</a>
                                 <a href="register.html" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop btn-block">Register</a>
