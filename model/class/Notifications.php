@@ -39,19 +39,35 @@ class Notifications
         return $this->getResult();
     }
     public function getNotificationByUser($userId,$status=null,$limit){
-        $this->loadNotification($userId,$status);
+        $this->loadNotification($userId,$status,$limit);
         return $this->getResult();
     }
 
-    public function add($userId,$senderUserId,$type,$message,$bookId=null){
+    public function add($userId,$senderUserId,$type,$message,$bookId=null,$replyFromId=null){
         $ta = new TableAdapter($this->db,'booksharing','notification');
         $newNotification = ["user_id"=>$userId,
             "sender_user_id"=>$senderUserId,
             "type"=>$type,
             "message"=>$message,
             "status"=>NOTIFICATION_STATUS_NEW,
-            "book_id"=>$bookId];
+            "book_id"=>$bookId,
+            "reply_from_id"=>$replyFromId];
         $ta->insert($newNotification);
+    }
+
+    public function setStatus($status){
+        if(isset($this->notificationId)){
+            try{
+                $query = "UPDATE booksharing.notification SET status = " . $this->db->quote($status) ." 
+                      WHERE notification_id = ". $this->notificationId ." ;";
+                $this->db->execute($query);
+                return true;
+            }catch (Exception $e){
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
     private function loadNotification($userId=null,$status=null,$limit=null){
@@ -62,6 +78,7 @@ class Notifications
 
         if(isset($userId)){
             $filters[] = "notification.user_id = " . $userId;
+            $filters[] = "notification.status <> '".NOTIFICATION_STATUS_DELETED."' ";
         }
 
         if(isset($status)){

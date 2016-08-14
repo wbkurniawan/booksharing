@@ -44,3 +44,21 @@ img.loader-popup-img {
 .product-description.product-description-brd {
     height: 150px;
 }
+
+.new-notification-tr{
+    font-weight: bold;
+}
+
+td.notification-icon-full-td {
+    width: 5%;
+}
+
+.notification-detail-tr {
+    height: 300px;
+    background-color: #f8f8f8;
+    display: none;
+}
+
+img.notification-img {
+    max-height: 300px;
+}

@@ -8,7 +8,26 @@
     $(document).ready(function(){
         loadBook();
 
+        $("#eventWrapper").on('click', '#continueBrowsingButton', function(e){
+            //Todo: implement the cancel process
+            alert("Todo: redirect to referrer page?");
+            return false;
+            //==================//
+        });
+        $("#eventWrapper").on('click', '#contactAdminButton', function(e){
+            //Todo: redirect to contact admin page
+            alert("Todo: redirect to contact page or compose notification popup?");
+            return false;
+            //==================//
+        });
+
         $("#eventWrapper").on('click', '#cancelRequestButton', function(e){
+
+            //Todo: implement the cancel process
+            alert("Todo: class book -> add function to cancel request");
+            return false;
+            //==================//
+
             e.preventDefault();
             var bookId = $(this).data('book-id');
             $.ajax({

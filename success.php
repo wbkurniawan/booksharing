@@ -13,7 +13,7 @@ include_once(__DIR__.'/header.php');
     <!--=== End Breadcrumbs v4 ===-->
 
     <!--=== Content Medium Part ===-->
-    <div class="content-md margin-bottom-30">
+    <div class="content-md margin-bottom-30" id="eventWrapper">
         <div class="container" id="bookContainer">
         </div>
     </div>
@@ -100,13 +100,13 @@ include_once(__DIR__.'/header.php');
                 <p style="margin-bottom:30px">Lending period: {{:loan_period}} days</p>
 
                 <div class="text-left" style="margin-bottom:5px">
-                    <button type="button" style="width: 180px" class="btn-u btn-u-sea-shop">Continue browsing</button>
+                    <button id="continueBrowsingButton"type="button" style="width: 180px" class="btn-u btn-u-sea-shop">Continue browsing</button>
                 </div>
                 <div class="text-left" style="margin-bottom:5px">
-                    <button type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Cancel request</button>
+                    <button id="cancelRequestButton" type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Cancel request</button>
                 </div>
                 <div class="text-left" style="margin-bottom:5px">
-                    <button type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Contact admin</button>
+                    <button id="contactAdminButton" type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Contact admin</button>
                 </div>
             </div>
         </div>

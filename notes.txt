@@ -1,19 +1,44 @@
-
-Next 6/8/16:
-loadBooks.json.php
-    - get param
-        - recommended
-        - id
-        - latest
-        - category_id
-Books.php
+Book Class (Books.php)
     - getBookByAuthor
+    - reject & approve request
+        - update loan table
+        - set book status
+        - add new notification
+    - add new book
 
-index.php
-    - latest template
+My Book
+    - user list.php as main page
+    - add book editor form
+        - edit info
+        - upload image
+        - add new Author
+    - by new book, send approval request notification to admin
+    - loan history
 
-Next 7/8/16:
-borrow.js
-    - on klick button call mode/borrow.php
-        - if user not loged-in, redirect to login.php
-        - success login back to book.php or to success.php? Posted parameter?
+success.php
+    - cancel request
+
+notification.php
+    - approve button jquery
+    - reject button jquery
+    - reject reason text
+    - paging
+    - cancel request (send notification at borrowing?)
+
+register.php
+
+Dialog
+    - alertify.js
+
+list.php
+    - paging
+
+API
+    - paging
+    - total record
+
+Email agent
+    - send email for every new notification
+    - user setting for receiving email?
+
+Multi language
