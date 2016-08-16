@@ -78,7 +78,6 @@ class User
                 WHERE `user`.`user_id` = ".$userId."; ";
         $users = $this->db->selectArray($query);
         foreach ($users as $index => $user){
-            $users[$index] = array_map("utf8_encode",$user);
             $this->userId = $user["user_id"];
             $this->firstName= $user["first_name"];
             $this->lastName = $user["last_name"];

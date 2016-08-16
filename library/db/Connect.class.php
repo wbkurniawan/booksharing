@@ -95,6 +95,7 @@ class Connect {
             try{
                 $this->db = new PDO('mysql:host='.$host.';dbname='.$name, $user, $password);
                 $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db->query("SET NAMES UTF8;");
             }catch(PDOException $e){
                 $this->db = null;
                 throw new Exception ("Unable to connect to server.");

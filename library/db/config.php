@@ -11,8 +11,8 @@ define("DBSERVER","DBSERVER");
 
 function getConnectionInfo(){
     $dbConnectionInfo = array(
-        DBSERVER => array( 'host'=>'localhost',
-            'user'=>'root',
+        DBSERVER => array( 'host'=>'bodyandmindfitness.de',
+            'user'=>'immanuel',
             'password'=>'',
             'name'=>'booksharing')
     );

@@ -26,9 +26,6 @@ class Authors
                     WHERE
                         `book_author`.`book_id` = ".$bookId.";";
         $authors = $this->db->selectArray($query);
-        foreach ($authors as $index => $author){
-            $authors[$index] = array_map("utf8_encode",$author);
-        }
         return $authors;
     }
 

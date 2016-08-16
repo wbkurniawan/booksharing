@@ -106,9 +106,6 @@ class Notifications
                     ".$filterQuery." ORDER by `notification`.`timestamp` DESC ".$limitQuery.";";
 
         $this->notifications = $this->db->selectArray($query);
-        foreach ($this->notifications as $index => $notification){
-            $this->notifications[$index] = array_map("utf8_encode",$notification);
-        }
         $this->loadNotificationUser();
     }
 

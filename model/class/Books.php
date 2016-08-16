@@ -166,9 +166,6 @@ class Books
         if($this->returnStats){
             $this->foundRows = $this->db->selectValue("SELECT FOUND_ROWS();");
         }
-        foreach ($this->books as $index => $book){
-            $this->books[$index] = array_map("utf8_encode",$book);
-        }
     }
 
     public function borrowBook($userId)

@@ -38,9 +38,6 @@ class Categories
 						) c ON a.category_id = c.category_id;";
 
         $this->categories = $this->db->selectArray($query,["index"=>"category_id"]);
-        foreach ($this->categories as $index => $category){
-            $this->categories[$index] = array_map("utf8_encode",$category);
-        }
     }
 
     /**

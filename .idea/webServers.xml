@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="45edf26d-f5f4-4177-910e-1ff4d99b37d9" name="bodyandmindfitness" url="http://bodyandmindfitness.de">
+        <fileTransfer host="bodyandmindfitness.de" port="22" rootFolder="/var/www/html/booksharing" accessType="SFTP" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
