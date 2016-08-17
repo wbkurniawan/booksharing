@@ -8,6 +8,7 @@
  */
 include_once(__DIR__.'/../../config/global.php');
 include_once(__DIR__.'/../../library/db/Connect.class.php');
+include_once(__DIR__.'/../../library/db/TableAdapter.class.php');
 include_once(__DIR__.'/../../model/class/UserSession.php');
 class User
 {
@@ -60,6 +61,24 @@ class User
         }else{
             return false;
         }
+    }
+
+    public function add($firstName,$lastName,$password,$email,$status=USER_STATUS_NOT_VERIFIED,$phone="",$newsletterSubscriber=0){
+        $ta = new TableAdapter($this->db,'booksharing','user');
+        $token = uniqid();
+        $newUser = ["first_name"=>$firstName,
+                    "last_name"=>$lastName,
+                    "email"=>$token,
+                    "status"=>$status,
+                    "phone"=>$phone,
+                    "newsletter_subscriber"=>$newsletterSubscriber];
+        $ta->insert($newUser);
+        $query = "UPDATE booksharing.user 
+                  SET email = " . $this->db->quote($email). ", 
+                      password = AES_ENCRYPT(".$this->db->quote($password).",
+                      SHA2('mCe3AAtKLnRt7NskAXmufJMDCgqA73tQ5sQ4Uc3Wumr4W6QyAe',512))
+                  WHERE email = " .$this->db->quote($token);
+        $this->db->execute($query);
     }
 
     private function loadUser($userId){

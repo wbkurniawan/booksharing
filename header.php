@@ -157,7 +157,7 @@ if(isset($_SESSION["user"])){
                         <ul id="login-popup-ul" class="list-unstyled mCustomScrollbar" data-mcs-theme="minimal-dark">
                             <li>
                                 <a href="login.php" class="btn-u btn-u-sea-shop btn-block">Login</a>
-                                <a href="register.html" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop btn-block">Register</a>
+                                <a href="register.php" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop btn-block">Register</a>
                             </li>
                         </ul>
                     </div>

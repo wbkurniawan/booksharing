@@ -210,6 +210,58 @@ class Books
         }
     }
 
+    public function rejectRequest($message){
+        $this->handleRequest(LOAN_STATUS_REQUESTED,LOAN_STATUS_REJECTED,false,false,null,BOOK_STATUS_AVAILABLE,NOTIFICATION_TYPE_BORROW_REJECT,$message);
+    }
+
+    public function approveRequest(){
+        $this->getBook();
+        $period = $this->books["loan_period"];
+        //todo: get message from dictionary
+        $this->handleRequest(LOAN_STATUS_REQUESTED,LOAN_STATUS_BORROWED,true,false,$period,BOOK_STATUS_BORROWED,NOTIFICATION_TYPE_BORROW_ACCEPT,"Your request has been accepted");
+    }
+
+    public function returnBook(){
+        //todo: get message from dictionary
+        $this->handleRequest(LOAN_STATUS_BORROWED,LOAN_STATUS_RETURNED,false,true,null,BOOK_STATUS_AVAILABLE,NOTIFICATION_TYPE_BORROW_STATUS,"You have return the book");
+    }
+
+
+    private function handleRequest($loanStatusBefore,$loanStatusAfter,$setStartDate,$setEndDate,$period,$bookStatus,$notificationType,$notificationMessage){
+        if(isset($this->bookId)){
+            //update loan table
+            $query = "SELECT loan_id,user_id FROM booksharing.loan WHERE book_id = " .$this->bookId. " AND
+                      status =".$this->db->quote($loanStatusBefore)." ORDER BY timestamp DESC LIMIT 0,1; ";
+            $loan = $this->db->select($query);
+            if(count($loan)==0){
+                throw new Exception ("loan data not found");
+            }
+            $loanId = $loan[0]->loan_id;
+            $userId = $loan[0]->user_id;
+
+            //update load data
+            $periodQuery = isset($period)?", period = ".$period:"";
+            $startDateQuery = $setStartDate?", start_date = NOW() ":"";
+            $endDateQuery = $setEndDate?", end_date = NOW() ":"";
+
+            $query = "UPDATE booksharing.loan SET 
+                        status = ".$this->db->quote($loanStatusAfter)."  ".$periodQuery ." ".$startDateQuery ." ".$endDateQuery."
+                      WHERE loan_id = " .$loanId;
+            $this->db->execute($query);
+
+            //update book status
+            $query = "UPDATE booksharing.book SET status = ".$this->db->quote($bookStatus)." WHERE book_id = ".$this->bookId;
+            $this->db->execute($query);
+
+            //add new notification
+            $owner = $this->getOwner();
+            $notification = new Notifications();
+            $notification->add($userId,$owner,$notificationType,$notificationMessage,$this->bookId);
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+
     public function checkStatus(){
         if(isset($this->bookId)){
             $query = "SELECT status FROM `booksharing`.`book` WHERE `book_id` = ".$this->bookId;

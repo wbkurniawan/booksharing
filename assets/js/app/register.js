@@ -1,22 +1,22 @@
 /**
- * Created by William on 8/7/2016.
+ * Created by William on 8/17/2016.
  */
+
 
 
 !function(){
 
     $(document).ready(function(){
-        $("#sky-form1").validate({
+        $("#sky-form4").validate({
             submitHandler: function(form) {
-                var referer = $("#referer").val();
-                var data = $("#sky-form1").serialize();
+                var data = $("#sky-form4").serialize();
                 $.ajax({
                     method: "POST",
-                    url: "model/login.php",
+                    url: "model/addUser.php",
                     data : data
                 }).done(function( data ) {
                     if(!data.error){
-                        window.location.href = decodeURIComponent(referer);
+                        window.location.href = '/booksharing/index.php';
                     }else {
                         alert(data.error_message);
                     }
@@ -25,6 +25,7 @@
             // Rules for form validation
             rules:
             {
+
                 email:
                 {
                     required: true,
@@ -35,12 +36,32 @@
                     required: true,
                     minlength: 3,
                     maxlength: 20
+                },
+                passwordConfirm:
+                {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 20,
+                    equalTo: '#password'
+                },
+                firstname:
+                {
+                    required: true
+                },
+                lastname:
+                {
+                    required: true
+                },
+                terms:
+                {
+                    required: true
                 }
             },
 
             // Messages for form validation
             messages:
             {
+
                 email:
                 {
                     required: 'Please enter your email address',
@@ -49,6 +70,23 @@
                 password:
                 {
                     required: 'Please enter your password'
+                },
+                passwordConfirm:
+                {
+                    required: 'Please enter your password one more time',
+                    equalTo: 'Please enter the same password as above'
+                },
+                firstName:
+                {
+                    required: 'Please select your first name'
+                },
+                lastName:
+                {
+                    required: 'Please select your last name'
+                },
+                terms:
+                {
+                    required: 'You must agree with Terms and Conditions'
                 }
             },
 
