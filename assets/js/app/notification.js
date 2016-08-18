@@ -10,16 +10,50 @@
         loadNotification();
 
         $("#notificationContainer").on('click', '.approveButton', function(e) {
-            //Todo: implement the approval process
-            alert("Todo: send bookId, add approve function in Book class");
-            return false;
-            //==================//
+            var bookId = $(this).data("book-id");
+            $.ajax({
+                method: "POST",
+                url: "model/approveRequest.php",
+                data: { bookId: bookId }
+            }).done(function( data ) {
+                if(!data.error){
+                    $("#actionButtonDiv_"+bookId).hide();
+                }else {
+                    if(data.error_code == 403){
+                        console.log(data);
+                        window.location.href = "login.php";
+                    }else{
+                        alertify.error(data.error_message);
+                    }
+                }
+            });
         });
         $("#notificationContainer").on('click', '.rejectButton', function(e) {
-            //Todo: implement the approval process
-            alert("Todo: send bookId, add reject function in Book class");
-            return false;
-            //==================//
+            var bookId = $(this).data("book-id");
+            alertify.prompt("Reject Request","Reason", "",
+                function(evt, value ){
+                    $.ajax({
+                        method: "POST",
+                        url: "model/rejectRequest.php",
+                        data: { bookId: bookId,
+                                message: value }
+                    }).done(function( data ) {
+                        if(!data.error){
+                            $("#actionButtonDiv_"+bookId).hide();
+                        }else {
+                            if(data.error_code == 403){
+                                console.log(data);
+                                window.location.href = "login.php";
+                            }else{
+                                alertify.error(data.error_message);
+                            }
+                        }
+                    });
+                },
+                function(){
+                    alertify.error('Cancel');
+                })
+            ;
         });
 
         $("#notificationContainer").on('click', '.notificationReplyButton', function(e) {
@@ -43,7 +77,7 @@
                         console.log(data);
                         window.location.href = "login.php";
                     }else{
-                        alert(data.error_message);
+                        alertify.error(data.error_message);
                     }
                 }
             });
@@ -99,12 +133,16 @@
                         method: "GET",
                         url: "api/books/"+bookId
                     }).done(function( data ) {
+                        var status = "";
+                        if(data["data"][0]["status"] != undefined){
+                            status = data["data"][0]["status"];
+                        }
                         var template = $.templates("#bookTemplate");
                         var htmlOutput = template.render(data);
                         $("#bookContainer_"+notificationId).html(htmlOutput);
-                        if(type=="BORROW_REQUEST"){
+                        if(type=="BORROW_REQUEST" && status == "RESERVED"){
                             $("#actionButtonDiv_"+bookId).show();
-                        }else if(type=="BORROW_REJECT"){
+                        }else{
                             $("#actionButtonDiv_"+bookId).hide();
                         }
                     });

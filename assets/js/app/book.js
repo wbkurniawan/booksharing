@@ -24,7 +24,7 @@
                         console.log(data);
                         window.location.href = "login.php";
                     }else{
-                        alert(data.error_message);
+                        alertify.error(data.error_message);
                     }
                 }
             });

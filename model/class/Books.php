@@ -216,9 +216,12 @@ class Books
 
     public function approveRequest(){
         $this->getBook();
-        $period = $this->books["loan_period"];
+        $period = $this->books[0]["loan_period"];
         //todo: get message from dictionary
         $this->handleRequest(LOAN_STATUS_REQUESTED,LOAN_STATUS_BORROWED,true,false,$period,BOOK_STATUS_BORROWED,NOTIFICATION_TYPE_BORROW_ACCEPT,"Your request has been accepted");
+    }
+    public function cancelRequest(){
+        $this->handleRequest(LOAN_STATUS_REQUESTED,LOAN_STATUS_CANCELED,false,false,null,BOOK_STATUS_AVAILABLE,null,null);
     }
 
     public function returnBook(){
@@ -253,10 +256,13 @@ class Books
             $query = "UPDATE booksharing.book SET status = ".$this->db->quote($bookStatus)." WHERE book_id = ".$this->bookId;
             $this->db->execute($query);
 
-            //add new notification
-            $owner = $this->getOwner();
-            $notification = new Notifications();
-            $notification->add($userId,$owner,$notificationType,$notificationMessage,$this->bookId);
+            if(isset($notificationType)){
+                //add new notification
+                $owner = $this->getOwner();
+                $notification = new Notifications();
+                $notification->add($userId,$owner,$notificationType,$notificationMessage,$this->bookId);
+            }
+
         }else{
             throw new Exception ("bookId required");
         }

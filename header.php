@@ -61,6 +61,12 @@ if(isset($_SESSION["user"])){
 
     <!-- CSS Theme -->
     <link rel="stylesheet" href="assets/css/theme-colors/default.css" id="style_color">
+    <!-- AlertifyJS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/default.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/semantic.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/bootstrap.min.css"/>
+
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="assets/css/custom.css">
