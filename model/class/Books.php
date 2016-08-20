@@ -25,6 +25,7 @@ class Books
     private $orders;
     private $foundRows;
     private $returnStats;
+    private $properties;
 
     /**
      * Books constructor.
@@ -78,6 +79,13 @@ class Books
     {
         $this->page = $page;
         $this->filters = ["`book`.`category_id` = " . $categoryId];
+        $this->loadBooks($this->page,$limit);
+        return $this->getResult();
+    }
+    public function getBooksByOwner($userId,$page=1,$limit=BOOKS_VIEW_LIMIT_DEFAULT)
+    {
+        $this->page = $page;
+        $this->filters = ["`book`.`user_id` = " . $userId];
         $this->loadBooks($this->page,$limit);
         return $this->getResult();
     }
@@ -284,6 +292,75 @@ class Books
         }else{
             throw new Exception ("bookId required");
         }
+    }
+
+    public function setTitle($title){
+        if(isset($this->bookId)){
+            $this->properties["title"]=$title;
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+    public function setDescription($description){
+        if(isset($this->bookId)){
+            $this->properties["description"]=$description;
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+    public function setLanguage($language){
+        $validLanguage = [LANGUAGE_DE,LANGUAGE_EN,LANGUAGE_ID];
+        if(!in_array($language,$validLanguage)){
+            throw new Exception ("language invalid");
+        }
+
+        if(isset($this->bookId)){
+            $this->properties["language"]=$language;
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+    public function setISBN($isbn){
+        if(isset($this->bookId)){
+            $this->properties["isbn"]=$isbn;
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+    public function setCategoryId($categoryId){
+        if(!is_numeric($categoryId)){
+            throw new Exception ("category id not numeric");
+        }
+
+        if(isset($this->bookId)){
+            $this->properties["category_id"]=$categoryId;
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+    public function setLoanPeriod($loanPeriod){
+        if(!is_numeric($loanPeriod)){
+            throw new Exception ("loan period not numeric");
+        }
+        if(isset($this->bookId)){
+            $this->properties["loan_period"]=$loanPeriod;
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+    public function saveProperties(){
+        if(count($this->properties)==0){
+            throw new Exception ("no new property found");
+        }
+
+        if(isset($this->bookId)){
+            $this->properties["book_id"] = $this->bookId;
+            $ta = new TableAdapter($this->db,"booksharing","book");
+            $result =$ta->insert($this->properties,true);
+        }else{
+            throw new Exception ("bookId required");
+        }
+
     }
 
     private function getResult(){

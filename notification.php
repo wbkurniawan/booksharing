@@ -1,6 +1,7 @@
 <?php
 $categoryId = isset($_GET["categoryId"])?$_GET["categoryId"]:0;
-$lock = false;
+$lock = true;
+include_once (__DIR__.'/lock.php');
 include_once(__DIR__.'/header.php');
 ?>
 

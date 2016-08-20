@@ -14,6 +14,7 @@ $loginToken = "";
 if(isset($_SESSION["user"])){
     $loginIconStyle = "style='color:#18ba9b !important'";
     $userSession = unserialize($_SESSION["user"]);
+    $userId = $userSession->userId;
     $userGreeting = "Hi, " .$userSession->firstName . " ";
     $loginToken = uniqid();
 }
@@ -110,7 +111,7 @@ if(isset($_SESSION["user"])){
 	    {{/for}}
     </table>
 	<div class="popup-menu-header">
-	    <div><a href="/booksharing/index.php">My Books</a><div>
+	    <div><a href="/booksharing/list.php?userId=<?=$userId?>">My Books</a><div>
 	    <div><a href="/booksharing/notification.php">Notifications</a><div>
 	    <div><a href="/booksharing/model/logout.php">Log out</a><div>
 	</div>

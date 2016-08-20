@@ -1,9 +1,9 @@
 Book Class (Books.php)
     - getBookByAuthor
-    - reject & approve request
-        - update loan table
-        - set book status
-        - add new notification
+    v reject request , approve request and return
+        v update loan table
+        v set book status
+        v add new notification
     - add new book
 
 My Book
@@ -19,16 +19,16 @@ success.php
     - cancel request
 
 notification.php
-    - approve button jquery
-    - reject button jquery
-    - reject reason text
+    v approve button jquery
+    v reject button jquery
+    v reject reason text
     - paging
     - cancel request (send notification at borrowing?)
 
-register.php
+v register.php
 
 Dialog
-    - alertify.js
+    v alertify.js
 
 list.php
     - paging

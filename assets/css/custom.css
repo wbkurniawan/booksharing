@@ -66,3 +66,28 @@ img.notification-img {
 .footer-v4 {
     margin-top: 30px;
 }
+
+input#titleInput {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+input#loanPeriodInput {
+    width: 70px;
+}
+textarea#descriptionInput {
+    width: 100%;
+    margin: 20px 0px 20px 0px;
+}
+
+select#categorySelect {
+    width: 20%;
+}
+
+select#languageSelect {
+    width: 20%;
+}
+
+input#isbnInput {
+    width: 20%;
+}

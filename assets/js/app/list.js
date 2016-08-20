@@ -33,12 +33,22 @@
 
     function loadBooks() {
         var categoryId = $('#categoryId').val();
+        var userId = $('#userId').val();
+        var url ="";
+        var filter = ""
+;        if(categoryId>0){
+            url = "api/books?categoryId="+categoryId;
+            filter = "CATEGORY";
+        }else if(userId>0){
+            url = "api/books?userId="+userId;
+            filter = "USER";
+        }
         $.ajax({
             method: "GET",
-            url: "api/books?categoryId="+categoryId
+            url: url
         }).done(function( data ) {
             var template = $.templates("#bookListTemplate");
-
+            data["filter"]=filter;
             var htmlOutput = template.render(data);
             $("#bookListContainer").html(htmlOutput);
             var categoryName = "";

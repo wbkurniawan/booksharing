@@ -1,10 +1,28 @@
 <?php
-$categoryId = isset($_GET["categoryId"])?$_GET["categoryId"]:0;
+include_once(__DIR__.'/model/class/UserSession.php');
+
+$categoryId = isset($_GET["categoryId"])?(integer)$_GET["categoryId"]:0;
+$userId = isset($_GET["userId"])?(integer)$_GET["userId"]:0;
 $lock = false;
+include_once (__DIR__.'/lock.php');
+
+if($userId>0 and  !isset($_SESSION["user"])){
+	header('Location: /booksharing/index.php');
+	die();
+}else{
+	$userSession =  unserialize($_SESSION["user"]);
+	$currentUserId = $userSession->userId;
+	if($userId<>$currentUserId){
+		header('Location: /booksharing/index.php');
+		die();
+	}
+}
+
 include_once(__DIR__.'/header.php');
 ?>
 
 	<input type="hidden" id="categoryId" value="<?=$categoryId?>">
+	<input type="hidden" id="userId" value="<?=$userId?>">
     <!--=== Shop Product ===-->
     <div class="shop-product" id="eventWrapper">
         <!-- Breadcrumbs v5 -->
@@ -98,8 +116,13 @@ include_once(__DIR__.'/header.php');
 
 <script id="bookListTemplate" type="text/x-jsrender">
 	<div class="heading heading-v1 margin-bottom-20">
-		<h2>{{if ~root.data[0]}}
-				{{:data[0].categories[0].name}}
+		<h2>
+			{{if filter=="CATEGORY"}}
+				{{if ~root.data[0]}}
+					{{:data[0].categories[0].name}}
+				{{/if}}
+			{{else}}
+				My Books
 			{{/if}}
 		</h2>
 	</div>
@@ -116,14 +139,20 @@ include_once(__DIR__.'/header.php');
 						<span class="gender">{{:authors}}</span>
 					</div>
 				</div>
-				<ul class="list-inline product-ratings">
-					<li><i class="rating{{if rating>=1}}-selected{{/if}} fa fa-star"></i></li>
-					<li><i class="rating{{if rating>=2}}-selected{{/if}} fa fa-star"></i></li>
-					<li><i class="rating{{if rating>=3}}-selected{{/if}} fa fa-star"></i></li>
-					<li><i class="rating{{if rating>=4}}-selected{{/if}} fa fa-star"></i></li>
-					<li><i class="rating{{if rating>=5}}-selected{{/if}} fa fa-star"></i></li>
-					<li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
-				</ul>
+				{{if filter=="CATEGORY"}}
+					<ul class="list-inline product-ratings">
+						<li><i class="rating{{if rating>=1}}-selected{{/if}} fa fa-star"></i></li>
+						<li><i class="rating{{if rating>=2}}-selected{{/if}} fa fa-star"></i></li>
+						<li><i class="rating{{if rating>=3}}-selected{{/if}} fa fa-star"></i></li>
+						<li><i class="rating{{if rating>=4}}-selected{{/if}} fa fa-star"></i></li>
+						<li><i class="rating{{if rating>=5}}-selected{{/if}} fa fa-star"></i></li>
+						<li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
+					</ul>
+				{{else}}
+					<ul class="list-inline product-ratings">
+						<li class="like-icon"><a href="edit.php?id={{:book_id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+					</ul>
+				{{/if}}
 			</div>
 		</div>
 	{{/for}}

@@ -13,7 +13,7 @@ function getConnectionInfo(){
     $dbConnectionInfo = array(
         DBSERVER => array( 'host'=>'bodyandmindfitness.de',
             'user'=>'immanuel',
-            'password'=>'',
+            'password'=>'QF7j7oOlSjNOxq',
             'name'=>'booksharing')
     );
     return $dbConnectionInfo;

@@ -56,6 +56,13 @@ $app->get('/books', function (Request $request) use ($app) {
         return $response;
     }
 
+    $userId = $request->get('userId');
+    if(isset($userId)){
+        $result = $book->getBooksByOwner($userId,1,BOOKS_VIEW_LIMIT_LIST);
+        $response->setContent($result);
+        return $response;
+    }
+
     $recommended = $request->get('recommended');
     if(isset($recommended)){
         $result = $book->getBooksRecomended();
