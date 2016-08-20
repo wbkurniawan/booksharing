@@ -7,9 +7,9 @@ Book Class (Books.php)
     - add new book
 
 My Book
-    - user list.php as main page
+    v user list.php as main page
     - add book editor form
-        - edit info
+        v edit info
         - upload image
         - add new Author
     - by new book, send approval request notification to admin

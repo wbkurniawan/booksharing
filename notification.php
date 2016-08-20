@@ -155,7 +155,7 @@ include_once(__DIR__.'/header.php');
 <script id="bookTemplate" type="text/x-jsrender">
 	{{for data}}
 		<div class="col-md-4">
-			<img src="assets/img/book/{{:book_id}}.jpg" class="notification-img" alt="lorem ipsum dolor sit">
+			<img src="assets/img/book/{{:image}}" class="notification-img" alt="lorem ipsum dolor sit">
 		</div>
 
 		<div class="col-md-8">

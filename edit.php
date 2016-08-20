@@ -97,58 +97,69 @@ $categories= json_decode($json);
 </script>
 
 <script id="bookTemplate" type="text/x-jsrender">
-    <form id="editForm" class="form-inline">
 	{{for data}}
-	        <input type="hidden" name="bookId" value="{{:book_id}}">
             <div class="col-md-4">
-                <img src="assets/img/book/{{:book_id}}.jpg" width="100%" alt="lorem ipsum dolor sit">
+                <img src="assets/img/book/{{:image}}" width="100%" alt="Cover">
+                <form id="upload-cover-form" data-book-id="{{:book_id}}" action="model/uploadCover.php" method="post" enctype="multipart/form-data" class="form-inline">
+                    <input type="hidden" name="bookId" value="{{:book_id}}">
+                    <div class="input-group" id="edit-input-group-div">
+                        <label class="input-group-btn" id="edit-input-group-label">
+                            <span class="btn btn-primary" id="edit-input-group-button">
+                                Browse&hellip; <input type="file" name="upfile" style="display: none;">
+                            </span>
+                        </label>
+                        <input type="text" id="pictureCover" class="form-control" readonly>
+                    </div>
+                </form>
             </div>
+            <form id="editForm" class="form-inline">
+                <input type="hidden" name="bookId" value="{{:book_id}}">
+                <div class="col-md-8">
+                    <div class="shop-product-heading">
+                        <label for="titleInput">Title: </label><input id="titleInput" name="title" type="text" class="form-control" value="{{:title}}">
+                        <p class="wishlist-category"><strong>Authors:</strong>
+                        {{for authors}}<a href="#">{{>name}}</a> {{/for}}
+                        </p>
+                    </div><!--/end shop product social-->
 
-            <div class="col-md-8">
-                <div class="shop-product-heading">
-                    <label for="titleInput">Title: </label><input id="titleInput" name="title" type="text" class="form-control" value="{{:title}}">
-                    <p class="wishlist-category"><strong>Authors:</strong>
-                    {{for authors}}<a href="#">{{>name}}</a> {{/for}}
-                    </p>
-                </div><!--/end shop product social-->
+                    <ul class="list-inline product-ratings margin-bottom-30">
+                        <li><small class="shop-bg-green time-day-left">{{:status}}</small></li>
+                    </ul><!--/end shop product ratings-->
+                    <label for="isbnInput">ISBN: </label> <input type="text" class="form-control" id="isbnInput" name="isbn" value="{{:isbn}}">
+                    <label for="languageSelect">Language: </label>
+                    <select id="languageSelect" class="form-control" name="language">
+                        <option value="DE" {{if language=="DE"}} selected {{/if}}>Deutsch</option>
+                        <option value="EN" {{if language=="EN"}} selected {{/if}}>English</option>
+                        <option value="ID" {{if language=="ID"}} selected {{/if}}>Bahasa Indonesia</option>
+                    </select>
+                    <label for="categorySelect">Category</label>
+                    <select id="categorySelect" class="form-control" name="categoryId">
+                        <?php foreach ($categories->data as $category): ?>
+                            <option value="<?=$category->category_id?>" {{if category_id=="<?=$category->category_id?>"}} selected {{/if}} >
+                                    <?=$category->name?>
+                            </option>
+                         <?php endforeach; ?>
+                    </select>
 
-                <ul class="list-inline product-ratings margin-bottom-30">
-                    <li><small class="shop-bg-green time-day-left">{{:status}}</small></li>
-                </ul><!--/end shop product ratings-->
-                <label for="isbnInput">ISBN: </label> <input type="text" class="form-control" id="isbnInput" name="isbn" value="{{:isbn}}">
-                <label for="languageSelect">Language: </label>
-                <select id="languageSelect" class="form-control" name="language">
-                    <option value="DE" {{if language=="DE"}} selected {{/if}}>Deutsch</option>
-                    <option value="EN" {{if language=="EN"}} selected {{/if}}>English</option>
-                    <option value="ID" {{if language=="ID"}} selected {{/if}}>Bahasa Indonesia</option>
-                </select>
-                <label for="categorySelect">Category</label>
-                <select id="categorySelect" class="form-control" name="categoryId">
-                    <?php foreach ($categories->data as $category): ?>
-                        <option value="<?=$category->category_id?>" {{if category_id=="<?=$category->category_id?>"}} selected {{/if}} >
-                                <?=$category->name?>
-                        </option>
-                     <?php endforeach; ?>
-                </select>
+                    <textarea id="descriptionInput" name="description" class="form-control" rows="6" placeholder="Book's description">{{:description}}</textarea>
 
-                <textarea id="descriptionInput" name="description" class="form-control" rows="6" placeholder="Book's description">{{:description}}</textarea>
-
-                <ul class="list-inline add-to-wishlist add-to-wishlist-brd">
-                    <li class="wishlist-in">
-                        <i class="fa fa-user"></i>
-                        Owner: <strong>{{for user}}{{>first_name}} {{>last_name}}{{/for}}</strong>
-                    </li>
-                    <li class="compare-in">
-                        <i class="fa fa-calendar"></i>
-                        Loan period: <strong><input type="number" name="loanPeriod" id="loanPeriodInput" min="1" max="30" value="{{:loan_period}}"  class="form-control" > days</strong>
-                    </li>
-                </ul>
-                <div class="margin-bottom-40">
-                    <button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="saveButton" data-book-id='{{:book_id}}'>SAVE</button>
+                    <ul class="list-inline add-to-wishlist add-to-wishlist-brd">
+                        <li class="wishlist-in">
+                            <i class="fa fa-user"></i>
+                            Owner: <strong>{{for user}}{{>first_name}} {{>last_name}}{{/for}}</strong>
+                        </li>
+                        <li class="compare-in">
+                            <i class="fa fa-calendar"></i>
+                            Loan period: <strong><input type="number" name="loanPeriod" id="loanPeriodInput" min="1" max="30" value="{{:loan_period}}"  class="form-control" > days</strong>
+                        </li>
+                    </ul>
+                    <div class="margin-bottom-40">
+                        <button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="saveButton" data-book-id='{{:book_id}}'>SAVE</button>
+                    </div>
                 </div>
-            </div>
-        {{/for}}
-	</form>
+            </form>
+    {{/for}}
+
 </script>
 
 <!--[if lt IE 9]>

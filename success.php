@@ -85,7 +85,7 @@ include_once(__DIR__.'/header.php');
 
         <div style="margin-bottom:50px" class="row">
             <div class="col-md-3">
-                <img src="assets/img/book/{{:book_id}}.jpg" width="80%" alt="lorem ipsum dolor sit">
+                <img src="assets/img/book/{{:image}}" width="80%" alt="Cover">
             </div>
 
             <div class="col-md-9">

@@ -30,6 +30,27 @@
                 }
             });
         });
+
+        $(document).on('change', ':file', function() {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+
+        $(document).on('fileselect', ':file', function(event, numFiles, label) {
+            console.log(numFiles);
+            console.log(label);
+            $("#pictureCover").val(label);
+            alertify.confirm("Edit Book","Change book's cover?",
+                function(){
+                    // alertify.success('Ok');
+                    $("#upload-cover-form").submit();
+                },
+                function(){
+                    alertify.error('Cancel');
+                });
+        });
     });
 
     function loadBook() {

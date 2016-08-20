@@ -159,6 +159,7 @@ class Books
                                `book`.`enter_date`,
                                `book`.`recommended`,
                                `book`.`rating`,
+                               `book`.`image`,
                                 GROUP_CONCAT(`author`.`name` SEPARATOR ', ') as authors ";
         $queries["tables"] = "  FROM `booksharing`.`book`
                                 LEFT JOIN `booksharing`.`book_author` ON `book`.`book_id` = `booksharing`.`book_author`.`book_id` 
@@ -323,6 +324,13 @@ class Books
     public function setISBN($isbn){
         if(isset($this->bookId)){
             $this->properties["isbn"]=$isbn;
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+    public function setImage($image){
+        if(isset($this->bookId)){
+            $this->properties["image"]=$image;
         }else{
             throw new Exception ("bookId required");
         }

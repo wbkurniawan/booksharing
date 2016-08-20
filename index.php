@@ -258,7 +258,7 @@ include_once(__DIR__.'/header.php');
 	{{for data}}
 		<li class="item">
 					<div class="product-img">
-						<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:book_id}}.jpg" alt=""></a>
+						<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
 						<a class="product-review" href="book.php?id={{:book_id}}">Quick review</a>
 						<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Add to list</a>
 					</div>
@@ -287,7 +287,7 @@ include_once(__DIR__.'/header.php');
 	{{for data}}
 		<div class="col-md-3 col-sm-6 md-margin-bottom-30">
 			<div class="product-img">
-				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:book_id}}.jpg" alt=""></a>
+				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
 				<a class="product-review" href="book.php?id={{:book_id}}">Quick review</a>
 				<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Add to list</a>
 			</div>

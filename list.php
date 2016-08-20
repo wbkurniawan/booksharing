@@ -129,7 +129,7 @@ include_once(__DIR__.'/header.php');
 	{{for data}}
 		<div class="item-list">
 			<div class="product-img">
-				<a href="book.php?id={{:book_id}}"><img class="img-responsive" src="assets/img/book/{{:book_id}}.jpg" alt=""></a>
+				<a href="book.php?id={{:book_id}}"><img class="img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
 			</div>
 			<div class="product-description product-description-brd">
 				<div class="overflow-h margin-bottom-5">
@@ -150,7 +150,8 @@ include_once(__DIR__.'/header.php');
 					</ul>
 				{{else}}
 					<ul class="list-inline product-ratings">
-						<li class="like-icon"><a href="edit.php?id={{:book_id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+						<li><i class="fa fa-history" aria-hidden="true" title="Loan history"></i></li>
+						<li class="like-icon"><a href="edit.php?id={{:book_id}}"><i class="fa fa-pencil" title="Edit" aria-hidden="true"></i></a></li>
 					</ul>
 				{{/if}}
 			</div>
