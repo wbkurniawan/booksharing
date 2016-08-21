@@ -11,13 +11,20 @@
 
         $("#notificationContainer").on('click', '.approveButton', function(e) {
             var bookId = $(this).data("book-id");
+            var notificationId = $(this).data("notification-id");
+            var type = $(this).data("type");
             $.ajax({
                 method: "POST",
                 url: "model/approveRequest.php",
-                data: { bookId: bookId }
+                data: { bookId: bookId,
+                        notificationId: notificationId,
+                        type : type}
             }).done(function( data ) {
                 if(!data.error){
                     $("#actionButtonDiv_"+bookId).hide();
+                    $("#notification-tr-"+notificationId).data("detail-loaded",0);
+                    $("#notification-tr-"+notificationId).data("status","PROCESSED");
+                    $("#notification-detail-tr-" + notificationId).hide();
                 }else {
                     if(data.error_code == 403){
                         console.log(data);
@@ -30,16 +37,23 @@
         });
         $("#notificationContainer").on('click', '.rejectButton', function(e) {
             var bookId = $(this).data("book-id");
+            var notificationId = $(this).data("notification-id");
+            var type = $(this).data("type");
             alertify.prompt("Reject Request","Reason", "",
                 function(evt, value ){
                     $.ajax({
                         method: "POST",
                         url: "model/rejectRequest.php",
                         data: { bookId: bookId,
+                                notificationId: notificationId,
+                                type: type,
                                 message: value }
                     }).done(function( data ) {
                         if(!data.error){
                             $("#actionButtonDiv_"+bookId).hide();
+                            $("#notification-tr-"+notificationId).data("detail-loaded",0);
+                            $("#notification-tr-"+notificationId).data("status","PROCESSED");
+                            $("#notification-detail-tr-" + notificationId).hide();
                         }else {
                             if(data.error_code == 403){
                                 console.log(data);
@@ -111,8 +125,12 @@
             var type = $(this).data('type');
             if(detail.is(':visible')){
                 detail.hide();
+                return true;
             }else{
                 detail.show();
+                if($(this).data("detail-loaded")==1){
+                    return true;
+                }
                 $(".loader-popup-img").show();
             }
 
@@ -133,14 +151,17 @@
                         method: "GET",
                         url: "api/books/"+bookId
                     }).done(function( data ) {
-                        var status = "";
-                        if(data["data"][0]["status"] != undefined){
-                            status = data["data"][0]["status"];
-                        }
+                        // var status = "";
+                        // if(data["data"][0]["status"] != undefined){
+                        //     status = data["data"][0]["status"];
+                        // }
+                        data["notification_id"] = notificationId;
+                        data["type"] = type;
                         var template = $.templates("#bookTemplate");
                         var htmlOutput = template.render(data);
                         $("#bookContainer_"+notificationId).html(htmlOutput);
-                        if(type=="BORROW_REQUEST" && status == "RESERVED"){
+                        $("#notification-tr-"+notificationId).data("detail-loaded",1);
+                        if((type=="BORROW_REQUEST" || type=="BOOK_APPROVAL_REQUEST") && status != "PROCESSED"){
                             $("#actionButtonDiv_"+bookId).show();
                         }else{
                             $("#actionButtonDiv_"+bookId).hide();
@@ -165,6 +186,10 @@
             }
         });
     });
+
+    // function setActionButton(){
+    //
+    // }
 
     function loadNotification() {
         $.ajax({

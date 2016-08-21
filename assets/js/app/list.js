@@ -9,26 +9,10 @@
 
         loadBooks();
 
-        // $("#eventWrapper").on('click', '#borrowButton', function(e){
-        //     e.preventDefault();
-        //     var bookId = $(this).data('book-id');
-        //     $.ajax({
-        //         method: "POST",
-        //         url: "model/borrow.php",
-        //         data: {bookId:bookId}
-        //     }).done(function( data ) {
-        //         if(!data.error){
-        //             window.location.href = "success.php?id="+bookId;
-        //         }else {
-        //             if(data.error_code == 403){
-        //                 console.log(data);
-        //                 window.location.href = "login.php";
-        //             }else{
-        //                 alert(data.error_message);
-        //             }
-        //         }
-        //     });
-        // });
+        $("#eventWrapper").on('click', '#addButton', function(e){
+            e.preventDefault();
+            window.location.href = "edit.php?id=0";
+        });
     });
 
     function loadBooks() {
@@ -36,10 +20,10 @@
         var userId = $('#userId').val();
         var url ="";
         var filter = ""
-;        if(categoryId>0){
+;        if(categoryId!="0"){
             url = "api/books?categoryId="+categoryId;
             filter = "CATEGORY";
-        }else if(userId>0){
+        }else if(userId!="0"){
             url = "api/books?userId="+userId;
             filter = "USER";
         }

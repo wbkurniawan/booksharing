@@ -99,6 +99,9 @@ if(isset($_SESSION["user"])){
                     {{else type=='BORROW_STATUS'}}
                         <i class="fa fa-book popup-small-icon" aria-hidden="true"></i>
                         <i class="fa fa-exclamation popup-small-icon" aria-hidden="true"></i>
+                    {{else type=='BOOK_APPROVAL_REQUEST'}}
+                        <i class="fa fa-book popup-small-icon" aria-hidden="true"></i>
+                        <i class="fa fa-exclamation popup-small-icon" aria-hidden="true"></i>
                     {{else type=='SYSTEM'}}
                         <i class="fa fa-cog popup-small-icon" aria-hidden="true"></i>
                     {{else type=='USER_TO_USER'}}
@@ -111,7 +114,7 @@ if(isset($_SESSION["user"])){
 	    {{/for}}
     </table>
 	<div class="popup-menu-header">
-	    <div><a href="/booksharing/list.php?userId=<?=$userId?>">My Books</a><div>
+	    <div><a href="/booksharing/list.php">My Books</a><div>
 	    <div><a href="/booksharing/notification.php">Notifications</a><div>
 	    <div><a href="/booksharing/model/logout.php">Log out</a><div>
 	</div>

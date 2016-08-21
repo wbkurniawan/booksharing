@@ -2,14 +2,20 @@
 $bookId = isset($_GET["id"])?$_GET["id"]:0;
 $lock = false;
 include_once(__DIR__.'/header.php');
+include_once(__DIR__.'/model/class/Authors.php');
+
 $json = file_get_contents("http://$_SERVER[HTTP_HOST]/booksharing/api/categories");
 $categories= json_decode($json);
+
+$author = new Authors();
+$authors = $author->getAuthors();
+
 //echo "<pre>";
-//print_r($categories);
+//print_r($authors);
 //echo "</pre>";
 
 ?>
-
+    <link rel="stylesheet" href="assets/css/bootstrap-multiselect.css" type="text/css"/>
 	<input type="hidden" id="bookId" value="<?=$bookId?>">
     <!--=== Shop Product ===-->
     <div class="shop-product" id="eventWrapper">
@@ -68,31 +74,32 @@ $categories= json_decode($json);
 <script src="assets/js/jsrender.js"></script>
 <script src="assets/js/app/header.js"></script>
 <script src="assets/js/app/edit.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap-multiselect.js"></script>
 
 <!-- JS Implementing Plugins -->
-<script src="assets/plugins/back-to-top.js"></script>
-<script src="assets/plugins/smoothScroll.js"></script>
-<script src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
-<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<!--<script src="assets/plugins/back-to-top.js"></script>-->
+<!--<script src="assets/plugins/smoothScroll.js"></script>-->
+<!--<script src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>-->
+<!--<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>-->
 <!-- Master Slider -->
-<script src="assets/plugins/master-slider/quick-start/masterslider/masterslider.min.js"></script>
-<script src="assets/plugins/master-slider/quick-start/masterslider/jquery.easing.min.js"></script>
+<!--<script src="assets/plugins/master-slider/quick-start/masterslider/masterslider.min.js"></script>-->
+<!--<script src="assets/plugins/master-slider/quick-start/masterslider/jquery.easing.min.js"></script>-->
 <!-- JS Customization -->
-<script src="assets/js/custom.js"></script>
+<!--<script src="assets/js/custom.js"></script>-->
 <!-- JS Page Level -->
-<script src="assets/js/shop.app.js"></script>
-<script src="assets/js/plugins/owl-carousel.js"></script>
-<script src="assets/js/plugins/master-slider.js"></script>
-<script src="assets/js/forms/product-quantity.js"></script>
-<script src="assets/js/plugins/style-switcher.js"></script>
+<!--<script src="assets/js/shop.app.js"></script>-->
+<!--<script src="assets/js/plugins/owl-carousel.js"></script>-->
+<!--<script src="assets/js/plugins/master-slider.js"></script>-->
+<!--<script src="assets/js/forms/product-quantity.js"></script>-->
+<!--<script src="assets/js/plugins/style-switcher.js"></script>-->
 <script>
     jQuery(document).ready(function() {
-        App.init();
-        App.initScrollBar();
+//        App.init();
+//        App.initScrollBar();
 //		Load Carousel after books -> moved to book.js
 //		OwlCarousel.initOwlCarousel();
-        StyleSwitcher.initStyleSwitcher();
-        MasterSliderShowcase2.initMasterSliderShowcase2();
+//        StyleSwitcher.initStyleSwitcher();
+//        MasterSliderShowcase2.initMasterSliderShowcase2();
     });
 </script>
 
@@ -103,7 +110,7 @@ $categories= json_decode($json);
                 <form id="upload-cover-form" data-book-id="{{:book_id}}" action="model/uploadCover.php" method="post" enctype="multipart/form-data" class="form-inline">
                     <input type="hidden" name="bookId" value="{{:book_id}}">
                     <div class="input-group" id="edit-input-group-div">
-                        <label class="input-group-btn" id="edit-input-group-label">
+                        <label class="input-group-btn" id="edit-input-group-label" data-book-id="{{:book_id}}">
                             <span class="btn btn-primary" id="edit-input-group-button">
                                 Browse&hellip; <input type="file" name="upfile" style="display: none;">
                             </span>
@@ -117,14 +124,27 @@ $categories= json_decode($json);
                 <div class="col-md-8">
                     <div class="shop-product-heading">
                         <label for="titleInput">Title: </label><input id="titleInput" name="title" type="text" class="form-control" value="{{:title}}">
-                        <p class="wishlist-category"><strong>Authors:</strong>
-                        {{for authors}}<a href="#">{{>name}}</a> {{/for}}
-                        </p>
                     </div><!--/end shop product social-->
-
-                    <ul class="list-inline product-ratings margin-bottom-30">
+                    <ul class="list-inline product-ratings">
                         <li><small class="shop-bg-green time-day-left">{{:status}}</small></li>
-                    </ul><!--/end shop product ratings-->
+                    </ul>
+                    <div>
+                         <p class="wishlist-category"><strong>Authors:</strong>
+                        {{for authors}}<a href="#"><span class="author-span" data-author-id="{{>author_id}}"><span></a> {{/for}}
+
+                        <span id="editAuthorSpan">
+                            <select id="authorSelect" name="authorIds[]" multiple="multiple">
+                                <option value="0">Others</option>
+                                <?php foreach ($authors as $author): ?>
+                                    <option value="<?=$author["author_id"]?>">
+                                            <?=$author["name"]?>
+                                    </option>
+                                 <?php endforeach; ?>
+                            </select>
+                        </span>
+                        </p>
+                    </div>
+
                     <label for="isbnInput">ISBN: </label> <input type="text" class="form-control" id="isbnInput" name="isbn" value="{{:isbn}}">
                     <label for="languageSelect">Language: </label>
                     <select id="languageSelect" class="form-control" name="language">
@@ -155,6 +175,7 @@ $categories= json_decode($json);
                     </ul>
                     <div class="margin-bottom-40">
                         <button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="saveButton" data-book-id='{{:book_id}}'>SAVE</button>
+                        <button type="button" class="btn-u btn-u-red btn-u-lg" id="deleteButton" data-book-id='{{:book_id}}'>DELETE</button>
                     </div>
                 </div>
             </form>

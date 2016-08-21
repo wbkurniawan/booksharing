@@ -26,6 +26,7 @@ class Books
     private $foundRows;
     private $returnStats;
     private $properties;
+    private $authorIds;
 
     /**
      * Books constructor.
@@ -85,7 +86,8 @@ class Books
     public function getBooksByOwner($userId,$page=1,$limit=BOOKS_VIEW_LIMIT_DEFAULT)
     {
         $this->page = $page;
-        $this->filters = ["`book`.`user_id` = " . $userId];
+        $this->filters[] = "`book`.`user_id` = " . $userId;
+        $this->filters[] = "`book`.`status` <> '".BOOK_STATUS_DELETED."' ";
         $this->loadBooks($this->page,$limit);
         return $this->getResult();
     }
@@ -277,6 +279,21 @@ class Books
         }
     }
 
+    public function delete(){
+        $this->setStatus(BOOK_STATUS_DELETED);
+    }
+    public function makeAvailable(){
+        $this->setStatus(BOOK_STATUS_AVAILABLE);
+    }
+    private function setStatus($status){
+        if(isset($this->bookId)){
+            $query = "UPDATE booksharing.book SET `status` = ".$this->db->quote($status)." WHERE `book_id` = ".$this->bookId;
+            $this->db->execute($query);
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+
     public function checkStatus(){
         if(isset($this->bookId)){
             $query = "SELECT status FROM `booksharing`.`book` WHERE `book_id` = ".$this->bookId;
@@ -356,6 +373,22 @@ class Books
             throw new Exception ("bookId required");
         }
     }
+    public function setAuthorIds($authorIds){
+        if(!is_array($authorIds)){
+            throw new Exception ("authorIds must be array of author_id");
+        }
+        foreach ($authorIds as $authorId){
+            if(!is_numeric($authorId)){
+                throw new Exception ("author id not numeric");
+            }
+        }
+        if(isset($this->bookId)){
+            $this->authorIds = $authorIds;
+        }else{
+            throw new Exception ("bookId required");
+        }
+    }
+
     public function saveProperties(){
         if(count($this->properties)==0){
             throw new Exception ("no new property found");
@@ -363,12 +396,30 @@ class Books
 
         if(isset($this->bookId)){
             $this->properties["book_id"] = $this->bookId;
-            $ta = new TableAdapter($this->db,"booksharing","book");
-            $result =$ta->insert($this->properties,true);
+            $taBook = new TableAdapter($this->db,"booksharing","book");
+            $taBookAuthor = new TableAdapter($this->db,"booksharing","book_author");
+            $result =$taBook->insert($this->properties,true);
+
+            $query = "DELETE FROM booksharing.book_author WHERE book_id = " .$this->bookId;
+            $this->db->execute($query);
+            foreach ($this->authorIds as $authorId){
+                if($authorId>0){
+                    $taBookAuthor->insert(["book_id"=>(integer)$this->bookId,"author_id"=>(integer)$authorId]);
+                }
+            }
         }else{
             throw new Exception ("bookId required");
         }
 
+    }
+
+    public function add($userId){
+        $taBook = new TableAdapter($this->db,"booksharing","book");
+        $bookId = $taBook->insertGetLastInsertId(["user_id"=>$userId,
+                                                  "status"=>BOOK_STATUS_PENDING_ADMIN_APPROVAL,
+                                                  "image"=>"0.jpg"]);
+        $this->bookId = $bookId;
+        return $bookId;
     }
 
     private function getResult(){

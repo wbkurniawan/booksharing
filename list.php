@@ -6,17 +6,28 @@ $userId = isset($_GET["userId"])?(integer)$_GET["userId"]:0;
 $lock = false;
 include_once (__DIR__.'/lock.php');
 
-if($userId>0 and  !isset($_SESSION["user"])){
-	header('Location: /booksharing/index.php');
-	die();
-}else{
-	$userSession =  unserialize($_SESSION["user"]);
-	$currentUserId = $userSession->userId;
-	if($userId<>$currentUserId){
+if($categoryId==0 and $userId==0){
+	if(!isset($_SESSION["user"])){
 		header('Location: /booksharing/index.php');
 		die();
+	}else{
+		$userSession =  unserialize($_SESSION["user"]);
+		$userId = $userSession->userId;
 	}
 }
+
+//
+//if($userId>0 and  !isset($_SESSION["user"])){
+//	header('Location: /booksharing/index.php');
+//	die();
+//}else{
+//	$userSession =  unserialize($_SESSION["user"]);
+//	$currentUserId = $userSession->userId;
+//	if($userId<>$currentUserId){
+//		header('Location: /booksharing/index.php');
+//		die();
+//	}
+//}
 
 include_once(__DIR__.'/header.php');
 ?>
@@ -24,7 +35,7 @@ include_once(__DIR__.'/header.php');
 	<input type="hidden" id="categoryId" value="<?=$categoryId?>">
 	<input type="hidden" id="userId" value="<?=$userId?>">
     <!--=== Shop Product ===-->
-    <div class="shop-product" id="eventWrapper">
+    <div class="shop-product" >
         <!-- Breadcrumbs v5 -->
         <div class="container">
             <ul class="breadcrumb-v5">
@@ -44,7 +55,7 @@ include_once(__DIR__.'/header.php');
     <!--=== End Content Medium ===-->
 
      <!--=== Illustration v2 ===-->
-    <div class="container">
+    <div class="container" id="eventWrapper">
 		<div id="bookListContainer">
 		</div>
 		<div class="container">
@@ -126,6 +137,12 @@ include_once(__DIR__.'/header.php');
 			{{/if}}
 		</h2>
 	</div>
+	{{if filter != "CATEGORY"}}
+		<div class="margin-bottom-40">
+				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="addButton" data-book-id='{{:book_id}}'>ADD NEW BOOK</button>
+        </div>
+	{{/if}}
+
 	{{for data}}
 		<div class="item-list">
 			<div class="product-img">
@@ -139,7 +156,7 @@ include_once(__DIR__.'/header.php');
 						<span class="gender">{{:authors}}</span>
 					</div>
 				</div>
-				{{if filter=="CATEGORY"}}
+				{{if ~root.filter=="CATEGORY"}}
 					<ul class="list-inline product-ratings">
 						<li><i class="rating{{if rating>=1}}-selected{{/if}} fa fa-star"></i></li>
 						<li><i class="rating{{if rating>=2}}-selected{{/if}} fa fa-star"></i></li>
@@ -157,6 +174,11 @@ include_once(__DIR__.'/header.php');
 			</div>
 		</div>
 	{{/for}}
+	{{if filter != "CATEGORY"}}
+		<div class="margin-bottom-40">
+				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="addButton" data-book-id='{{:book_id}}'>ADD NEW BOOK</button>
+        </div>
+	{{/if}}
 </script>
 
 <!--[if lt IE 9]>

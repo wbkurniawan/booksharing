@@ -19,6 +19,7 @@ class User
     private $status;
     private $phone;
     private $totalBorrowed;
+    private $admin;
 
     public function __construct($userId=null)
     {
@@ -35,7 +36,8 @@ class User
                 "last_name"=>$this->lastName,
                 "email"=>$this->email,
                 "status"=>$this->status,
-                "total_borrowed"=>$this->totalBorrowed
+                "total_borrowed"=>$this->totalBorrowed,
+                "admin"=>$this->admin
             ];
         }else{
             return null;
@@ -90,6 +92,7 @@ class User
                     `user`.`password`,
                     `user`.`phone`,
                     `user`.`timestamp`,
+                    `user`.`admin`,
                     (SELECT count(*) FROM `booksharing`.loan WHERE `user_id` = `user`.`user_id` AND
                      `status` IN ('REQUESTED','BORROWED'))
                      as total_borrowed 
@@ -104,6 +107,7 @@ class User
             $this->status = $user["status"];
             $this->phone = $user["phone"];
             $this->totalBorrowed= $user["total_borrowed"];
+            $this->admin= $user["admin"];
         }
     }
 
@@ -114,6 +118,7 @@ class User
         $userSession->lastName = $this->lastName;
         $userSession->status = $this->status;
         $userSession->email = $this->email;
+        $userSession->admin = $this->admin;
         return $userSession;
     }
 

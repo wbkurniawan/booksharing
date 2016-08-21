@@ -13,4 +13,5 @@ class UserSession
     public $lastName;
     public $email;
     public $status;
+    public $admin;
 }

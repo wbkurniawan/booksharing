@@ -78,27 +78,27 @@ include_once(__DIR__.'/header.php');
 <!-- JS Implementing Plugins -->
 <script src="assets/plugins/back-to-top.js"></script>
 <script src="assets/plugins/smoothScroll.js"></script>
-<script src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
-<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<!--<script src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>-->
+<!--<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>-->
 <!-- Master Slider -->
-<script src="assets/plugins/master-slider/quick-start/masterslider/masterslider.min.js"></script>
-<script src="assets/plugins/master-slider/quick-start/masterslider/jquery.easing.min.js"></script>
+<!--<script src="assets/plugins/master-slider/quick-start/masterslider/masterslider.min.js"></script>-->
+<!--<script src="assets/plugins/master-slider/quick-start/masterslider/jquery.easing.min.js"></script>-->
 <!-- JS Customization -->
 <script src="assets/js/custom.js"></script>
 <!-- JS Page Level -->
-<script src="assets/js/shop.app.js"></script>
-<script src="assets/js/plugins/owl-carousel.js"></script>
-<script src="assets/js/plugins/master-slider.js"></script>
-<script src="assets/js/forms/product-quantity.js"></script>
-<script src="assets/js/plugins/style-switcher.js"></script>
+<!--<script src="assets/js/shop.app.js"></script>-->
+<!--<script src="assets/js/plugins/owl-carousel.js"></script>-->
+<!--<script src="assets/js/plugins/master-slider.js"></script>-->
+<!--<script src="assets/js/forms/product-quantity.js"></script>-->
+<!--<script src="assets/js/plugins/style-switcher.js"></script>-->
 <script>
     jQuery(document).ready(function() {
-        App.init();
-        App.initScrollBar();
+//        App.init();
+//        App.initScrollBar();
 //		Load Carousel after books -> moved to book.js
 //		OwlCarousel.initOwlCarousel();
-        StyleSwitcher.initStyleSwitcher();
-        MasterSliderShowcase2.initMasterSliderShowcase2();
+//        StyleSwitcher.initStyleSwitcher();
+//        MasterSliderShowcase2.initMasterSliderShowcase2();
     });
 </script>
 <script id="notificationTemplate" type="text/x-jsrender">
@@ -106,7 +106,7 @@ include_once(__DIR__.'/header.php');
 		<tr><th></th><th>Subject</th><th>Sender</th><th>Date</th><th>Message</th><th></th></tr>
 		{{for data}}
 			<tr id="notification-tr-{{:notification_id}}" data-notification-id="{{:notification_id}}"
-			  	data-book-id="{{:book_id}}" data-status="{{:status}}"  data-type="{{:type}}" data-sender="{{:sender.user_id}}"
+			  	data-book-id="{{:book_id}}" data-status="{{:status}}"  data-type="{{:type}}" data-sender="{{:sender.user_id}}" data-detail-loaded="0"
 				class="{{if status=='NEW'}}new-notification-tr{{/if}} row-notification-tr">
                     {{if type=='BORROW_REQUEST'}}
                     	<td class="notification-icon-full-td">
@@ -128,6 +128,11 @@ include_once(__DIR__.'/header.php');
                         	<i class="fa fa-book" aria-hidden="true"></i>
                         	<i class="fa fa-exclamation popup-small-icon" aria-hidden="true"></i>
 						</td><td>Book status reminder</td>
+				  	{{else type=='BOOK_APPROVAL_REQUEST'}}
+						<td class="notification-icon-full-td">
+                        	<i class="fa fa-book" aria-hidden="true"></i>
+                        	<i class="fa fa-exclamation popup-small-icon" aria-hidden="true"></i>
+						</td><td>Book approval request</td>
                     {{else type=='SYSTEM'}}
 	                    <td class="notification-icon-full-td">
     	                    <i class="fa fa-cog" aria-hidden="true"></i>
@@ -167,13 +172,15 @@ include_once(__DIR__.'/header.php');
 			</div><!--/end shop product social-->
 
 			<ul class="list-inline product-ratings margin-bottom-30">
-				<li><small class="shop-bg-green time-day-left">{{:status}}</small></li>
+				<li><small class="shop-bg-green time-day-left book-status-{{:book_id}}">{{:status}}</small></li>
 			</ul><!--/end shop product ratings-->
 			{{:description}}
 			<div>Loan period: <strong>{{:loan_period}} days</strong></div>
 			<div class="margin-bottom-40" id="actionButtonDiv_{{:book_id}}">
-				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg approveButton" data-book-id='{{:book_id}}'>APPROVE</button>
-				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg rejectButton" data-book-id='{{:book_id}}'>REJECT</button>
+				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg approveButton" data-book-id='{{:book_id}}'
+					data-notification-id="{{:~root.notification_id}}"  data-type="{{:~root.type}}">APPROVE</button>
+				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg rejectButton" data-book-id='{{:book_id}}'
+					data-notification-id="{{:~root.notification_id}}" data-type="{{:~root.type}}">REJECT</button>
 			</div><!--/end product quantity-->
 
 		</div>

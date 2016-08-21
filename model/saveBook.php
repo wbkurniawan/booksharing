@@ -8,6 +8,7 @@
 
 include_once(__DIR__.'/../model/class/UserSession.php');
 include_once(__DIR__.'/../model/class/Books.php');
+include_once(__DIR__.'/../model/class/Notifications.php');
 include_once(__DIR__.'/../library/db/Connect.class.php');
 include_once(__DIR__.'/../lock.php');
 header('Content-type: application/json');
@@ -24,15 +25,16 @@ $userSession =  unserialize($_SESSION["user"]);
 $userId = $userSession->userId;
 
 
-$bookId = isset($_POST["bookId"])?$_POST["bookId"]:0;
+$bookId = isset($_POST["bookId"])?(integer)$_POST["bookId"]:-1;
 $title = isset($_POST["title"])?$_POST["title"]:"";
 $description = isset($_POST["description"])?$_POST["description"]:"";
 $language = isset($_POST["language"])?$_POST["language"]:"DE";
 $isbn = isset($_POST["isbn"])?$_POST["isbn"]:"";
-$categoryId = isset($_POST["categoryId"])?$_POST["categoryId"]:0;
-$loanPeriod = isset($_POST["loanPeriod"])?$_POST["loanPeriod"]:7;
+$categoryId = isset($_POST["categoryId"])?(integer)$_POST["categoryId"]:0;
+$loanPeriod = isset($_POST["loanPeriod"])?(integer)$_POST["loanPeriod"]:7;
+$authorIds =  isset($_POST["authorIds"])?$_POST["authorIds"]:[];
 
-if($bookId===0 or $categoryId===0){
+if($bookId===-1 or $categoryId===0){
     $response = array('error' => true,
         'error_message' => "Bad request. Parameter mismatch or missing",
         'error_code' => 400);
@@ -40,7 +42,12 @@ if($bookId===0 or $categoryId===0){
     die();
 }
 
-
+$addNewBook = false;
+if($bookId==0) { //Add new book;
+    $book = new Books();
+    $bookId = $book->add($userId);
+    $addNewBook = true;
+}
 $book = new Books($bookId);
 
 try{
@@ -50,10 +57,17 @@ try{
     $book->setLanguage($language);
     $book->setCategoryId($categoryId);
     $book->setLoanPeriod($loanPeriod);
+    $book->setAuthorIds($authorIds);
     $book->saveProperties();
 
+    if($addNewBook){
+        $notification = new Notifications();
+        $notification->add(USER_ID_ADMIN,$userId,NOTIFICATION_TYPE_BOOK_APPROVAL_REQUEST,"New book needs your approval",$bookId);
+    }
+
     $response = array('error' => false,
-        'error_message' => '');
+                      'error_message' => '',
+                      'book_id' => $bookId);
 }catch(Exception $e) {
     $response = array('error' => true,
         'error_message' => $e->getMessage(),

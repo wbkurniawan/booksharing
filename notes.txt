@@ -4,14 +4,15 @@ Book Class (Books.php)
         v update loan table
         v set book status
         v add new notification
-    - add new book
+    v add new book
 
 My Book
     v user list.php as main page
     - add book editor form
         v edit info
-        - upload image
+        v upload image
         - add new Author
+        v edit author (Book class, setAuthor([]))
     - by new book, send approval request notification to admin
     - loan history
 
@@ -24,6 +25,7 @@ notification.php
     v reject reason text
     - paging
     - cancel request (send notification at borrowing?)
+    - return book
 
 v register.php
 

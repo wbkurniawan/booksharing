@@ -28,7 +28,7 @@ $userId = $userSession->userId;
 $book = new Books($bookId);
 
 try{
-    $book->borrowBook($userId);
+    $book->delete();
     $response = array('error' => false,
         'error_message' => '');
 }catch(Exception $e) {
