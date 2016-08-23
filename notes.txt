@@ -13,8 +13,8 @@ My Book
         v upload image
         - add new Author
         v edit author (Book class, setAuthor([]))
-    - by new book, send approval request notification to admin
-    - loan history
+    v by new book, send approval request notification to admin
+!   - loan history
 
 success.php
     - cancel request
@@ -25,7 +25,8 @@ notification.php
     v reject reason text
     - paging
     - cancel request (send notification at borrowing?)
-    - return book
+    v return book
+    v book approval request
 
 v register.php
 

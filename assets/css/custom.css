@@ -60,7 +60,7 @@ td.notification-icon-full-td {
 }
 
 img.notification-img {
-    max-height: 300px;
+    max-height: 250px;
 }
 
 .footer-v4 {
@@ -128,4 +128,19 @@ span#edit-input-group-button {
 
 ul.list-inline.sponsors-icons.pull-right {
     margin-right: 30px;
+}
+
+td.book-cover-thumbnail-td {
+    width: 110px;
+    text-align: center;
+}
+td.arrow-down-td {
+    width: 2%;
+}
+span.book-title-span {
+    color: #18ba9b;
+}
+
+span.timestamp-span {
+    font-size: 12px;
 }

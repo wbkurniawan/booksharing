@@ -35,6 +35,34 @@
                 }
             });
         });
+
+        $("#notificationContainer").on('click', '.returnButton', function(e) {
+            var bookId = $(this).data("book-id");
+            var notificationId = $(this).data("notification-id");
+            var type = $(this).data("type");
+            $.ajax({
+                method: "POST",
+                url: "model/return.php",
+                data: { bookId: bookId,
+                        notificationId: notificationId,
+                        type : type}
+            }).done(function( data ) {
+                if(!data.error){
+                    $("#actionButtonDiv_"+bookId).hide();
+                    $("#notification-tr-"+notificationId).data("detail-loaded",0);
+                    $("#notification-tr-"+notificationId).data("status","PROCESSED");
+                    $("#notification-detail-tr-" + notificationId).hide();
+                }else {
+                    if(data.error_code == 403){
+                        console.log(data);
+                        window.location.href = "login.php";
+                    }else{
+                        alertify.error(data.error_message);
+                    }
+                }
+            });
+        });
+
         $("#notificationContainer").on('click', '.rejectButton', function(e) {
             var bookId = $(this).data("book-id");
             var notificationId = $(this).data("notification-id");
@@ -119,7 +147,10 @@
             e.preventDefault();
             var notificationId = $(this).data('notification-id');
             var bookId = $(this).data('book-id');
+            var loanId = $(this).data('loan-id');
             var status = $(this).data('status');
+            var loanStatus = $(this).data('loan-status');
+            console.log(loanStatus);
             var sender = $(this).data('sender');
             var detail = $("#notification-detail-tr-" + notificationId);
             var type = $(this).data('type');
@@ -157,15 +188,17 @@
                         // }
                         data["notification_id"] = notificationId;
                         data["type"] = type;
+                        data["loan_status"] = loanStatus;
                         var template = $.templates("#bookTemplate");
                         var htmlOutput = template.render(data);
                         $("#bookContainer_"+notificationId).html(htmlOutput);
                         $("#notification-tr-"+notificationId).data("detail-loaded",1);
-                        if((type=="BORROW_REQUEST" || type=="BOOK_APPROVAL_REQUEST") && status != "PROCESSED"){
-                            $("#actionButtonDiv_"+bookId).show();
-                        }else{
-                            $("#actionButtonDiv_"+bookId).hide();
-                        }
+                        setActionButton(notificationId);
+                        // if((type=="BORROW_REQUEST" || type=="BOOK_APPROVAL_REQUEST") && status != "PROCESSED"){
+                        //     $("#actionButtonDiv_"+bookId).show();
+                        // }else{
+                        //     $("#actionButtonDiv_"+bookId).hide();
+                        // }
                     });
                 }
             }
@@ -187,9 +220,34 @@
         });
     });
 
-    // function setActionButton(){
-    //
-    // }
+    function setActionButton(notificationId){
+        // var bookId = notification.data('book-id');
+        // var bookStatus = $("#book-" + notificationId).data("book-status");
+        // var status = notification.data('status');
+
+        var notification = $("#notification-tr-"+notificationId);
+        var approveButton = $("#approveButton-"+notificationId);
+        var rejectButton = $("#rejectButton-"+notificationId);
+        var returnButton = $("#returnButton-"+notificationId);
+
+        var loanStatus = $("#loan-" + notificationId).data("loan-status");
+        var type = notification.data('type');
+
+        if(type=='BORROW_REQUEST' && loanStatus == 'REQUESTED'){
+            approveButton.show();
+            rejectButton.show();
+            returnButton.hide();
+        }else if(type=='BORROW_REQUEST' && loanStatus == 'BORROWED' ){
+            approveButton.hide();
+            rejectButton.hide();
+            returnButton.show();
+        }else{
+            approveButton.hide();
+            rejectButton.hide();
+            returnButton.hide();
+        }
+
+    }
 
     function loadNotification() {
         $.ajax({

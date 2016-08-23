@@ -203,7 +203,7 @@ class Books
                 $newLoan = ["book_id"=>$this->bookId,
                             "user_id"=>$userId,
                             "status"=>LOAN_STATUS_REQUESTED];
-                $ta->insert($newLoan);
+                $loanId =(integer) $ta->insertGetLastInsertId($newLoan);
                 $query = "UPDATE `booksharing`.`book` SET `status` = '".BOOK_STATUS_RESERVED."' WHERE `book_id` = " .$this->bookId;
                 $this->db->execute($query);
 
@@ -211,7 +211,7 @@ class Books
                 //todo: get the message from dictionary
 
                 $notification = new Notifications();
-                $notification->add($owner,$userId,NOTIFICATION_TYPE_BORROW_REQUEST,$message,$this->bookId);
+                $notification->add($owner,$userId,NOTIFICATION_TYPE_BORROW_REQUEST,$message,$this->bookId,null,$loanId);
 
             }else{
                 throw new Exception ("Book not available");
@@ -237,7 +237,7 @@ class Books
 
     public function returnBook(){
         //todo: get message from dictionary
-        $this->handleRequest(LOAN_STATUS_BORROWED,LOAN_STATUS_RETURNED,false,true,null,BOOK_STATUS_AVAILABLE,NOTIFICATION_TYPE_BORROW_STATUS,"You have return the book");
+        $this->handleRequest(LOAN_STATUS_BORROWED,LOAN_STATUS_RETURNED,false,true,null,BOOK_STATUS_AVAILABLE,NOTIFICATION_TYPE_BORROW_STATUS,"You have returned the book");
     }
 
 
@@ -256,7 +256,7 @@ class Books
             //update load data
             $periodQuery = isset($period)?", period = ".$period:"";
             $startDateQuery = $setStartDate?", start_date = NOW() ":"";
-            $endDateQuery = $setEndDate?", end_date = NOW() ":"";
+            $endDateQuery = $setEndDate?", returned_date = NOW() ":"";
 
             $query = "UPDATE booksharing.loan SET 
                         status = ".$this->db->quote($loanStatusAfter)."  ".$periodQuery ." ".$startDateQuery ." ".$endDateQuery."
@@ -271,7 +271,7 @@ class Books
                 //add new notification
                 $owner = $this->getOwner();
                 $notification = new Notifications();
-                $notification->add($userId,$owner,$notificationType,$notificationMessage,$this->bookId);
+                $notification->add($userId,$owner,$notificationType,$notificationMessage,$this->bookId,null,$loanId);
             }
 
         }else{

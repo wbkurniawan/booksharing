@@ -43,7 +43,7 @@ class Notifications
         return $this->getResult();
     }
 
-    public function add($userId,$senderUserId,$type,$message,$bookId=null,$replyFromId=null){
+    public function add($userId,$senderUserId,$type,$message,$bookId=null,$replyFromId=null,$loanId=null){
         $ta = new TableAdapter($this->db,'booksharing','notification');
         $newNotification = ["user_id"=>$userId,
             "sender_user_id"=>$senderUserId,
@@ -51,7 +51,8 @@ class Notifications
             "message"=>$message,
             "status"=>NOTIFICATION_STATUS_NEW,
             "book_id"=>$bookId,
-            "reply_from_id"=>$replyFromId];
+            "reply_from_id"=>$replyFromId,
+            "loan_id"=>$loanId];
         $ta->insert($newNotification);
     }
 
@@ -101,8 +102,14 @@ class Notifications
                         `notification`.`message`,
                         `notification`.`status`,
                         `notification`.`book_id`,
-                        `notification`.`timestamp`
+                        DATE_FORMAT(`notification`.`timestamp`,'%d %b %Y %T') as timestamp,
+                        `notification`.`loan_id`,
+                        `loan`.`status` as `loan_status` ,
+                        `book`.`title`,
+                        `book`.`image`                        
                     FROM `booksharing`.`notification`
+                    LEFT JOIN `booksharing`.`loan` ON `notification`.`loan_id` = `loan`.`loan_id` 
+                    LEFT JOIN `booksharing`.`book` ON `notification`.`book_id` = `book`.`book_id` 
                     ".$filterQuery." ORDER by `notification`.`timestamp` DESC ".$limitQuery.";";
 
         $this->notifications = $this->db->selectArray($query);

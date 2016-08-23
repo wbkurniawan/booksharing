@@ -10,6 +10,7 @@ include_once(__DIR__.'/../model/class/UserSession.php');
 include_once(__DIR__.'/../model/class/Books.php');
 include_once(__DIR__.'/../library/db/Connect.class.php');
 include_once(__DIR__.'/../lock.php');
+include_once(__DIR__.'/../library/image.class.php');
 //header('Content-type: application/json');
 
 if(!isset($_SESSION["user"])){
@@ -88,6 +89,21 @@ try {
     $book = new Books($bookId);
     $book->setImage($fileName);
     $book->saveProperties();
+
+    $img = new image;
+
+    // initialize
+    $img->max_x        = 100;
+    $img->max_y        = 100;
+    $img->cut_x        = 0;
+    $img->cut_y        = 0;
+    $img->quality      = 100;
+    $img->save_to_file = true;
+    $img->image_type   = -1;
+
+    // generate thumbnail
+    $img->GenerateThumbFile(__DIR__."/../assets/img/book/".$fileName, __DIR__."/../assets/img/book/s_".$fileName);
+
     header("Location: /booksharing/edit.php?id=".$bookId);
 
 } catch (RuntimeException $e) {
