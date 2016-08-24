@@ -167,7 +167,7 @@ include_once(__DIR__.'/header.php');
 					</ul>
 				{{else}}
 					<ul class="list-inline product-ratings">
-						<li><i class="fa fa-history" aria-hidden="true" title="Loan history"></i></li>
+						<li class="like-icon"><a href="notification.php?bookId={{:book_id}}"><i class="fa fa-history" aria-hidden="true" title="Loan history"></i></a></li>
 						<li class="like-icon"><a href="edit.php?id={{:book_id}}"><i class="fa fa-pencil" title="Edit" aria-hidden="true"></i></a></li>
 					</ul>
 				{{/if}}

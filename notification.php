@@ -1,18 +1,24 @@
 <?php
-$categoryId = isset($_GET["categoryId"])?$_GET["categoryId"]:0;
 $lock = true;
 include_once (__DIR__.'/lock.php');
 include_once(__DIR__.'/header.php');
+
+$bookId = isset($_GET["bookId"])?$_GET["bookId"]:0;
+$pageTitle = "NOTIFICATION";
+if($bookId>0){
+	$pageTitle = "BOOK HISTORY";
+}
+
 ?>
 
-	<input type="hidden" id="categoryId" value="<?=$categoryId?>">
+	<input type="hidden" id="bookId" value="<?=$bookId?>">
     <!--=== Shop Product ===-->
     <div class="shop-product" id="eventWrapper">
         <!-- Breadcrumbs v5 -->
         <div class="container">
             <ul class="breadcrumb-v5">
                 <li><a href="index.php"><i class="fa fa-home"></i></a></li>
-                <li><a href="#">Notification</a></li>
+                <li><a href="#"><?=$pageTitle?></a></li>
                 <li class="active"><a href="#" id="breadcrumbCategoryName"></a></li>
             </ul>
         </div>
@@ -32,7 +38,7 @@ include_once(__DIR__.'/header.php');
 		</div>
 		<div class="container">
 			<div class="heading heading-v1 margin-bottom-20">
-				<h2>Notification</h2>
+				<h2><?=$pageTitle?></h2>
 			</div>
 			<div class="row" id="notificationContainer">
 			</div><!--/end row-->
@@ -110,7 +116,7 @@ include_once(__DIR__.'/header.php');
 				class="{{if status=='NEW'}}new-notification-tr{{/if}} row-notification-tr">
 					<td class="book-cover-thumbnail-td"><img class="book-cover-thumbnail-img" src="assets/img/book/s_{{:image}}"></td>
                     <td>
-                    	<div><span class="timestamp-span">{{:timestamp}}<span></div>
+                    	<div><small class="shop-bg-green time-day-left">{{:loan_status}}</small> <span class="timestamp-span">{{:timestamp}}</span></div>
                     	<div><h4><span class="book-title-span">{{:title}}</span></h4></div>
                     	<div>
                     		{{if type=='BORROW_REQUEST'}}BOOK REQUEST

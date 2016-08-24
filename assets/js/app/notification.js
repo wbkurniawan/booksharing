@@ -250,9 +250,12 @@
     }
 
     function loadNotification() {
+        var bookId = Number($("#bookId").val());
+
         $.ajax({
             method: "GET",
-            url: "model/loadNotification.json.php"
+            url: "model/loadNotification.json.php",
+            data: {bookId:bookId}
         }).done(function( data ) {
             var template = $.templates("#notificationTemplate");
 

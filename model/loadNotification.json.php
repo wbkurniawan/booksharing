@@ -20,7 +20,13 @@ if(!isset($_SESSION["user"])){
 $userSession =  unserialize($_SESSION["user"]);
 $userId = $userSession->userId;
 
+$bookId = isset($_GET["bookId"])?(integer)$_GET["bookId"]:0;
+
 $notifications = new Notifications();
 $notifications->setInJson();
 
-echo $notifications->getNotificationByUser($userId,null,50);
+if($bookId>0){
+    echo $notifications->getNotificationByBookId($userId,$bookId);
+}else{
+    echo $notifications->getNotificationByUser($userId,null,50);
+}

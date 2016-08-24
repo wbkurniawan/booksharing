@@ -16,11 +16,13 @@ class Notifications
     private $notificationId;
     private $notifications;
     private $inJSON;
+    private $filters;
 
     public function __construct($notificationId = null)
     {
         $this->notificationId = $notificationId;
         $this->db = new Connect(Connect::DBSERVER);
+        $this->filters = array();
     }
     public function setInJson($inJSON=true){
         $this->inJSON = $inJSON;
@@ -40,6 +42,11 @@ class Notifications
     }
     public function getNotificationByUser($userId,$status=null,$limit){
         $this->loadNotification($userId,$status,$limit);
+        return $this->getResult();
+    }
+    public function getNotificationByBookId($userId,$bookId){
+        $this->filters[] = "notification.book_id = " . $bookId;
+        $this->loadNotification($userId);
         return $this->getResult();
     }
 
@@ -72,23 +79,23 @@ class Notifications
     }
 
     private function loadNotification($userId=null,$status=null,$limit=null){
-        $filters = array();
+
         if(isset($this->notificationId)){
-            $filters[] = "notification.notification_id = " . $this->notificationId;
+            $this->filters[] = "notification.notification_id = " . $this->notificationId;
         }
 
         if(isset($userId)){
-            $filters[] = "notification.user_id = " . $userId;
-            $filters[] = "notification.status <> '".NOTIFICATION_STATUS_DELETED."' ";
+            $this->filters[] = "notification.user_id = " . $userId;
+            $this->filters[] = "notification.status <> '".NOTIFICATION_STATUS_DELETED."' ";
         }
 
         if(isset($status)){
-            $filters[] = "notification.status = " . $this->db->quote($status);
+            $this->filters[] = "notification.status = " . $this->db->quote($status);
         }
 
         $filterQuery = "";
-        if(count($filters)>0){
-            $filterQuery = " WHERE " . implode(" AND ",$filters);
+        if(count($this->filters)>0){
+            $filterQuery = " WHERE " . implode(" AND ",$this->filters);
         }
 
         $limitQuery = "";

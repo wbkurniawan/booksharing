@@ -144,3 +144,12 @@ span.book-title-span {
 span.timestamp-span {
     font-size: 12px;
 }
+
+small.shop-bg-green.time-day-left {
+    padding: 2px;
+}
+
+li.like-icon {
+    margin: 0px 10px 0px 10px;
+    font-size: 18px;
+}
