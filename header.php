@@ -114,9 +114,9 @@ if(isset($_SESSION["user"])){
 	    {{/for}}
     </table>
 	<div class="popup-menu-header">
-	    <div><a href="/booksharing/list.php">My Books</a><div>
-	    <div><a href="/booksharing/notification.php">Notifications</a><div>
-	    <div><a href="/booksharing/model/logout.php">Log out</a><div>
+	    <div><a href="list.php">My Books</a><div>
+	    <div><a href="notification.php">Notifications</a><div>
+	    <div><a href="model/logout.php">Log out</a><div>
 	</div>
 </script>
 
