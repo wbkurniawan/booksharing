@@ -82,7 +82,7 @@ if(isset($_SESSION["user"])){
 </script>
 <script id="userInfoTemplate" type="text/x-jsrender">
     <table class="table table-hover table-condensed notification-popup-table">
-        <tr><th colspan="2">New Notifications</th></tr>
+        <tr><th colspan="2">{{if data.length}}New Notifications {{else}} No new notification{{/if}}</th></tr>
 	    {{for data}}
 		    <tr>
                 <td class="notification-icon-td">

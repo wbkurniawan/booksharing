@@ -14,7 +14,7 @@ My Book
         - add new Author
         v edit author (Book class, setAuthor([]))
     v by new book, send approval request notification to admin
-!   - loan history
+    v loan history
 
 success.php
     - cancel request

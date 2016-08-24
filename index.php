@@ -257,39 +257,10 @@ include_once(__DIR__.'/header.php');
 <script id="recommendedBooksTemplate" type="text/x-jsrender">
 	{{for data}}
 		<li class="item">
-					<div class="product-img">
-						<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
-						<a class="product-review" href="book.php?id={{:book_id}}">Quick review</a>
-						<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Add to list</a>
-					</div>
-					<div class="product-description product-description-brd">
-						<div class="overflow-h margin-bottom-5">
-							<div class="pull-left">
-								<h4 class="title-price"><a href="book.php?id={{:book_id}}">{{:title}}</a></h4>
-								<span class="gender text-uppercase">{{for categories}}{{>name}}{{/for}}</span>
-								<span class="gender">{{:authors}}</span>
-							</div>
-						</div>
-						<ul class="list-inline product-ratings">
-							<li><i class="rating{{if rating>=1}}-selected{{/if}} fa fa-star"></i></li>
-							<li><i class="rating{{if rating>=2}}-selected{{/if}} fa fa-star"></i></li>
-							<li><i class="rating{{if rating>=3}}-selected{{/if}} fa fa-star"></i></li>
-							<li><i class="rating{{if rating>=4}}-selected{{/if}} fa fa-star"></i></li>
-							<li><i class="rating{{if rating>=5}}-selected{{/if}} fa fa-star"></i></li>
-							<li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
-						</ul>
-					</div>
-				</li>
-	{{/for}}
-</script>
-
-<script id="latestBooksTemplate" type="text/x-jsrender">
-	{{for data}}
-		<div class="col-md-3 col-sm-6 md-margin-bottom-30">
 			<div class="product-img">
 				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
-				<a class="product-review" href="book.php?id={{:book_id}}">Quick review</a>
-				<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Add to list</a>
+				<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Borrow book</a>
+				<div class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}}  rgba-banner">{{:status}}</div>
 			</div>
 			<div class="product-description product-description-brd">
 				<div class="overflow-h margin-bottom-5">
@@ -299,19 +270,31 @@ include_once(__DIR__.'/header.php');
 						<span class="gender">{{:authors}}</span>
 					</div>
 				</div>
-				<ul class="list-inline product-ratings">
-					<li><i class="rating{{if rating>=1}}-selected{{/if}} fa fa-star"></i></li>
-					<li><i class="rating{{if rating>=2}}-selected{{/if}} fa fa-star"></i></li>
-					<li><i class="rating{{if rating>=3}}-selected{{/if}} fa fa-star"></i></li>
-					<li><i class="rating{{if rating>=4}}-selected{{/if}} fa fa-star"></i></li>
-					<li><i class="rating{{if rating>=5}}-selected{{/if}} fa fa-star"></i></li>
-					<li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
-				</ul>
+			</div>
+		</li>
+	{{/for}}
+</script>
+
+<script id="latestBooksTemplate" type="text/x-jsrender">
+	{{for data}}
+		<div class="col-md-3 col-sm-6 md-margin-bottom-30">
+			<div class="product-img">
+				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
+				<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Borrow book</a>
+				<div class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}}  rgba-banner">{{:status}}</div>
+			</div>
+			<div class="product-description product-description-brd">
+				<div class="overflow-h margin-bottom-5">
+					<div class="pull-left">
+						<h4 class="title-price"><a href="book.php?id={{:book_id}}">{{:title}}</a></h4>
+						<span class="gender text-uppercase">{{for categories}}{{>name}}{{/for}}</span>
+						<span class="gender">{{:authors}}</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	{{/for}}
 </script>
-
 
 <!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>

@@ -147,6 +147,7 @@ include_once(__DIR__.'/header.php');
 		<div class="item-list">
 			<div class="product-img">
 				<a href="book.php?id={{:book_id}}"><img class="img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
+				<div class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}}  rgba-banner">{{:status}}</div>
 			</div>
 			<div class="product-description product-description-brd">
 				<div class="overflow-h margin-bottom-5">
@@ -156,16 +157,7 @@ include_once(__DIR__.'/header.php');
 						<span class="gender">{{:authors}}</span>
 					</div>
 				</div>
-				{{if ~root.filter=="CATEGORY"}}
-					<ul class="list-inline product-ratings">
-						<li><i class="rating{{if rating>=1}}-selected{{/if}} fa fa-star"></i></li>
-						<li><i class="rating{{if rating>=2}}-selected{{/if}} fa fa-star"></i></li>
-						<li><i class="rating{{if rating>=3}}-selected{{/if}} fa fa-star"></i></li>
-						<li><i class="rating{{if rating>=4}}-selected{{/if}} fa fa-star"></i></li>
-						<li><i class="rating{{if rating>=5}}-selected{{/if}} fa fa-star"></i></li>
-						<li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
-					</ul>
-				{{else}}
+				{{if ~root.filter!="CATEGORY"}}
 					<ul class="list-inline product-ratings">
 						<li class="like-icon"><a href="notification.php?bookId={{:book_id}}"><i class="fa fa-history" aria-hidden="true" title="Loan history"></i></a></li>
 						<li class="like-icon"><a href="edit.php?id={{:book_id}}"><i class="fa fa-pencil" title="Edit" aria-hidden="true"></i></a></li>
