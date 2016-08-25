@@ -116,6 +116,7 @@ if(isset($_SESSION["user"])){
 	<div class="popup-menu-header">
 	    <div><a href="list.php">My Books</a><div>
 	    <div><a href="notification.php">Notifications</a><div>
+	    <div><a href="user.php">Personal Data</a><div>
 	    <div><a href="model/logout.php">Log out</a><div>
 	</div>
 </script>

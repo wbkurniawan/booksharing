@@ -1,47 +1,27 @@
 <?php
 include_once(__DIR__.'/model/class/UserSession.php');
 
-$categoryId = isset($_GET["categoryId"])?(integer)$_GET["categoryId"]:0;
-$userId = isset($_GET["userId"])?(integer)$_GET["userId"]:0;
-$lock = false;
+$lock = true;
 include_once (__DIR__.'/lock.php');
 
-if($categoryId==0 and $userId==0){
-	if(!isset($_SESSION["user"])){
-		header('Location: /booksharing/index.php');
-		die();
-	}else{
-		$userSession =  unserialize($_SESSION["user"]);
-		$userId = $userSession->userId;
-	}
+if(!isset($_SESSION["user"])){
+	header('Location: /booksharing/index.php');
+	die();
+}else{
+	$userSession =  unserialize($_SESSION["user"]);
+	$userId = $userSession->userId;
 }
-
-//
-//if($userId>0 and  !isset($_SESSION["user"])){
-//	header('Location: /booksharing/index.php');
-//	die();
-//}else{
-//	$userSession =  unserialize($_SESSION["user"]);
-//	$currentUserId = $userSession->userId;
-//	if($userId<>$currentUserId){
-//		header('Location: /booksharing/index.php');
-//		die();
-//	}
-//}
 
 include_once(__DIR__.'/header.php');
 ?>
 
-	<input type="hidden" id="categoryId" value="<?=$categoryId?>">
-	<input type="hidden" id="userId" value="<?=$userId?>">
     <!--=== Shop Product ===-->
     <div class="shop-product" >
         <!-- Breadcrumbs v5 -->
         <div class="container">
             <ul class="breadcrumb-v5">
                 <li><a href="index.php"><i class="fa fa-home"></i></a></li>
-                <li><a href="#">Books</a></li>
-                <li class="active"><a href="#" id="breadcrumbCategoryName"></a></li>
+                <li class="active">Personal Data</a></li>
             </ul>
         </div>
         <!-- End Breadcrumbs v5 -->
@@ -50,16 +30,16 @@ include_once(__DIR__.'/header.php');
     </div>
     <!--=== End Shop Product ===-->
 
-    <!--=== Content Medium ===-->
-
-    <!--=== End Content Medium ===-->
-
      <!--=== Illustration v2 ===-->
     <div class="container" id="eventWrapper">
 		<div id="bookListContainer">
 		</div>
 		<div class="container">
-			<div class="row" id="bookListContainer">
+			<div class="heading heading-v1 margin-bottom-20">
+				<h2> Edit Personal Data
+				</h2>
+			</div>
+			<div class="row" id="userContainer">
 
 			</div><!--/end row-->
 		</div>
@@ -93,10 +73,13 @@ include_once(__DIR__.'/header.php');
 <script src="assets/plugins/jquery/jquery-migrate.min.js"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
+<!-- Alertify.js -->
+<script src="//cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js"></script>
+
 <!-- Get the data -->
 <script src="assets/js/jsrender.js"></script>
 <script src="assets/js/app/header.js"></script>
-<script src="assets/js/app/list.js"></script>
+<script src="assets/js/app/user.js"></script>
 
 <!-- JS Implementing Plugins -->
 <script src="assets/plugins/back-to-top.js"></script>
@@ -120,57 +103,46 @@ include_once(__DIR__.'/header.php');
         App.initScrollBar();
 //		Load Carousel after books -> moved to book.js
 //		OwlCarousel.initOwlCarousel();
-        StyleSwitcher.initStyleSwitcher();
-        MasterSliderShowcase2.initMasterSliderShowcase2();
+//        StyleSwitcher.initStyleSwitcher();
+//        MasterSliderShowcase2.initMasterSliderShowcase2();
     });
 </script>
 
-<script id="bookListTemplate" type="text/x-jsrender">
-	<div class="heading heading-v1 margin-bottom-20">
-		<h2>
-			{{if filter=="CATEGORY"}}
-				{{if ~root.data[0]}}
-					{{:data[0].categories[0].name}}
-				{{/if}}
-			{{else}}
-				My Books
-			{{/if}}
-		</h2>
-	</div>
-	{{if filter != "CATEGORY"}}
-		<div class="margin-bottom-40">
-				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="addButton" data-book-id='{{:book_id}}'>ADD NEW BOOK</button>
-        </div>
-	{{/if}}
-
-	{{for data}}
-		<div class="item-list">
-			<div class="product-img">
-				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
-				<div class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}}  rgba-banner">{{:status}}</div>
-			</div>
-			<div class="product-description product-description-brd">
-				<div class="overflow-h margin-bottom-5">
-					<div class="pull-left">
-						<h4 class="title-price"><a href="book.php?id={{:book_id}}">{{:title}}</a></h4>
-						<span class="gender text-uppercase">{{for categories}}{{>name}}{{/for}}</span>
-						<span class="gender">{{:authors}}</span>
+<script id="userTemplate" type="text/x-jsrender">
+	<div class="edit-user-div">
+		{{for data}}
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label for="firstName">First Name: </label>
+						<input type="text" name="firstName" value="{{:first_name}}" class="form-control" placeholder="First name">
 					</div>
-				</div>
-				{{if ~root.filter!="CATEGORY"}}
-					<ul class="list-inline product-ratings">
-						<li class="like-icon"><a href="notification.php?bookId={{:book_id}}"><i class="fa fa-history" aria-hidden="true" title="Loan history"></i></a></li>
-						<li class="like-icon"><a href="edit.php?id={{:book_id}}"><i class="fa fa-pencil" title="Edit" aria-hidden="true"></i></a></li>
-					</ul>
-				{{/if}}
-			</div>
-		</div>
-	{{/for}}
-	{{if filter != "CATEGORY"}}
+					<div class="form-group">
+						<label for="last_name">Last Name: </label>
+						<input type="text" name="lastName" value="{{:last_name}}" class="form-control" placeholder="Last name">
+					</div>
+					<div class="form-group">
+						<label for="email">Email: </label>
+						<input type="text" name="email" value="{{:email}}" class="form-control" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<label for="password">Password: </label>
+						<input type="password" name="password" class="form-control" placeholder="Change password">
+					</div>
+					<div class="form-group">
+						<label for="retype-password">Re-type password: </label>
+						<input type="password" name="retype-password" class="form-control" placeholder="Retype password">
+					</div>
+					<div class="form-group">
+						<label for="phone">Phone: </label>
+						<input type="text" name="phone" value="{{:phone}}" class="form-control" placeholder="Phone">
+					</div>
+				</form>
+		{{/for}}
 		<div class="margin-bottom-40">
-				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="addButton" data-book-id='{{:book_id}}'>ADD NEW BOOK</button>
-        </div>
-	{{/if}}
+			<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="saveButton">SAVE</button>
+		</div>
+	</div>
+
 </script>
 
 <!--[if lt IE 9]>

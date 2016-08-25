@@ -28,7 +28,9 @@ notification.php
     v return book
     v book approval request
 
-v register.php
+User:
+    v register.php
+    - edit user!!
 
 Dialog
     v alertify.js
