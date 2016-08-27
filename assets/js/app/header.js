@@ -5,6 +5,14 @@
 !function(){
     $(document).ready(function(){
         loadCategory();
+        window.isMobile=false;
+        $(document).on('touchend','.dropdown-toggle', function(e){
+            window.isMobile=true;
+        });
+        $(document).on('click','.dropdown-toggle', function(e){
+            if(isMobile) return false;
+            window.location = "list.php?categoryId=0";
+        });
         checkNotification();
         loadUserInfo();
     });

@@ -43,6 +43,7 @@ if($bookId>0){
 			<div class="row" id="notificationContainer">
 			</div><!--/end row-->
 		</div>
+	</div>
 	<!--=== Footer v4 ===-->
 	<div class="footer-v4">
 		<div class="copyright">

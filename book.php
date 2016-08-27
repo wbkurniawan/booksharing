@@ -46,6 +46,7 @@ include_once(__DIR__.'/header.php');
 			<ul class="list-inline owl-slider" id="personalRecommendationBooksContainer">
 			</ul>
 		</div>
+	</div>
 		<!--=== End Illustration v2 ===-->
 
 	<!--=== Footer v4 ===-->

@@ -43,6 +43,7 @@ include_once(__DIR__.'/header.php');
 
 			</div><!--/end row-->
 		</div>
+	</div>
 	<!--=== Footer v4 ===-->
 	<div class="footer-v4">
 		<div class="copyright">
