@@ -30,7 +30,7 @@ notification.php
 
 User:
     v register.php
-    - edit user!!
+    v edit user
 
 Dialog
     v alertify.js

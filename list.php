@@ -1,12 +1,12 @@
 <?php
 include_once(__DIR__.'/model/class/UserSession.php');
 
-$categoryId = isset($_GET["categoryId"])?(integer)$_GET["categoryId"]:0;
+$categoryId = isset($_GET["categoryId"])?(integer)$_GET["categoryId"]:-1;
 $userId = isset($_GET["userId"])?(integer)$_GET["userId"]:0;
 $lock = false;
 include_once (__DIR__.'/lock.php');
 
-if($categoryId==0 and $userId==0){
+if($categoryId==-1 and $userId==0){
 	if(!isset($_SESSION["user"])){
 		header('Location: /booksharing/index.php');
 		die();
@@ -149,7 +149,7 @@ include_once(__DIR__.'/header.php');
 				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
 				<div class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}}  rgba-banner">{{:status}}</div>
 			</div>
-			<div class="product-description product-description-brd">
+			<div class="product-description product-description-brd product-title">
 				<div class="overflow-h margin-bottom-5">
 					<div class="pull-left">
 						<h4 class="title-price"><a href="book.php?id={{:book_id}}">{{:title}}</a></h4>
@@ -158,7 +158,7 @@ include_once(__DIR__.'/header.php');
 					</div>
 				</div>
 				{{if ~root.filter!="CATEGORY"}}
-					<ul class="list-inline product-ratings">
+					<ul class="list-inline product-ratings edit-book-button">
 						<li class="like-icon"><a href="notification.php?bookId={{:book_id}}"><i class="fa fa-history" aria-hidden="true" title="Loan history"></i></a></li>
 						<li class="like-icon"><a href="edit.php?id={{:book_id}}"><i class="fa fa-pencil" title="Edit" aria-hidden="true"></i></a></li>
 					</ul>

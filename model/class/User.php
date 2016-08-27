@@ -83,6 +83,25 @@ class User
         $this->db->execute($query);
     }
 
+    public function update($firstName,$lastName,$password,$email,$phone=""){
+        if(isset($this->userId)){
+            $ta = new TableAdapter($this->db,'booksharing','user');
+            $newUser = ["user_id" => $this->userId,
+                "first_name"=>$firstName,
+                "last_name"=>$lastName,
+                "email"=>$email,
+                "phone"=>$phone];
+            $ta->insert($newUser,true);
+            $query = "UPDATE booksharing.user 
+                  SET password = AES_ENCRYPT(".$this->db->quote($password).",
+                      SHA2('mCe3AAtKLnRt7NskAXmufJMDCgqA73tQ5sQ4Uc3Wumr4W6QyAe',512))
+                  WHERE user_id = " .$this->userId;
+            $this->db->execute($query);
+        }else{
+            throw new Exception("user id not found");
+        }
+    }
+
     private function loadUser($userId){
         $query = "SELECT `user`.`user_id`,
                     `user`.`first_name`,

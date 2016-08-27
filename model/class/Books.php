@@ -79,7 +79,9 @@ class Books
     public function getBooksByCategory($categoryId,$page=1,$limit=BOOKS_VIEW_LIMIT_DEFAULT)
     {
         $this->page = $page;
-        $this->filters = ["`book`.`category_id` = " . $categoryId];
+        if($categoryId>0){
+            $this->filters = ["`book`.`category_id` = " . $categoryId];
+        }
         $this->loadBooks($this->page,$limit);
         return $this->getResult();
     }
@@ -94,7 +96,7 @@ class Books
     public function getBooksRecomended(){
 
         $this->filters = ["`book`.`recommended` = 1"];
-        $this->loadBooks(1,BOOKS_VIEW_LIMIT_RECOMENDED);
+        $this->loadBooks(1,BOOKS_VIEW_LIMIT_RECOMMENDED);
         return $this->getResult();
     }
     public function getBooksLatest(){
@@ -108,7 +110,7 @@ class Books
         $this->filters = ["`book`.`status` = '".BOOK_STATUS_AVAILABLE."'"];
         $this->orders = ["rand()"];
 
-        $this->loadBooks(1,BOOKS_VIEW_LIMIT_RECOMENDED);
+        $this->loadBooks(1,BOOKS_VIEW_LIMIT_RECOMMENDED);
         return $this->getResult();
     }
 

@@ -111,26 +111,26 @@ include_once(__DIR__.'/header.php');
 <script id="userTemplate" type="text/x-jsrender">
 	<div class="edit-user-div">
 		{{for data}}
-				<form class="form-horizontal">
+				<form id="updatePersonalDataForm" class="form-horizontal">
 					<div class="form-group">
-						<label for="firstName">First Name: </label>
-						<input type="text" name="firstName" value="{{:first_name}}" class="form-control" placeholder="First name">
+						<label for="firstName">First Name*: </label>
+						<input type="text" id="firstNameInput" name="firstName" value="{{:first_name}}" class="form-control" placeholder="First name">
 					</div>
 					<div class="form-group">
-						<label for="last_name">Last Name: </label>
-						<input type="text" name="lastName" value="{{:last_name}}" class="form-control" placeholder="Last name">
+						<label for="last_name">Last Name*: </label>
+						<input type="text" id="lastNameInput" name="lastName" value="{{:last_name}}" class="form-control" placeholder="Last name">
 					</div>
 					<div class="form-group">
-						<label for="email">Email: </label>
-						<input type="text" name="email" value="{{:email}}" class="form-control" placeholder="Email">
+						<label for="email">Email*: </label>
+						<input type="text" id="emailInput" name="email" value="{{:email}}" class="form-control" placeholder="Email">
 					</div>
 					<div class="form-group">
-						<label for="password">Password: </label>
-						<input type="password" name="password" class="form-control" placeholder="Change password">
+						<label for="password">Password*: </label>
+						<input type="password" id="passwordInput" name="password" class="form-control" placeholder="Change password">
 					</div>
 					<div class="form-group">
-						<label for="retype-password">Re-type password: </label>
-						<input type="password" name="retype-password" class="form-control" placeholder="Retype password">
+						<label for="retype-password">Re-type password*: </label>
+						<input type="password"  id="retypePasswordInput" name="retype-password" class="form-control" placeholder="Retype password">
 					</div>
 					<div class="form-group">
 						<label for="phone">Phone: </label>

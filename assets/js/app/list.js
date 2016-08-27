@@ -20,7 +20,7 @@
         var userId = $('#userId').val();
         var url ="";
         var filter = ""
-;        if(categoryId!="0"){
+;        if(categoryId!="-1"){
             url = "api/books?categoryId="+categoryId;
             filter = "CATEGORY";
         }else if(userId!="0"){

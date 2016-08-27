@@ -181,7 +181,7 @@ if(isset($_SESSION["user"])){
                     <ul class="nav navbar-nav">
                         <!-- Pages -->
                         <li class="dropdown active">
-                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
+                            <a href="#" onclick="javascript: window.location = 'list.php?categoryId=0';" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
                                 Books
                             </a>
                             <ul class="dropdown-menu" id="categoryContainer">

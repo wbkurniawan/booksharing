@@ -39,6 +39,7 @@ img.loader-popup-img {
     display: inline-block;
     margin: 20px;
     vertical-align: top;
+    position: relative;
 }
 
 .product-description.product-description-brd {
@@ -156,4 +157,13 @@ li.like-icon {
 
 .edit-user-div {
     margin: 0px 200px 0px 200px;
+}
+.product-description.product-description-brd.product-title {
+    position: relative;
+}
+
+ul.list-inline.product-ratings.edit-book-button {
+    position: absolute;
+    bottom:0;
+    right:0;
 }
