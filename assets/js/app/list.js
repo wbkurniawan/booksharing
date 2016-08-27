@@ -35,17 +35,20 @@
             data["filter"]=filter;
             var htmlOutput = template.render(data);
             $("#bookListContainer").html(htmlOutput);
-            var categoryName = "";
-            if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["name"])){
-                categoryName = data["data"][0]["categories"][0]["name"];
-                $("#breadcrumbCategoryName").text(categoryName);
+            if(filter=="CATEGORY"){
+                var categoryName = "";
+                if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["name"])){
+                    categoryName = data["data"][0]["categories"][0]["name"];
+                    $("#breadcrumbCategoryName").text(categoryName);
+                }
+                var categoryId = "";
+                if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["category_id"])){
+                    categoryId = data["data"][0]["categories"][0]["category_id"];
+                    $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId="+categoryId);
+                }
+            }else{
+                $("#breadcrumbCategoryName").text("My Books");
             }
-            var categoryId = "";
-            if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["category_id"])){
-                categoryId = data["data"][0]["categories"][0]["category_id"];
-                $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId="+categoryId);
-            }
-
         });
     }
 }();

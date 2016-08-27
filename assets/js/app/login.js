@@ -16,7 +16,11 @@
                     data : data
                 }).done(function( data ) {
                     if(!data.error){
-                        window.location.href = decodeURIComponent(referer);
+                        if(referer.indexOf("login.php") !== -1){
+                            window.location.href = decodeURIComponent(referer);
+                        }else{
+                            window.location.href = "index.php";
+                        }
                     }else {
                         alert(data.error_message);
                     }

@@ -82,6 +82,7 @@ if(isset($_SESSION["user"])){
 </script>
 <script id="userInfoTemplate" type="text/x-jsrender">
     <table class="table table-hover table-condensed notification-popup-table">
+        <tr><th colspan="2"><?=$userGreeting?></th></tr>
         <tr><th colspan="2">{{if data.length}}New Notifications {{else}} No new notification{{/if}}</th></tr>
 	    {{for data}}
 		    <tr>
@@ -160,7 +161,8 @@ if(isset($_SESSION["user"])){
 
                 <!-- Shopping Cart -->
                 <div class="shop-badge badge-icons pull-right">
-                    <a href="#"><?=$userGreeting?><i class="fa fa-user" id="userIcon" <?=$loginIconStyle?> ></i></a>
+<!--                    <a href="#">--><?//=$userGreeting?><!--<i class="fa fa-user" id="userIcon" --><?//=$loginIconStyle?><!-- ></i></a>-->
+                    <i class="fa fa-user" id="userIcon" <?=$loginIconStyle?> ></i>
                     <i class="fa fa-envelope-o" aria-hidden="true"></i><span id="newNotification" class="badge badge-notification">0</span>
                     <br>
                     <div class="badge-open" id="userInfoContainer">
