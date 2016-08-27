@@ -34,9 +34,7 @@
 
             var htmlOutput = template.render(data);
             $("#latestBooksContainer").html(htmlOutput);
-
-            //execute after books loaded
-            OwlCarousel.initOwlCarousel();
+            
         });
     }
 }();

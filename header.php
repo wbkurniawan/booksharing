@@ -48,17 +48,17 @@ if(isset($_SESSION["user"])){
     <link rel="stylesheet" href="assets/css/footers/footer-v4.css">
 
     <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="assets/plugins/animate.css">
+<!--    <link rel="stylesheet" href="assets/plugins/animate.css">-->
     <link rel="stylesheet" href="assets/plugins/line-icons/line-icons.css">
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
+<!--    <link rel="stylesheet" href="assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css">-->
     <link rel="stylesheet" href="assets/plugins/owl-carousel/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="assets/plugins/revolution-slider/rs-plugin/css/settings.css">
 
-    <link rel="stylesheet" href="assets/plugins/sky-forms-pro/skyforms/css/sky-forms.css">
-    <link rel="stylesheet" href="assets/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css">
-    <link rel="stylesheet" href="assets/plugins/master-slider/quick-start/masterslider/style/masterslider.css">
-    <link rel='stylesheet' href="assets/plugins/master-slider/quick-start/masterslider/skins/default/style.css">
+<!--    <link rel="stylesheet" href="assets/plugins/sky-forms-pro/skyforms/css/sky-forms.css">-->
+<!--    <link rel="stylesheet" href="assets/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css">-->
+<!--    <link rel="stylesheet" href="assets/plugins/master-slider/quick-start/masterslider/style/masterslider.css">-->
+<!--    <link rel='stylesheet' href="assets/plugins/master-slider/quick-start/masterslider/skins/default/style.css">-->
 
     <!-- CSS Theme -->
     <link rel="stylesheet" href="assets/css/theme-colors/default.css" id="style_color">

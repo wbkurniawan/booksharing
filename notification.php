@@ -83,7 +83,7 @@ if($bookId>0){
 
 <!-- JS Implementing Plugins -->
 <script src="assets/plugins/back-to-top.js"></script>
-<script src="assets/plugins/smoothScroll.js"></script>
+<!--<script src="assets/plugins/smoothScroll.js"></script>-->
 <!--<script src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>-->
 <!--<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>-->
 <!-- Master Slider -->

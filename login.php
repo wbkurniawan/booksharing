@@ -107,7 +107,7 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
                     </form>
 
                     <div class="margin-bottom-20"></div>
-                    <p class="text-center">Don't have an account yet? <a href="shop-ui-register.html">Sign up for a new account</a></p>
+                    <p class="text-center">Don't have an account yet? <a href="register.php">Sign up for a new account</a></p>
                 </div>
             </div><!--/end row-->
         </div><!--/end container-->
@@ -165,6 +165,9 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 <script src="assets/plugins/jquery/jquery-migrate.min.js"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
+<!-- Alertify.js -->
+<script src="//cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js"></script>
+
 <!-- Get the data -->
 <script src="assets/js/jsrender.js"></script>
 <script src="assets/js/app/header.js"></script>
@@ -172,8 +175,8 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 
 <!-- JS Implementing Plugins -->
 <script src="assets/plugins/back-to-top.js"></script>
-<script src="assets/plugins/smoothScroll.js"></script>
-<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<!--<script src="assets/plugins/smoothScroll.js"></script>-->
+<!--<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>-->
 <script src="assets/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"></script>
 <script src="assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
 <!-- JS Customization -->
@@ -181,14 +184,14 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 <!-- JS Page Level -->
 <script src="assets/js/shop.app.js"></script>
 <!--<script src="assets/js/forms/page_login.js"></script>-->
-<script src="assets/js/plugins/style-switcher.js"></script>
+<!--<script src="assets/js/plugins/style-switcher.js"></script>-->
 <!--<script src="assets/js/forms/page_contact_form.js"></script>-->
 <script>
     jQuery(document).ready(function() {
         App.init();
 //        Login.initLogin();
-        App.initScrollBar();
-        StyleSwitcher.initStyleSwitcher();
+//        App.initScrollBar();
+//        StyleSwitcher.initStyleSwitcher();
 //        PageContactForm.initPageContactForm();
     });
 </script>

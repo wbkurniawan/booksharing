@@ -88,28 +88,28 @@ include_once(__DIR__.'/header.php');
 
 <!-- JS Implementing Plugins -->
 <script src="assets/plugins/back-to-top.js"></script>
-<script src="assets/plugins/smoothScroll.js"></script>
+<!--<script src="assets/plugins/smoothScroll.js"></script>-->
 <script src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
-<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<!--<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>-->
 <!-- Master Slider -->
-<script src="assets/plugins/master-slider/quick-start/masterslider/masterslider.min.js"></script>
-<script src="assets/plugins/master-slider/quick-start/masterslider/jquery.easing.min.js"></script>
+<!--<script src="assets/plugins/master-slider/quick-start/masterslider/masterslider.min.js"></script>-->
+<!--<script src="assets/plugins/master-slider/quick-start/masterslider/jquery.easing.min.js"></script>-->
 <!-- JS Customization -->
 <script src="assets/js/custom.js"></script>
 <!-- JS Page Level -->
 <script src="assets/js/shop.app.js"></script>
 <script src="assets/js/plugins/owl-carousel.js"></script>
-<script src="assets/js/plugins/master-slider.js"></script>
-<script src="assets/js/forms/product-quantity.js"></script>
-<script src="assets/js/plugins/style-switcher.js"></script>
+<!--<script src="assets/js/plugins/master-slider.js"></script>-->
+<!--<script src="assets/js/forms/product-quantity.js"></script>-->
+<!--<script src="assets/js/plugins/style-switcher.js"></script>-->
 <script>
     jQuery(document).ready(function() {
         App.init();
-        App.initScrollBar();
+//        App.initScrollBar();
 //		Load Carousel after books -> moved to book.js
 //		OwlCarousel.initOwlCarousel();
-        StyleSwitcher.initStyleSwitcher();
-        MasterSliderShowcase2.initMasterSliderShowcase2();
+//        StyleSwitcher.initStyleSwitcher();
+//        MasterSliderShowcase2.initMasterSliderShowcase2();
     });
 </script>
 

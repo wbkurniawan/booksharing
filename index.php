@@ -229,10 +229,10 @@ include_once(__DIR__.'/header.php');
 
 <!-- JS Implementing Plugins -->
 <script src="assets/plugins/back-to-top.js"></script>
-<script src="assets/plugins/smoothScroll.js"></script>
+<!--<script src="assets/plugins/smoothScroll.js"></script>-->
 <script src="assets/plugins/jquery.parallax.js"></script>
 <script src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
-<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<!--<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>-->
 <script src="assets/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 <script src="assets/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 <!-- JS Customization -->
@@ -241,16 +241,16 @@ include_once(__DIR__.'/header.php');
 <script src="assets/js/shop.app.js"></script>
 <script src="assets/js/plugins/owl-carousel.js"></script>
 <script src="assets/js/plugins/revolution-slider.js"></script>
-<script src="assets/js/plugins/style-switcher.js"></script>
+<!--<script src="assets/js/plugins/style-switcher.js"></script>-->
 <script>
 	jQuery(document).ready(function() {
 		App.init();
-		App.initScrollBar();
+//		App.initScrollBar();
 		App.initParallaxBg();
 //		Load Carousel after books -> moved to index.js
 //		OwlCarousel.initOwlCarousel();
 		RevolutionSlider.initRSfullWidth();
-		StyleSwitcher.initStyleSwitcher();
+//		StyleSwitcher.initStyleSwitcher();
 });
 </script>
 

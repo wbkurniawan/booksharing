@@ -41,9 +41,14 @@ list.php
 API
     - paging
     - total record
-
+Search
+    - in header?
 Email agent
     - send email for every new notification
     - user setting for receiving email?
 
 Multi language
+
+
+Bugs:
+Mobile Breadcrumb and category menu

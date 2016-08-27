@@ -22,7 +22,7 @@
                             window.location.href = "index.php";
                         }
                     }else {
-                        alert(data.error_message);
+                        alertify.alert("Access denied",data.error_message);
                     }
                 });
             },
