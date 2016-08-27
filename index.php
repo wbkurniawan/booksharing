@@ -52,7 +52,7 @@ include_once(__DIR__.'/header.php');
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6">
-						<a href="#" class="btn-u btn-brd btn-brd-hover btn-u-light">BOOKS</a>
+						<a href="list.php?categoryId=0" class="btn-u btn-brd btn-brd-hover btn-u-light">BOOKS</a>
 					</div>
 				</li>
 				<!-- END SLIDE 1-->
@@ -259,7 +259,7 @@ include_once(__DIR__.'/header.php');
 		<li class="item">
 			<div class="product-img">
 				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
-				<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Borrow book</a>
+				<a class="add-to-cart" href="book.php?id={{:book_id}}"><i class="fa fa-book"></i>Borrow book</a>
 				<div class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}}  rgba-banner">{{:status}}</div>
 			</div>
 			<div class="product-description product-description-brd">
@@ -280,7 +280,7 @@ include_once(__DIR__.'/header.php');
 		<div class="col-md-3 col-sm-6 md-margin-bottom-30">
 			<div class="product-img">
 				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
-				<a class="add-to-cart" href="#"><i class="fa fa-book"></i>Borrow book</a>
+				<a class="add-to-cart" href="book.php?id={{:book_id}}"><i class="fa fa-book"></i>Borrow book</a>
 				<div class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}}  rgba-banner">{{:status}}</div>
 			</div>
 			<div class="product-description product-description-brd">
