@@ -119,7 +119,7 @@ $authors = $author->getAuthors();
                     </div>
                 </form>
             </div>
-            <form id="editForm" class="form-inline">
+            <form id="editForm" xclass="form-inline">
                 <input type="hidden" name="bookId" value="{{:book_id}}">
                 <div class="col-md-8">
                     <div class="shop-product-heading">
@@ -128,39 +128,44 @@ $authors = $author->getAuthors();
                     <ul class="list-inline product-ratings">
                         <li><small class="shop-bg-green time-day-left">{{:status}}</small></li>
                     </ul>
-                    <div>
-                         <p class="wishlist-category"><strong>Authors:</strong>
-                        {{for authors}}<a href="#"><span class="author-span" data-author-id="{{>author_id}}"><span></a> {{/for}}
+                    <div  class="input-group book-edit-full-width">
+                         <p class="wishlist-category">
+                         <strong>Authors:</strong>
+                                {{for authors}}<a href="#"><span class="author-span" data-author-id="{{>author_id}}"><span></a> {{/for}}
 
-                        <span id="editAuthorSpan">
-                            <select id="authorSelect" name="authorIds[]" multiple="multiple">
-                                <option value="0">Others</option>
-                                <?php foreach ($authors as $author): ?>
-                                    <option value="<?=$author["author_id"]?>">
-                                            <?=$author["name"]?>
-                                    </option>
-                                 <?php endforeach; ?>
-                            </select>
-                        </span>
+                                <span id="editAuthorSpan">
+                                    <select id="authorSelect" name="authorIds[]" multiple="multiple">
+                                        <option value="0">Others</option>
+                                        <?php foreach ($authors as $author): ?>
+                                            <option value="<?=$author["author_id"]?>">
+                                                    <?=$author["name"]?>
+                                            </option>
+                                         <?php endforeach; ?>
+                                    </select>
+                                </span>
                         </p>
                     </div>
-
-                    <label for="isbnInput">ISBN: </label> <input type="text" class="form-control" id="isbnInput" name="isbn" value="{{:isbn}}">
-                    <label for="languageSelect">Language: </label>
-                    <select id="languageSelect" class="form-control" name="language">
-                        <option value="DE" {{if language=="DE"}} selected {{/if}}>Deutsch</option>
-                        <option value="EN" {{if language=="EN"}} selected {{/if}}>English</option>
-                        <option value="ID" {{if language=="ID"}} selected {{/if}}>Bahasa Indonesia</option>
-                    </select>
-                    <label for="categorySelect">Category</label>
-                    <select id="categorySelect" class="form-control" name="categoryId">
-                        <?php foreach ($categories->data as $category): ?>
-                            <option value="<?=$category->category_id?>" {{if category_id=="<?=$category->category_id?>"}} selected {{/if}} >
-                                    <?=$category->name?>
-                            </option>
-                         <?php endforeach; ?>
-                    </select>
-
+                    <div class="input-group  book-edit-full-width">
+                        <label for="isbnInput">ISBN: </label> <input type="text" class="form-control" id="isbnInput" name="isbn" value="{{:isbn}}">
+                    </div>
+                    <div class="input-group  book-edit-full-width">
+                        <label for="languageSelect">Language: </label>
+                        <select id="languageSelect" class="form-control" name="language">
+                            <option value="DE" {{if language=="DE"}} selected {{/if}}>Deutsch</option>
+                            <option value="EN" {{if language=="EN"}} selected {{/if}}>English</option>
+                            <option value="ID" {{if language=="ID"}} selected {{/if}}>Bahasa Indonesia</option>
+                        </select>
+                    </div>
+                    <div class="input-group  book-edit-full-width">
+                        <label for="categorySelect">Category</label>
+                        <select id="categorySelect" class="form-control" name="categoryId">
+                            <?php foreach ($categories->data as $category): ?>
+                                <option value="<?=$category->category_id?>" {{if category_id=="<?=$category->category_id?>"}} selected {{/if}} >
+                                        <?=$category->name?>
+                                </option>
+                             <?php endforeach; ?>
+                        </select>
+                    </div>
                     <textarea id="descriptionInput" name="description" class="form-control" rows="6" placeholder="Book's description">{{:description}}</textarea>
 
                     <ul class="list-inline add-to-wishlist add-to-wishlist-brd">
@@ -168,9 +173,11 @@ $authors = $author->getAuthors();
                             <i class="fa fa-user"></i>
                             Owner: <strong>{{for user}}{{>first_name}} {{>last_name}}{{/for}}</strong>
                         </li>
+                    </ul>
+                    <ul class="list-inline add-to-wishlist add-to-wishlist-brd">
                         <li class="compare-in">
                             <i class="fa fa-calendar"></i>
-                            Loan period: <strong><input type="number" name="loanPeriod" id="loanPeriodInput" min="1" max="30" value="{{:loan_period}}"  class="form-control" > days</strong>
+                            Loan period days: <strong><input type="number" name="loanPeriod" id="loanPeriodInput" min="1" max="30" value="{{:loan_period}}"  class="form-control" ></strong>
                         </li>
                     </ul>
                     <div class="margin-bottom-40">
