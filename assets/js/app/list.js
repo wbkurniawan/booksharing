@@ -7,21 +7,27 @@
 
     $(document).ready(function(){
 
-        loadBooks();
+        loadBooks("");
 
         $("#eventWrapper").on('click', '#addButton', function(e){
             e.preventDefault();
             window.location.href = "edit.php?id=0";
         });
+
+        $("#eventWrapper").on('submit', '#search-form', function(e){
+            e.preventDefault();
+            var search = $("#search-input").val();
+            loadBooks(search);
+        });
     });
 
-    function loadBooks() {
+    function loadBooks(search) {
         var categoryId = $('#categoryId').val();
         var userId = $('#userId').val();
         var url ="";
         var filter = "";
         if(categoryId!="-1"){
-            url = "api/books?categoryId="+categoryId;
+            url = "api/books?categoryId="+categoryId+"&search="+search;
             filter = "CATEGORY";
         }else if(userId!="0"){
             url = "api/books?userId="+userId;
@@ -34,6 +40,7 @@
             var template = $.templates("#bookListTemplate");
             data["filter"]=filter;
             data["categoryId"]=categoryId;
+            data["search"]=search;
             var htmlOutput = template.render(data);
             $("#bookListContainer").html(htmlOutput);
             if(filter=="CATEGORY"){

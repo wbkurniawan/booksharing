@@ -58,11 +58,6 @@ include_once(__DIR__.'/header.php');
     <div class="container" id="eventWrapper">
 		<div id="bookListContainer">
 		</div>
-		<div class="container">
-			<div class="row" id="bookListContainer">
-
-			</div><!--/end row-->
-		</div>
 	</div>
 	<!--=== Footer v4 ===-->
 	<div class="footer-v4">
@@ -144,6 +139,17 @@ include_once(__DIR__.'/header.php');
 		<div class="margin-bottom-40">
 				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="addButton" data-book-id='{{:book_id}}'>ADD NEW BOOK</button>
         </div>
+	{{else}}
+		<form id="search-form" class="form-inline">
+			<div class="form-group">
+				<label class="sr-only" for="search-input">Search</label>
+				<div class="input-group">
+					<div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+					<input type="text" class="form-control" id="search-input" name="search" placeholder="Title, Author or ISBN" value="{{:search}}">
+				</div>
+			</div>
+			<button type="submit" class="btn-u btn-u-sea-shop book-search-button">Search</button>
+		</form>
 	{{/if}}
 
 	{{for data}}

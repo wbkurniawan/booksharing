@@ -171,3 +171,15 @@ ul.list-inline.product-ratings.edit-book-button {
 .book-edit-full-width {
     width: 100%;
 }
+
+.book-search-button {
+    height: 33px;
+}
+
+input#search-input {
+    /*width: 400px;*/
+}
+
+form#search-form {
+    margin-bottom: 30px;
+}

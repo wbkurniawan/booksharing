@@ -85,6 +85,16 @@ class Books
         $this->loadBooks($this->page,$limit);
         return $this->getResult();
     }
+    public function search($key,$page=1,$limit=BOOKS_VIEW_LIMIT_DEFAULT)
+    {
+        $this->page = $page;
+        if(!empty($key)){
+            $key = str_replace(" ","%",$key);
+            $this->filters = ["`book`.`title` like '%" . $key ."%' OR `book`.`isbn` like '%" . $key ."%' OR `author`.`name` like '%" . $key ."%' "];
+        }
+        $this->loadBooks($this->page,$limit);
+        return $this->getResult();
+    }
     public function getBooksByOwner($userId,$page=1,$limit=BOOKS_VIEW_LIMIT_DEFAULT)
     {
         $this->page = $page;
