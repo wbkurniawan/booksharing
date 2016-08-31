@@ -183,7 +183,7 @@ if(isset($_SESSION["user"])){
                     <ul class="nav navbar-nav">
                         <!-- Pages -->
                         <li class="dropdown active">
-                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
+                            <a href="#" class="dropdown-toggle" data-header="1" data-hover="dropdown" data-toggle="dropdown">
                                 Books
                             </a>
                             <ul class="dropdown-menu" id="categoryContainer">
@@ -193,7 +193,7 @@ if(isset($_SESSION["user"])){
 
                         <!-- Promotion -->
                         <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
+                            <a href="javascript:void(0);"  data-header="1" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
                                 FAQ
                             </a>
                         </li>
@@ -201,7 +201,7 @@ if(isset($_SESSION["user"])){
 
                         <!-- Gifts -->
                         <li class="dropdown mega-menu-fullwidth">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
+                            <a href="javascript:void(0);"  data-header="1" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
                                 About
                             </a>
                         </li>

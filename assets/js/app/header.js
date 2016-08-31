@@ -10,8 +10,15 @@
             window.isMobile=true;
         });
         $(document).on('click','.dropdown-toggle', function(e){
-            if(isMobile) return false;
-            window.location = "list.php?categoryId=0";
+            var isHeader= parseInt($(this).data("header"));
+
+            console.log(parseInt($(this).data("header")));
+            console.log(isHeader);
+            if(isMobile ) {
+                return false;
+            }else if(isHeader ){
+                window.location = "list.php?categoryId=0";
+            }
         });
         checkNotification();
         loadUserInfo();

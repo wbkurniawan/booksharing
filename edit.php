@@ -1,8 +1,18 @@
 <?php
 $bookId = isset($_GET["id"])?$_GET["id"]:0;
-$lock = false;
+$lock = true;
+include_once(__DIR__.'/lock.php');
 include_once(__DIR__.'/header.php');
 include_once(__DIR__.'/model/class/Authors.php');
+include_once(__DIR__.'/model/class/UserSession.php');
+
+if(!isset($_SESSION["user"])){
+    header("Location: login.php");
+}
+
+$userSession =  unserialize($_SESSION["user"]);
+$userId = $userSession->userId;
+$isAdmin = $userSession->admin;
 
 $json = file_get_contents("http://$_SERVER[HTTP_HOST]/booksharing/api/categories");
 $categories= json_decode($json);
@@ -143,6 +153,8 @@ $authors = $author->getAuthors();
                                          <?php endforeach; ?>
                                     </select>
                                 </span>
+
+                                <a style="<?php echo ($isAdmin?"":"display:none;"); ?>" href="author.php" id="add-new-author" target="_blank" title="add new author" class="btn btn-success">+</a>
                         </p>
                     </div>
                     <div class="input-group  book-edit-full-width">

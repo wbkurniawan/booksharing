@@ -183,3 +183,8 @@ input#search-input {
 form#search-form {
     margin-bottom: 30px;
 }
+
+a#add-new-author {
+    background-color: #18ba9b;
+    color: white;
+}

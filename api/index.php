@@ -49,16 +49,17 @@ $app->get('/books', function (Request $request) use ($app) {
     $book = new Books();
     $book->setInJson();
 
+    $categoryId = $request->get('categoryId');
     $search = $request->get('search');
-    if(isset($search)){
-        $result = $book->search($search,1,BOOKS_VIEW_LIMIT_LIST);
+
+    if(isset($categoryId) and empty($search)){
+        $result = $book->getBooksByCategory($categoryId,1,BOOKS_VIEW_LIMIT_LIST);
         $response->setContent($result);
         return $response;
     }
 
-    $categoryId = $request->get('categoryId');
-    if(isset($categoryId)){
-        $result = $book->getBooksByCategory($categoryId,1,BOOKS_VIEW_LIMIT_LIST);
+    if(isset($search)){
+        $result = $book->search($search,1,BOOKS_VIEW_LIMIT_LIST);
         $response->setContent($result);
         return $response;
     }
