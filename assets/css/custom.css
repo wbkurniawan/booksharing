@@ -188,3 +188,6 @@ a#add-new-author {
     background-color: #18ba9b;
     color: white;
 }
+.action-button-div {
+    margin-top: 10px;
+}

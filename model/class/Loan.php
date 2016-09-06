@@ -14,22 +14,28 @@ class Loan
     private $db;
     private $loans;
     private $inJSON;
+    private $loanId;
 
-    public function __construct()
+    public function __construct($loanId=null)
     {
         $this->db = new Connect(Connect::DBSERVER);
+        if(isset($loanId)){
+            $this->loanId = $loanId;
+            $this->loadLoan();
+        }
     }
 
     public function setInJson($inJSON=true){
         $this->inJSON = $inJSON;
     }
-
-    public function getLoanByBookId($bookId,$limit=LOAN_VIEW_LIMIT_DEFAULT)
-    {
-        $query = "SELECT 
+    public function getLoan(){
+        return $this->getResult();
+    }
+    private function loadLoan(){
+        if(isset($this->loanId)){
+            $query = "SELECT 
                     a.loan_id,
                     a.book_id,
-                    b.title,
                     a.user_id,
                     c.first_name,
                     c.last_name,
@@ -42,12 +48,36 @@ class Loan
                 FROM
                     booksharing.loan a
                         LEFT JOIN
-                    booksharing.book b ON a.book_id = b.book_id
-                        LEFT JOIN
-                    booksharing.user c ON a.user_id = c.user_id;";
-        $this->loans = $this->db->selectArray($query);
-        return $this->getResult();
+                    booksharing.user c ON a.user_id = c.user_id
+                WHERE a.loan_id = ".$this->loanId.";";
+            $this->loans = $this->db->selectArray($query);
+        }
     }
+
+//    public function getLoanByBookId($bookId,$limit=LOAN_VIEW_LIMIT_DEFAULT)
+//    {
+//        $query = "SELECT
+//                    a.loan_id,
+//                    a.book_id,
+//                    b.title,
+//                    a.user_id,
+//                    c.first_name,
+//                    c.last_name,
+//                    c.email,
+//                    a.start_date,
+//                    a.returned_date,
+//                    a.period,
+//                    a.status,
+//                    a.timestamp
+//                FROM
+//                    booksharing.loan a
+//                        LEFT JOIN
+//                    booksharing.book b ON a.book_id = b.book_id
+//                        LEFT JOIN
+//                    booksharing.user c ON a.user_id = c.user_id;";
+//        $this->loans = $this->db->selectArray($query);
+//        return $this->getResult();
+//    }
 
 
     public function toJSON(){

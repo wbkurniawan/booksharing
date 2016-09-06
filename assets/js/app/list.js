@@ -5,7 +5,10 @@
 
 !function(){
 
+
     $(document).ready(function(){
+        var myHelpers = {dateFormat: dateFormat};
+        $.views.helpers(myHelpers);
 
         loadBooks("");
 
@@ -19,7 +22,88 @@
             var search = $("#search-input").val();
             loadBooks(search);
         });
+
+        $("#eventWrapper").on('click', '.acceptButton', function(e) {
+            var bookId = $(this).data("book-id");
+            var buttonDiv = $(this).closest("div");
+            var type = "BORROW_REQUEST";
+            $.ajax({
+                method: "POST",
+                url: "model/approveRequest.php",
+                data: { bookId: bookId,
+                    type : type}
+            }).done(function( data ) {
+                if(!data.error){
+                    buttonDiv.hide();
+                    alertify.success("Request has been accepted");
+                }else {
+                    if(data.error_code == 403){
+                        console.log(data);
+                        window.location.href = "login.php";
+                    }else{
+                        alertify.error(data.error_message);
+                    }
+                }
+            });
+        });
+        $("#eventWrapper").on('click', '.rejectButton', function(e) {
+            var bookId = $(this).data("book-id");
+            var type = "BORROW_REQUEST";
+            var buttonDiv = $(this).closest("div");
+            alertify.prompt("Reject Request","Reason", "",
+                function(evt, value ){
+                    $.ajax({
+                        method: "POST",
+                        url: "model/rejectRequest.php",
+                        data: { bookId: bookId,
+                            type: type,
+                            message: value }
+                    }).done(function( data ) {
+                        if(!data.error){
+                            buttonDiv.hide();
+                            alertify.success("Request has been rejected");
+                        }else {
+                            if(data.error_code == 403){
+                                console.log(data);
+                                window.location.href = "login.php";
+                            }else{
+                                alertify.error(data.error_message);
+                            }
+                        }
+                    });
+                },
+                function(){
+                    alertify.error('Cancel');
+                })
+            ;
+        });
+        $("#eventWrapper").on('click', '.returnButton', function(e) {
+            var bookId = $(this).data("book-id");
+            var buttonDiv = $(this).closest("div");
+            $.ajax({
+                method: "POST",
+                url: "model/return.php",
+                data: { bookId: bookId}
+            }).done(function( data ) {
+                if(!data.error){
+                    buttonDiv.hide();
+                    alertify.success("Book has been returned");
+                }else {
+                    if(data.error_code == 403){
+                        console.log(data);
+                        window.location.href = "login.php";
+                    }else{
+                        alertify.error(data.error_message);
+                    }
+                }
+            });
+        });
     });
+
+    function dateFormat(value) {
+        var day = new Date(value);
+        return day.toLocaleString();
+    }
 
     function loadBooks(search) {
         var categoryId = $('#categoryId').val();

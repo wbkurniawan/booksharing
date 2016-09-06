@@ -13,6 +13,7 @@ include_once(__DIR__.'/../../model/class/Categories.php');
 include_once(__DIR__.'/../../model/class/Authors.php');
 include_once(__DIR__.'/../../model/class/User.php');
 include_once(__DIR__.'/../../model/class/Notifications.php');
+include_once(__DIR__.'/../../model/class/Loan.php');
 class Books
 {
 
@@ -100,7 +101,14 @@ class Books
         $this->page = $page;
         $this->filters[] = "`book`.`user_id` = " . $userId;
         $this->filters[] = "`book`.`status` <> '".BOOK_STATUS_DELETED."' ";
+        $this->orders = ["`loan`.`loan_id` DESC"];
         $this->loadBooks($this->page,$limit);
+        foreach ($this->books as $index=>$book){
+            if($book["loan_status"]==LOAN_STATUS_REQUESTED or $book["loan_status"]==LOAN_STATUS_BORROWED ){
+                $loan = new Loan($book["loan_id"]);
+                $this->books[$index]["loan"] = $loan->getLoan();
+            }
+        }
         return $this->getResult();
     }
     public function getBooksRecomended(){
@@ -174,10 +182,14 @@ class Books
                                `book`.`recommended`,
                                `book`.`rating`,
                                `book`.`image`,
-                                GROUP_CONCAT(`author`.`name` SEPARATOR ', ') as authors ";
+                                GROUP_CONCAT(`author`.`name` SEPARATOR ', ') as authors,
+                                `loan`.`loan_id`,
+                                `loan`.`status` as loan_status
+                                 ";
         $queries["tables"] = "  FROM `booksharing`.`book`
                                 LEFT JOIN `booksharing`.`book_author` ON `book`.`book_id` = `booksharing`.`book_author`.`book_id` 
                                 LEFT JOIN `booksharing`.`author` ON `author`.`author_id` = `booksharing`.`book_author`.`author_id` 
+                                LEFT JOIN `booksharing`.`loan` ON `book`.`current_loan_id` = `loan`.`loan_id`
                                  ";
         $queries["conditions"] = $filterQuery;
         $queries["group"] = " GROUP BY  `book`.`book_id` ";

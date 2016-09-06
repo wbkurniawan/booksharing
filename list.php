@@ -89,6 +89,9 @@ include_once(__DIR__.'/header.php');
 <script src="assets/plugins/jquery/jquery-migrate.min.js"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
+<!-- Alertify.js -->
+<script src="//cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js"></script>
+
 <!-- Get the data -->
 <script src="assets/js/jsrender.js"></script>
 <script src="assets/js/app/header.js"></script>
@@ -161,9 +164,33 @@ include_once(__DIR__.'/header.php');
 			<div class="product-description product-description-brd product-title">
 				<div class="overflow-h margin-bottom-5">
 					<div class="pull-left">
-						<h4 class="title-price"><a href="book.php?id={{:book_id}}">{{:title}}</a></h4>
-						<span class="gender text-uppercase">{{for categories}}{{>name}}{{/for}}</span>
-						<span class="gender">{{:authors}}</span>
+						{{if ~root.filter!="CATEGORY"}}
+							{{if loan_status=="REQUESTED"}}
+								<div>
+									<div>
+										Borrow request from {{:loan[0].first_name}} {{:loan[0].last_name}} for {{:loan_period}} days
+									</div>
+									<div class="action-button-div">
+										<button  class="acceptButton btn-u btn-u-sea-shop" data-book-id='{{:book_id}}'>ACCEPT</button>
+										<button  class="rejectButton btn-u btn-u-sea-shop" data-book-id='{{:book_id}}'>REJECT</button>
+									</div>
+								</div>
+							{{else loan_status=="BORROWED"}}
+								<div>
+									<div>
+										Borrowed  by {{:loan[0].first_name}} {{:loan[0].last_name}}
+										since {{:~dateFormat(loan[0].start_date)}}
+									</div>
+									<div class="action-button-div">
+										<button class="returnButton btn-u btn-u-sea-shop" data-book-id='{{:book_id}}'>RETURN</button>
+									</div>
+								</div>
+							{{/if}}
+						{{else}}
+							<h4 class="title-price"><a href="book.php?id={{:book_id}}">{{:title}}</a></h4>
+							<span class="gender text-uppercase">{{for categories}}{{>name}}{{/for}}</span>
+							<span class="gender">{{:authors}}</span>
+						{{/if}}
 					</div>
 				</div>
 				{{if ~root.filter!="CATEGORY"}}
