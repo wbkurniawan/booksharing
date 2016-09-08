@@ -56,8 +56,8 @@ include_once(__DIR__.'/header.php');
 
      <!--=== Illustration v2 ===-->
     <div class="container" id="eventWrapper">
-		<div id="bookListContainer">
-		</div>
+		<div id="borrowedBookContainer"></div>
+		<div id="bookListContainer"></div>
 	</div>
 	<!--=== Footer v4 ===-->
 	<div class="footer-v4">
@@ -208,7 +208,35 @@ include_once(__DIR__.'/header.php');
         </div>
 	{{/if}}
 </script>
-
+<script id="borrowedBooksTemplate" type="text/x-jsrender">
+	{{for data}}
+		<div class="heading heading-v1 margin-bottom-20">
+			<h2>
+				I am borrowing
+			</h2>
+		</div>
+		<div class="col-md-3 col-sm-6 md-margin-bottom-30">
+			<div class="product-img">
+				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
+				<div class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}}  rgba-banner">{{:status}} BY ME</div>
+			</div>
+			<div class="product-description product-description-brd">
+				<div class="overflow-h margin-bottom-5">
+					<div class="pull-left">
+						<div>
+							{{if status=="BORROWED"}}
+								Borrowed  by me since {{:~dateFormat(loan[0].start_date)}}
+							{{else status=="RESERVED"}}
+								Requested by me at {{:~dateFormat(loan[0].timestamp)}}
+								for {{:loan_period}} days
+							{{/if}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/for}}
+</script>
 <!--[if lt IE 9]>
     <script src="assets/plugins/respond.js"></script>
     <script src="assets/plugins/html5shiv.js"></script>

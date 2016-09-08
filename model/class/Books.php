@@ -117,6 +117,18 @@ class Books
         $this->loadBooks(1,BOOKS_VIEW_LIMIT_RECOMMENDED);
         return $this->getResult();
     }
+    public function getBooksBorrowed($userId){
+
+        $this->filters = ["`loan`.`user_id` = ".$userId." AND `loan`.`status` IN ('".LOAN_STATUS_BORROWED."','".LOAN_STATUS_REQUESTED."')"];
+        $this->loadBooks(1,BOOKS_VIEW_LIMIT_RECOMMENDED);
+        foreach ($this->books as $index=>$book){
+            if($book["loan_status"]==LOAN_STATUS_REQUESTED or $book["loan_status"]==LOAN_STATUS_BORROWED ){
+                $loan = new Loan($book["loan_id"]);
+                $this->books[$index]["loan"] = $loan->getLoan();
+            }
+        }
+        return $this->getResult();
+    }
     public function getBooksLatest(){
 
         $this->orders = ["`book`.`enter_date` DESC"];

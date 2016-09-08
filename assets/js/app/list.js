@@ -10,6 +10,7 @@
         var myHelpers = {dateFormat: dateFormat};
         $.views.helpers(myHelpers);
 
+        loadBorrowedBook();
         loadBooks("");
 
         $("#eventWrapper").on('click', '#addButton', function(e){
@@ -105,6 +106,23 @@
         return day.toLocaleString();
     }
 
+    function loadBorrowedBook(search) {
+        var categoryId = $('#categoryId').val();
+        var userId = $('#userId').val();
+
+        if(categoryId!="-1"){
+            return false;
+        }else if(userId!="0"){
+            $.ajax({
+                method: "GET",
+                url: "model/loadBorrowedBook.json.php"
+            }).done(function( data ) {
+                var template = $.templates("#borrowedBooksTemplate");
+                var htmlOutput = template.render(data);
+                $("#borrowedBookContainer").html(htmlOutput);
+            });
+        }
+    }
     function loadBooks(search) {
         var categoryId = $('#categoryId').val();
         var userId = $('#userId').val();
