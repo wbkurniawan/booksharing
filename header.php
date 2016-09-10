@@ -83,36 +83,6 @@ if(isset($_SESSION["user"])){
 <script id="userInfoTemplate" type="text/x-jsrender">
     <table class="table table-hover table-condensed notification-popup-table">
         <tr><th colspan="2"><?=$userGreeting?></th></tr>
-        <tr><th colspan="2">{{if data.length}}New Notifications {{else}} No new notification{{/if}}</th></tr>
-	    {{for data}}
-		    <tr>
-                <td class="notification-icon-td">
-                    <a href="notification.php?id={{:notification_id}}">
-                    {{if type=='BORROW_REQUEST'}}
-                        <i class="fa fa-book popup-small-icon" aria-hidden="true"></i>
-                        <i class="fa fa-question popup-small-icon" aria-hidden="true"></i>
-                    {{else type=='BORROW_REJECT'}}
-                        <i class="fa fa-book popup-small-icon" aria-hidden="true"></i>
-                        <i class="fa fa-times popup-small-icon" aria-hidden="true"></i>
-                    {{else type=='BORROW_ACCEPT'}}
-                        <i class="fa fa-book popup-small-icon" aria-hidden="true"></i>
-                        <i class="fa fa-check popup-small-icon" aria-hidden="true"></i>
-                    {{else type=='BORROW_STATUS'}}
-                        <i class="fa fa-book popup-small-icon" aria-hidden="true"></i>
-                        <i class="fa fa-exclamation popup-small-icon" aria-hidden="true"></i>
-                    {{else type=='BOOK_APPROVAL_REQUEST'}}
-                        <i class="fa fa-book popup-small-icon" aria-hidden="true"></i>
-                        <i class="fa fa-exclamation popup-small-icon" aria-hidden="true"></i>
-                    {{else type=='SYSTEM'}}
-                        <i class="fa fa-cog popup-small-icon" aria-hidden="true"></i>
-                    {{else type=='USER_TO_USER'}}
-                        <i class="fa fa-user popup-small-icon" aria-hidden="true"></i>
-                    {{/if}}
-                    </a>
-                </td>
-                <td class="notification-sender-td"><a href="notification.php?id={{:notification_id}}">{{:sender.first_name}} {{:sender.last_name}}</a></td>
-            </tr>
-	    {{/for}}
     </table>
 	<div class="popup-menu-header">
 	    <div><a href="list.php">My Books</a><div>
@@ -137,7 +107,7 @@ if(isset($_SESSION["user"])){
 
             <div class="container">
                 <div class="row">
-                    brought to you by <a href="#">Komisi Perpustakaan</a> at <a href="#">FeG Immanuel Berlin</a>
+                    <a href="#">Komisi Perpustakaan</a> at <a href="#">FeG Immanuel Berlin</a>
                 </div>
             </div><!--/container-->
         </div>

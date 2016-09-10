@@ -11,9 +11,6 @@
         });
         $(document).on('click','.dropdown-toggle', function(e){
             var isHeader= parseInt($(this).data("header"));
-
-            console.log(parseInt($(this).data("header")));
-            console.log(isHeader);
             if(isMobile ) {
                 return false;
             }else if(isHeader ){

@@ -101,7 +101,7 @@ class Books
         $this->page = $page;
         $this->filters[] = "`book`.`user_id` = " . $userId;
         $this->filters[] = "`book`.`status` <> '".BOOK_STATUS_DELETED."' ";
-        $this->orders = ["`loan`.`loan_id` DESC"];
+        $this->orders = ["-`loan`.`status` DESC,`loan`.`loan_id` DESC"];
         $this->loadBooks($this->page,$limit);
         foreach ($this->books as $index=>$book){
             if($book["loan_status"]==LOAN_STATUS_REQUESTED or $book["loan_status"]==LOAN_STATUS_BORROWED ){

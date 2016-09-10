@@ -22,10 +22,13 @@ if(!isset($_SESSION["user"])){
     die();
 }
 
-$userSession =  unserialize($_SESSION["user"]);
-$userId = $userSession->userId;
+//$userSession =  unserialize($_SESSION["user"]);
+//$userId = $userSession->userId;
+//
+//$notification = new Notifications();
+//$notification->setInJson();
+//
+//echo($notification->getNotificationByUser($userId,NOTIFICATION_STATUS_NEW,NOTIFICATIONS_VIEW_LIMIT_HEADER));
 
-$notification = new Notifications();
-$notification->setInJson();
-
-echo($notification->getNotificationByUser($userId,NOTIFICATION_STATUS_NEW,NOTIFICATIONS_VIEW_LIMIT_HEADER));
+$result = ['error'=>false];
+echo json_encode($result);

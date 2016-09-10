@@ -84,107 +84,52 @@ if($bookId>0){
 
 <!-- JS Implementing Plugins -->
 <script src="assets/plugins/back-to-top.js"></script>
-<!--<script src="assets/plugins/smoothScroll.js"></script>-->
-<!--<script src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>-->
-<!--<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>-->
-<!-- Master Slider -->
-<!--<script src="assets/plugins/master-slider/quick-start/masterslider/masterslider.min.js"></script>-->
-<!--<script src="assets/plugins/master-slider/quick-start/masterslider/jquery.easing.min.js"></script>-->
-<!-- JS Customization -->
 <script src="assets/js/custom.js"></script>
-<!-- JS Page Level -->
-<!--<script src="assets/js/shop.app.js"></script>-->
-<!--<script src="assets/js/plugins/owl-carousel.js"></script>-->
-<!--<script src="assets/js/plugins/master-slider.js"></script>-->
-<!--<script src="assets/js/forms/product-quantity.js"></script>-->
-<!--<script src="assets/js/plugins/style-switcher.js"></script>-->
-<script>
-    jQuery(document).ready(function() {
-//        App.init();
-//        App.initScrollBar();
-//		Load Carousel after books -> moved to book.js
-//		OwlCarousel.initOwlCarousel();
-//        StyleSwitcher.initStyleSwitcher();
-//        MasterSliderShowcase2.initMasterSliderShowcase2();
-    });
-</script>
+
 <script id="notificationTemplate" type="text/x-jsrender">
 	<table class="table table-hover table-condensed">
 		{{for data}}
-			<tr id="notification-tr-{{:notification_id}}" data-notification-id="{{:notification_id}}"
-			  	data-book-id="{{:book_id}}" data-status="{{:status}}"  data-type="{{:type}}" data-sender="{{:sender.user_id}}" data-detail-loaded="0"
-			  	data-loan-id="{{:loan_id}}" data-loan-status="{{:loan_status}}"
-				class="{{if status=='NEW'}}new-notification-tr{{/if}} row-notification-tr">
-					<td class="book-cover-thumbnail-td"><img class="book-cover-thumbnail-img" src="assets/img/book/s_{{:image}}"></td>
+			<tr id="notification-tr-{{:notification_id}}" class="notification-tr"
+				data-notification-id="{{:notification_id}}"
+			  	data-book-id="{{:book_id}}" data-loan-id="{{:loan_id}}" data-loan-status="{{:loan_status}}"
+			  	data-type="{{:type}}">
+				<td class="book-cover-thumbnail-td"><img class="book-cover-thumbnail-img" src="assets/img/book/s_{{:image}}"></td>
                     <td>
-                    	<div><small class="shop-bg-green time-day-left">{{:loan_status}}</small> <span class="timestamp-span">{{:timestamp}}</span></div>
-                    	<div><h4><span class="book-title-span">{{:title}}</span></h4></div>
                     	<div>
-                    		{{if type=='BORROW_REQUEST'}}BOOK REQUEST
-                    		{{else type=='BORROW_REJECT'}}REQUEST REJECTED
-                    		{{else type=='BORROW_ACCEPT'}}REQUEST ACCEPTED
-                    		{{else type=='BORROW_STATUS'}}STATUS REMINDER
-                    		{{else type=='BOOK_APPROVAL_REQUEST'}}BOOK APPROVAL REQUEST
-                    		{{else type=='SYSTEM'}}SYSTEM MESSAGE
-                    		{{else type=='USER_TO_USER'}}PERSONAL MESSAGE
-                    		{{/if}} from {{:sender.first_name}} {{:sender.last_name}}&lt;{{:sender.email}}&gt;
+                    		{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt;
+                    		{{if type=='BORROW_REQUEST'}}
+                    			is requesting
+                    		{{else type=='BORROW_REJECT'}}
+                    			rejected your request for
+                    		{{else type=='BORROW_ACCEPT'}}
+                    			accepted your request for
+                    		{{else type=='BORROW_STATUS'}}
+                    			reminds you about the due date of
+                    		{{else type=='BOOK_APPROVAL_REQUEST'}}
+                    			has added a new book
+                    		{{else type=='SYSTEM'}}
+                    			has sent system notification
+                    		{{/if}}
+                    		<strong>{{:title}}</strong>
 						</div>
-						<div>{{:message}}</div>
+						<div class="x-small-cursive">{{:time_elapsed}}</div>
+						<div class="action-button-div" id="actionButtonDiv-{{:notification_id}}">
+							<button type="button" class="btn-u btn-u-sea-shop approveButton"
+								id="approveButton-{{:notification_id}}" data-book-id='{{:book_id}}'
+								data-notification-id="{{:notification_id}}"  data-type="{{:type}}">APPROVE</button>
+							<button type="button" class="btn-u btn-u-sea-shop rejectButton"
+								id="rejectButton-{{:notification_id}}" data-book-id='{{:book_id}}'
+								data-notification-id="{{:notification_id}}" data-type="{{:type}}">REJECT</button>
+							<button type="button" class="btn-u btn-u-sea-shop returnButton"
+								id="returnButton-{{:notification_id}}" data-book-id='{{:book_id}}'
+								data-notification-id="{{:notification_id}}"  data-type="{{:type}}">RETURN</button>
+						</div>
 					</td>
-				<td class="arrow-down-td"><a><i class="fa fa-angle-down" aria-hidden="true" data-notification-id="{{:notification_id}}"></i></a></td>
-			</tr>
-			<tr id="notification-detail-tr-{{:notification_id}}" class="notification-detail-tr">
-				<td colspan="2" id="bookContainer_{{:notification_id}}">
-				    <img class="loader-popup-img" src="assets/plugins/revolution-slider/rs-plugin/assets/loader.gif">
-				<td>
 			</tr>
 		{{/for}}
 	</table>
 </script>
 
-<script id="bookTemplate" type="text/x-jsrender">
-	{{for data}}
-		<div class="col-md-3">
-			<img src="assets/img/book/{{:image}}" class="notification-img" alt="lorem ipsum dolor sit">
-		</div>
-
-		<div class="col-md-9">
-			<div class="shop-product-heading">
-				<h2>{{:title}}</h2>
-				<p class="wishlist-category"><strong>Authors:</strong>
-				{{for authors}}<a href="#">{{>name}}</a> {{/for}}
-				</p>
-			</div><!--/end shop product social-->
-
-			<ul class="list-inline product-ratings margin-bottom-30">
-				<li>Book status: <small class="shop-bg-green time-day-left book-status-{{:book_id}}" data-book-status="{{:status}}" id="book-{{:~root.notification_id}}" >{{:status}} </small></li>
-				<li>Loan status: <small class="shop-bg-green time-day-left book-status-{{:book_id}}" data-loan-status="{{:~root.loan_status}}" id="loan-{{:~root.notification_id}}" >{{:~root.loan_status}} </small></li>
-			</ul>
-			{{:description}}
-			<div>Loan period: <strong>{{:loan_period}} days</strong></div>
-			<div class="margin-bottom-40" id="actionButtonDiv_{{:book_id}}">
-				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg approveButton"
-					id="approveButton-{{:~root.notification_id}}" data-book-id='{{:book_id}}'
-					data-notification-id="{{:~root.notification_id}}"  data-type="{{:~root.type}}">APPROVE</button>
-				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg rejectButton"
-					id="rejectButton-{{:~root.notification_id}}" data-book-id='{{:book_id}}'
-					data-notification-id="{{:~root.notification_id}}" data-type="{{:~root.type}}">REJECT</button>
-				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg returnButton"
-					id="returnButton-{{:~root.notification_id}}" data-book-id='{{:book_id}}'
-					data-notification-id="{{:~root.notification_id}}"  data-type="{{:~root.type}}">RETURN</button>
-			</div><!--/end product quantity-->
-
-		</div>
-	{{/for}}
-</script>
-<script id="replyMessageTemplate" type="text/x-jsrender">
-    <div class="form-group">
-        <label for="replyMessage">Reply message:</label>
-        <textarea class="form-control" rows="9" id="replyMessage_{{:notification_id}}"></textarea>
-    </div>
-    <button type="button" data-notification-id="{{:notification_id}}" data-sender="{{:sender}}" class="btn-u btn-u-sea-shop btn-u-lg notificationReplyButton" >REPLY</button>
-    <button type="button" data-notification-id="{{:notification_id}}" data-sender="{{:sender}}" class="btn-u shop-bg-red btn-u-lg notificationDeleteButton" >DELETE</button>
-</script>
 <!--[if lt IE 9]>
     <script src="assets/plugins/respond.js"></script>
     <script src="assets/plugins/html5shiv.js"></script>

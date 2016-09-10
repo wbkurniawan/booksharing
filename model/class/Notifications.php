@@ -77,6 +77,16 @@ class Notifications
             return false;
         }
     }
+    public function setAllStatusByUser($userId,$status){
+        try{
+            $query = "UPDATE booksharing.notification SET status = " . $this->db->quote($status) ." 
+                  WHERE user_id = ". $userId." ;";
+            $this->db->execute($query);
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
 
     private function loadNotification($userId=null,$status=null,$limit=null){
 
@@ -117,12 +127,21 @@ class Notifications
                     FROM `booksharing`.`notification`
                     LEFT JOIN `booksharing`.`loan` ON `notification`.`loan_id` = `loan`.`loan_id` 
                     LEFT JOIN `booksharing`.`book` ON `notification`.`book_id` = `book`.`book_id` 
-                    ".$filterQuery." ORDER by `notification`.`timestamp` DESC ".$limitQuery.";";
+                    ".$filterQuery." ORDER BY `loan`.`status` ASC, `notification`.`timestamp` DESC ".$limitQuery.";";
 
         $this->notifications = $this->db->selectArray($query);
+        $this->calculateTimeElapsed();
         $this->loadNotificationUser();
     }
 
+    private function calculateTimeElapsed(){
+
+        foreach ($this->notifications as $index => $notification){
+            if(isset($notification["timestamp"])){
+                $this->notifications[$index]["time_elapsed"] = $this->timeElapsedInString($notification["timestamp"]);
+            }
+        }
+    }
     private function loadNotificationUser(){
         $users = array();
         foreach ($this->notifications as $index => $notification){
@@ -163,4 +182,32 @@ class Notifications
         }
     }
 
+    private function timeElapsedInString($datetime, $full = false) {
+        $now = new DateTime;
+        $ago = new DateTime($datetime);
+        $diff = $now->diff($ago);
+
+        $diff->w = floor($diff->d / 7);
+        $diff->d -= $diff->w * 7;
+
+        $string = array(
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        );
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+
+        if (!$full) $string = array_slice($string, 0, 1);
+        return $string ? implode(', ', $string) . ' ago' : 'just now';
+    }
 }

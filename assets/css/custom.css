@@ -191,3 +191,7 @@ a#add-new-author {
 .action-button-div {
     margin-top: 10px;
 }
+.x-small-cursive {
+    font-size: x-small;
+    font-style: italic;
+}

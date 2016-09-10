@@ -17,14 +17,16 @@ if(!isset($_SESSION["user"])){
     die();
 }
 
-$notificationId = isset($_POST["notificationId"])?$_POST["notificationId"]:0;
 $status = isset($_POST["status"])?$_POST["status"]:0;
 
-if($status===0 or $notificationId===0){
+$userSession =  unserialize($_SESSION["user"]);
+$userId = $userSession->userId;
+
+if($status===0){
     echo 0;
     die();
 }
 
-$notification = new Notifications($notificationId);
-$notification->setStatus($status);
+$notification = new Notifications();
+$notification->setAllStatusByUser($userId,$status);
 echo 1;

@@ -147,7 +147,11 @@ class User
         }
 
         $currentUserId =  isset($userId)?$userId:$this->userId;
-        $query = "SELECT count(*) AS total FROM booksharing.notification WHERE user_id = ".$currentUserId." AND status = 'NEW';";
+//        $query = "SELECT count(*) AS total FROM booksharing.notification WHERE user_id = ".$currentUserId." AND status = 'NEW';";
+        $query = "SELECT count(*) as total FROM booksharing.notification a
+                    LEFT JOIN booksharing.loan b USING(loan_id) WHERE a.user_id = ".$currentUserId."
+                    AND (b.status IN ('".LOAN_STATUS_REQUESTED."','".LOAN_STATUS_BORROWED."')
+                    OR a.status = '".NOTIFICATION_STATUS_NEW."');";
         $row = $this->db->selectValue($query);
         if($row!==false){
             return $row;
