@@ -1,18 +1,27 @@
 <?php
 $bookId = isset($_GET["id"])?$_GET["id"]:0;
-$lock = true;
-include_once(__DIR__.'/lock.php');
-include_once(__DIR__.'/header.php');
+include_once(__DIR__.'/model/class/Books.php');
 include_once(__DIR__.'/model/class/Authors.php');
 include_once(__DIR__.'/model/class/UserSession.php');
-
+$lock = true;
+include_once(__DIR__.'/lock.php');
 if(!isset($_SESSION["user"])){
     header("Location: login.php");
+    die();
 }
 
 $userSession =  unserialize($_SESSION["user"]);
 $userId = $userSession->userId;
-$isAdmin = $userSession->admin;
+$isAdmin = (integer)$userSession->admin;
+
+$book = new Books($bookId);
+$owner = $book->getOwner();
+if($bookId!=0){
+    if($userId!=$owner and !$isAdmin){
+        header("Location: index.php");
+        die();
+    }
+}
 
 $json = file_get_contents("http://$_SERVER[HTTP_HOST]/booksharing/api/categories");
 $categories= json_decode($json);
@@ -24,6 +33,7 @@ $authors = $author->getAuthors();
 //print_r($authors);
 //echo "</pre>";
 
+include_once(__DIR__.'/header.php');
 ?>
     <link rel="stylesheet" href="assets/css/bootstrap-multiselect.css" type="text/css"/>
 	<input type="hidden" id="bookId" value="<?=$bookId?>">

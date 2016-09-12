@@ -31,6 +31,28 @@ $app->get('/categories', function (){
     return $response;
 });
 
+$app->get('/authors', function (){
+    $response = new Response();
+    $response->headers->set('Content-Type','application/json;charset=utf-8');
+
+    $author = new Authors();
+    $author->setInJson();
+    $result = $author->getAuthors();
+    $response->setContent($result);
+    return $response;
+});
+
+$app->get('/authors/{id}', function ($id) use($app) {
+    $response = new Response();
+    $response->headers->set('Content-Type','application/json;charset=utf-8');
+
+    $author = new Authors();
+    $author->setInJson();
+    $result = $author->getAuthorsById($id);
+    $response->setContent($result);
+    return $response;
+});
+
 $app->get('/books/{id}', function ($id) use($app) {
     $response = new Response();
     $response->headers->set('Content-Type','application/json;charset=utf-8');

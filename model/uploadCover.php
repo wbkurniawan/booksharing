@@ -88,7 +88,7 @@ try {
 
     $book = new Books($bookId);
     $book->setImage($fileName);
-    $book->saveProperties();
+    $book->saveProperties(false);
 
     $img = new image;
 

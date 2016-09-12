@@ -12,10 +12,15 @@ class Authors
 {
     private $authors;
     private $filters;
+    private $inJSON = false;
 
     public function __construct()
     {
         $this->db = new Connect(Connect::DBSERVER);
+    }
+
+    public function setInJson($inJSON=true){
+        $this->inJSON = $inJSON;
     }
 
     public function getAuthorsByBookId($bookId){
@@ -27,18 +32,18 @@ class Authors
                         `booksharing`.`book_author` ON `author`.`author_id` = `book_author`.`author_id`
                   WHERE `book_author`.`book_id` = ".$bookId." ;";
         $this->authors = $this->db->selectArray($query);
-        return $this->authors;
+        return $this->getResult();
     }
 
     public function getAuthorsById($authorId){
         $this->filters[] = " `author`.`author_id` = ".$authorId." ";
         $this->loadAuthors();
-        return $this->authors;
+        return $this->getResult();
     }
 
     public function getAuthors(){
         $this->loadAuthors();
-        return $this->authors;
+        return $this->getResult();
     }
 
     private function loadAuthors(){
@@ -56,4 +61,29 @@ class Authors
         $this->authors = $this->db->selectArray($query);
     }
 
+    public function setNameById($authorId,$name){
+        $query = "UPDATE booksharing.author SET name = " . $this->db->quote($name) . " WHERE author_id = " .$authorId;
+        $this->db->execute($query);
+    }
+    public function deleteById($authorId){
+        $query = "DELETE FROM booksharing.author WHERE author_id = " .$authorId;
+        $this->db->execute($query);
+    }
+    public function add($name){
+        $query = "INSERT INTO booksharing.author (name) values (" . $this->db->quote($name) . ");";
+        $this->db->execute($query);
+    }
+
+    private function getResult(){
+        if($this->inJSON){
+            return $this->toJSON();
+        }else{
+            return $this->authors;
+        }
+    }
+
+    public function toJSON(){
+        $result = ['data'=>$this->authors];
+        return json_encode($result);
+    }
 }

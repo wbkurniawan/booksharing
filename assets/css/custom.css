@@ -195,3 +195,7 @@ a#add-new-author {
     font-size: x-small;
     font-style: italic;
 }
+
+.edit-author-div {
+    width: 80%;
+}

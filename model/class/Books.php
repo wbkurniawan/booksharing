@@ -425,7 +425,7 @@ class Books
         }
     }
 
-    public function saveProperties(){
+    public function saveProperties($resetAuthor=true){
         if(count($this->properties)==0){
             throw new Exception ("no new property found");
         }
@@ -433,11 +433,14 @@ class Books
         if(isset($this->bookId)){
             $this->properties["book_id"] = $this->bookId;
             $taBook = new TableAdapter($this->db,"booksharing","book");
-            $taBookAuthor = new TableAdapter($this->db,"booksharing","book_author");
             $result =$taBook->insert($this->properties,true);
 
-            $query = "DELETE FROM booksharing.book_author WHERE book_id = " .$this->bookId;
-            $this->db->execute($query);
+            $taBookAuthor = new TableAdapter($this->db,"booksharing","book_author");
+            if($resetAuthor){
+                $query = "DELETE FROM booksharing.book_author WHERE book_id = " .$this->bookId;
+                $this->db->execute($query);
+            }
+
             foreach ($this->authorIds as $authorId){
                 if($authorId>0){
                     $taBookAuthor->insert(["book_id"=>(integer)$this->bookId,"author_id"=>(integer)$authorId]);
