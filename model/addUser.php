@@ -12,12 +12,21 @@ include_once(__DIR__.'/../library/db/Connect.class.php');
 include_once(__DIR__.'/../lock.php');
 header('Content-type: application/json');
 
+$invitation = isset($_POST["invitation"])?trim($_POST["invitation"]):"";
 $firstName = isset($_POST["firstName"])?trim($_POST["firstName"]):"";
 $lastName = isset($_POST["lastName"])?trim($_POST["lastName"]):"";
 $email = isset($_POST["email"])?trim($_POST["email"]):"";
 $password = isset($_POST["password"])?trim($_POST["password"]):"";
 $phone = isset($_POST["phone"])?trim($_POST["phone"]):"";
 $newsletterSubscriber= isset($_POST["newsletterSubscriber"])?1:0;
+
+if($invitation==""){
+    $response = array('error' => true,
+        'error_message' => 'invitation invalid',
+        'error_code' => 403);
+    echo json_encode($response);
+    die();
+}
 
 if($firstName=="" or $lastName=="" or $email=="" or $password==""){
     $response = array('error' => true,
@@ -29,7 +38,11 @@ if($firstName=="" or $lastName=="" or $email=="" or $password==""){
 
 try{
     $user = new User();
-    $user->add($firstName,$lastName,$password,$email,USER_STATUS_NOT_VERIFIED,$phone,$newsletterSubscriber);
+    if(!$user->validateInvitation($invitation)){
+        throw new Exception("invitation invalid");
+    }
+
+    $user->add($firstName,$lastName,$password,$email,USER_STATUS_NOT_VERIFIED,$phone,$newsletterSubscriber,$invitation);
     $result = $user->login($email,$password);
     if($result) {
         $_SESSION["user"] = serialize($user->getUserSession());

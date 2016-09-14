@@ -199,3 +199,7 @@ a#add-new-author {
 .edit-author-div {
     width: 80%;
 }
+
+label.input {
+    display: inherit;
+}

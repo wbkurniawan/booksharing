@@ -65,7 +65,7 @@ class User
         }
     }
 
-    public function add($firstName,$lastName,$password,$email,$status=USER_STATUS_NOT_VERIFIED,$phone="",$newsletterSubscriber=0){
+    public function add($firstName,$lastName,$password,$email,$status=USER_STATUS_NOT_VERIFIED,$phone="",$newsletterSubscriber=0,$invitation){
         $ta = new TableAdapter($this->db,'booksharing','user');
         $token = uniqid();
         $newUser = ["first_name"=>$firstName,
@@ -73,6 +73,7 @@ class User
                     "email"=>$token,
                     "status"=>$status,
                     "phone"=>$phone,
+                    "invitation_id"=>$invitation,
                     "newsletter_subscriber"=>$newsletterSubscriber];
         $ta->insert($newUser);
         $query = "UPDATE booksharing.user 
@@ -100,6 +101,12 @@ class User
         }else{
             throw new Exception("user id not found");
         }
+    }
+
+    public function validateInvitation($invitation){
+        $query = "SELECT count(*) as valid FROM booksharing.invitation WHERE invitation_id = ".$this->db->quote(trim($invitation))." and expired_date > now()";
+        $valid = (integer) $this->db->selectValue($query);
+        return $valid==1?true:false;
     }
 
     private function loadUser($userId){

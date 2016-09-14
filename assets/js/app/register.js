@@ -18,7 +18,7 @@
                     if(!data.error){
                         window.location.href = '/booksharing/index.php';
                     }else {
-                        alert(data.error_message);
+                        alertify.error(data.error_message);
                     }
                 });
             },
@@ -49,6 +49,10 @@
                     required: true
                 },
                 lastname:
+                {
+                    required: true
+                },
+                invitation:
                 {
                     required: true
                 },
@@ -83,6 +87,10 @@
                 lastName:
                 {
                     required: 'Please select your last name'
+                },
+                invitation:
+                {
+                    required: 'Please enter the invitation code. Contact +49176888888 to get your code.'
                 },
                 terms:
                 {

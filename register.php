@@ -60,14 +60,14 @@ include_once(__DIR__.'/header.php');
                         <div class="login-input reg-input">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <section>
+                                    <section class="register-section">
                                         <label class="input">
                                             <input type="text" name="firstName" placeholder="First name" class="form-control">
                                         </label>
                                     </section>
                                 </div>
                                 <div class="col-sm-6">
-                                    <section>
+                                    <section class="register-section">
                                         <label class="input">
                                             <input type="text" name="lastName" placeholder="Last name" class="form-control">
                                         </label>
@@ -75,24 +75,29 @@ include_once(__DIR__.'/header.php');
                                 </div>
                             </div>
 
-                            <section>
+                            <section class="register-section">
                                 <label class="input">
                                     <input type="email" name="email" placeholder="Email address" class="form-control">
                                 </label>
                             </section>
-                            <section>
+                            <section class="register-section">
                                 <label class="input">
                                     <input type="password" name="password" placeholder="Password" id="password" class="form-control">
                                 </label>
                             </section>
-                            <section>
+                            <section class="register-section">
                                 <label class="input">
                                     <input type="password" name="passwordConfirm" placeholder="Confirm password" class="form-control">
                                 </label>
                             </section>
-                            <section>
+                            <section class="register-section">
                                 <label class="input">
                                     <input type="tel" name="phone" placeholder="Phonenumber" class="form-control">
+                                </label>
+                            </section>
+                            <section class="register-section">
+                                <label class="input">
+                                    <input type="text" name="invitation" placeholder="Invitation Code" class="form-control">
                                 </label>
                             </section>
                         </div>
@@ -111,7 +116,7 @@ include_once(__DIR__.'/header.php');
                     </form>
 
                     <div class="margin-bottom-20"></div>
-                    <p class="text-center">Already have an account? <a href="shop-ui-login.html">Sign In</a></p>
+                    <p class="text-center">Already have an account? <a href="login.php">Sign In</a></p>
                 </div>
             </div><!--/end row-->
         </div><!--/end container-->
@@ -148,6 +153,9 @@ include_once(__DIR__.'/header.php');
 <script src="assets/plugins/jquery/jquery.min.js"></script>
 <script src="assets/plugins/jquery/jquery-migrate.min.js"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Alertify.js -->
+<script src="//cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js"></script>
 
 <!-- Get the data -->
 <script src="assets/js/jsrender.js"></script>

@@ -94,7 +94,7 @@ include_once(__DIR__.'/header.php');
             {{for data}}
                 <tr>
                     <td>{{:name}}</td>
-                    <td width="5%">
+                    <td width="15%">
                     	<a href="#" class="edit-button" data-name="{{:name}}" data-author-id="{{:author_id}}"><i class="fa fa-pencil" title="Edit" aria-hidden="true"></i></a>
                     	&nbsp;<a href="#" class="delete-button" data-name="{{:name}}" data-author-id="{{:author_id}}"><i class="fa fa-trash-o" title="Delete" aria-hidden="true"></i></a>
 					</td>
