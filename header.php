@@ -86,7 +86,7 @@ if(isset($_SESSION["user"])){
     </table>
 	<div class="popup-menu-header">
 	    <div><a href="list.php">My Books</a><div>
-	    <div><a href="notification.php">Notifications</a><div>
+	    <div><a href="notification.php">Activites</a><div>
 	    <div><a href="user.php">Personal Data</a><div>
 	    <div><a href="model/logout.php">Log out</a><div>
 	</div>
@@ -107,7 +107,7 @@ if(isset($_SESSION["user"])){
 
             <div class="container">
                 <div class="row">
-                    <a href="#">Komisi Perpustakaan</a> at <a href="#">FeG Immanuel Berlin</a>
+                    commisioned by <a href="http://immanuel-berlin.de/">FeG Immanuel Berlin</a>
                 </div>
             </div><!--/container-->
         </div>
