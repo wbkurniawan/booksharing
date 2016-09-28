@@ -7,29 +7,23 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 <!-- CSS Page Style -->
 <link rel="stylesheet" href="assets/css/pages/log-reg-v3.css">
 
-<!--=== Breadcrumbs v4 ===-->
+    <!--=== Breadcrumbs v4 ===-->
     <div class="breadcrumbs-v4">
         <div class="container">
-            <span class="page-name">Log In</span>
-            <h1>BOOK <span class="shop-green">SHARING</span></h1>
-            <!--
-            <ul class="breadcrumb-v4-in">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="">Product</a></li>
-                <li class="active">Log In</li>
-            </ul> /end breadcrumbs -->
-        </div><!--/end container-->
+            <h1>"Thy word is a lamp unto my feet,<br>and a light unto my path."</h1>
+            <span class="page-name"><i>- Psalm 119:105 -</i></span>
+        </div>
     </div>
     <!--=== End Breadcrumbs v4 ===-->
 
-    <!--=== Login ===-->
+    <!--=== Shop Product ===-->
     <div class="log-reg-v3 content-md">
         <div class="container">
             <div class="row">
                 <div class="col-md-7 md-margin-bottom-50">
-                    <h2 class="welcome-title">Welcome to our Booksharing Community</h2>
+                    <h2 class="welcome-title">Welcome to our Book-Sharing Community</h2>
                     <p>Got some good books worth reading? Or wanna find books of various categories? 
-                       Become part of a growing community, share them with us or let others share them to you.
+                       Become part of a growing community, share them with us or let others share them with you.
                     </p><br>
                     <div class="row margin-bottom-50">
                         <div class="col-sm-4 md-margin-bottom-20">
@@ -47,19 +41,18 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
                         <div class="col-sm-4">
                             <div class="site-statistics">
                                 <span>1</span>
-                                <small>purpose</small>
+                                <small>purpose:</small>
                             </div>
                         </div>
                     </div>
                     <div class="members-number">
                         <h3>Soli <span class="shop-green">Deo</span> Gloria</h3>
-                        <img class="img-responsive" src="assets/img/map.png" alt="">
                     </div>
                 </div>
 
                 <div class="col-md-5">
                     <form id="sky-form1" class="log-reg-block sky-form">
-                        <h2>Log in to your account</h2>
+                        <h2>Login to your account</h2>
 						<input type="hidden" id="referer" name="referer" value="<?=$referer?>">
                         <section>
                             <label class="input login-input">
@@ -90,20 +83,6 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 <!--                            </div>-->
                         </div>
                         <button class="btn-u btn-u-sea-shop btn-block margin-bottom-20" type="submit">Log in</button>
-
-<!--                        <div class="border-wings">-->
-<!--                            <span>or</span>-->
-<!--                        </div>-->
-
-<!--                        <div class="row columns-space-removes">-->
-<!--                            <div class="col-lg-12 margin-bottom-10">-->
-<!--                                <button type="button" class="btn-u btn-u-md btn-u-fb btn-block"><i class="fa fa-facebook"></i> Facebook Log In</button>-->
-<!--                            </div>-->
-<!--                            <!--Twitter login-->
-<!--                            <div class="col-lg-6">-->
-<!--                                <button type="button" class="btn-u btn-u-md btn-u-tw btn-block"><i class="fa fa-twitter"></i> Twitter Log In</button>-->
-<!--                            </div>-->
-<!--                        </div>-->
                     </form>
 
                     <div class="margin-bottom-20"></div>
@@ -139,25 +118,15 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 		<div class="copyright">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6">
-						<p>
-							2014 &copy; Unify. ALL Rights Reserved.
-							<a target="_blank" href="https://twitter.com/htmlstream">Htmlstream</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-						</p>
-					</div>
-					<div class="col-md-6">
-						<ul class="list-inline sponsors-icons pull-right">
-							<li><i class="fa fa-facebook-square"></i></li>
-							<li><i class="fa fa-twitter-square"></i></li>
-							<li><i class="fa fa-pinterest-square"></i></li>
-						</ul>
-					</div>
+					<p align="center">
+						&copy; 2016 FeG Immanuel Berlin |
+						<a target="_blank" href="https://twitter.com/htmlstream">Disclaimer</a>
+					</p>
 				</div>
 			</div>
-		</div><!--/copyright-->
+		</div>
 	</div>
 	<!--=== End Footer v4 ===-->
-
 </div><!--/wrapper-->
 
 <!-- JS Global Compulsory -->
