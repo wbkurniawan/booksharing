@@ -22,22 +22,15 @@
         });
 
         $("#eventWrapper").on('click', '#cancelRequestButton', function(e){
-
-            //Todo: implement the cancel process
-            alert("Todo: class book -> add function to cancel request");
-            return false;
-            //==================//
-
             e.preventDefault();
             var bookId = $(this).data('book-id');
             $.ajax({
                 method: "POST",
-                url: "model/borrow.php",
-                data: {bookId:bookId,
-                       cancel:1}
+                url: "model/cancel.php",
+                data: {bookId:bookId}
             }).done(function( data ) {
                 if(!data.error){
-                    window.location.href = "success.php?cancel=1&id="+bookId;
+                    window.location.href = "book.php?id="+bookId;
                 }else {
                     if(data.error_code == 403){
                         console.log(data);

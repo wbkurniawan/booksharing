@@ -43,7 +43,7 @@ img.loader-popup-img {
 }
 
 .product-description.product-description-brd {
-    height: 150px;
+    min-height: 100px;
 }
 
 .new-notification-tr{
@@ -151,7 +151,7 @@ small.shop-bg-green.time-day-left {
 }
 
 li.like-icon {
-    margin: 0px 10px 0px 10px;
+    margin: 0px 6px 0px 6px;
     font-size: 18px;
 }
 

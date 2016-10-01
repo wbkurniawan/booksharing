@@ -39,6 +39,8 @@
                 url: "model/checkNotification.php"
             }).done(function (data) {
                 $("#newNotification").text(data);
+                window.newNotificationQty = data;
+                $("#newNotificationLink").text('Activities ('+window.newNotificationQty+')');
                 if (data > 0) {
                     $("#newNotification").show();
                 } else {
@@ -61,6 +63,9 @@
                     var template = $.templates("#userInfoTemplate");
                     var htmlOutput = template.render(data);
                     $("#userInfoContainer").html(htmlOutput);
+                    if(window.newNotificationQty>0){
+                        $("#newNotificationLink").text('Activities ('+window.newNotificationQty+')');
+                    }
                 }
             });
             $(".loader-popup-img").show();

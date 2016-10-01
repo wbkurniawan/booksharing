@@ -4,7 +4,7 @@ include_once (__DIR__.'/lock.php');
 include_once(__DIR__.'/header.php');
 
 $bookId = isset($_GET["bookId"])?$_GET["bookId"]:0;
-$pageTitle = "NOTIFICATION";
+$pageTitle = "ACTIVITIES";
 if($bookId>0){
 	$pageTitle = "BOOK HISTORY";
 }
@@ -92,25 +92,58 @@ if($bookId>0){
 			<tr id="notification-tr-{{:notification_id}}" class="notification-tr"
 				data-notification-id="{{:notification_id}}"
 			  	data-book-id="{{:book_id}}" data-loan-id="{{:loan_id}}" data-loan-status="{{:loan_status}}"
-			  	data-type="{{:type}}">
-				<td class="book-cover-thumbnail-td"><img class="book-cover-thumbnail-img" src="assets/img/book/s_{{:image}}"></td>
+			  	data-type="{{:type}}"  data-status="{{:status}}">
+				<td class="book-cover-thumbnail-td">
+<!--				<img class="book-cover-thumbnail-img" src="assets/img/book/s_{{:image}}"></td>-->
+				<img class="book-cover-thumbnail-img"
+					{{if type=='BORROW_REQUEST' && loan_status=='REQUESTED'}}
+						src="assets/img/question.png"
+					{{else type=='BORROW_REQUEST' && loan_status=='REJECTED'}}
+						src="assets/img/reject.png"
+					{{else type=='BORROW_REJECT'}}
+						src="assets/img/reject.png"
+					{{else type=='BORROW_REQUEST' && loan_status=='BORROWED'}}
+						src="assets/img/accept.png"
+					{{else type=='BORROW_REQUEST' && loan_status=='RETURNED'}}
+						src="assets/img/accept.png"
+					{{else type=='BORROW_ACCEPT'}}
+						src="assets/img/accept.png"
+					{{else type=='BORROW_STATUS' && loan_status=='RETURNED'}}
+						src="assets/img/accept.png"
+					{{else type=='BORROW_STATUS'}}
+						src="assets/img/exclamation.png"
+					{{else type=='BOOK_APPROVAL_REQUEST'}}
+						src="assets/img/question.png"
+					{{else type=='SYSTEM'}}
+						src="assets/img/exclamation.png"
+                    {{/if}}
+
+				></td>
                     <td>
                     	<div>
-                    		{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt;
-                    		{{if type=='BORROW_REQUEST'}}
-                    			is requesting
+
+                    		{{if type=='BORROW_REQUEST' && loan_status=='REQUESTED'}}
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; is requesting <strong>"{{:title}}"</strong>
+							{{else type=='BORROW_REQUEST' && loan_status=='REJECTED'}}
+								You have rejected the request from {{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; to borrow <strong>"{{:title}}"</strong>
                     		{{else type=='BORROW_REJECT'}}
-                    			rejected your request for
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; rejected your request to borrow <strong>"{{:title}}"</strong> with a message: <strong>{{:message}}</strong>
+                    		{{else type=='BORROW_REQUEST' && loan_status=='BORROWED'}}
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; is currently borrowing your book <strong>"{{:title}}"</strong>
+                    		{{else type=='BORROW_REQUEST' && loan_status=='RETURNED'}}
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has returned your book <strong>"{{:title}}"</strong>
                     		{{else type=='BORROW_ACCEPT'}}
-                    			accepted your request for
-                    		{{else type=='BORROW_STATUS'}}
-                    			reminds you about the due date of
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; accepted your request for <strong>"{{:title}}"</strong>
+                    		{{else type=='BORROW_STATUS' && loan_status=='RETURNED'}}
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has marked <strong>"{{:title}}"</strong> as returned from you.
+							{{else type=='BORROW_STATUS'}}
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; reminds you about the due date of <strong>"{{:title}}"</strong>
                     		{{else type=='BOOK_APPROVAL_REQUEST'}}
-                    			has added a new book
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has added a new book <strong>"{{:title}}"</strong> you need to approve
                     		{{else type=='SYSTEM'}}
-                    			has sent system notification
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has sent system notification: <strong>{{:message}}</strong>
                     		{{/if}}
-                    		<strong>{{:title}}</strong>
+
 						</div>
 						<div class="x-small-cursive">{{:time_elapsed}}</div>
 						<div class="action-button-div" id="actionButtonDiv-{{:notification_id}}">
@@ -123,6 +156,9 @@ if($bookId>0){
 							<button type="button" class="btn-u btn-u-sea-shop returnButton"
 								id="returnButton-{{:notification_id}}" data-book-id='{{:book_id}}'
 								data-notification-id="{{:notification_id}}"  data-type="{{:type}}">RETURN</button>
+							<button type="button" class="btn-u btn-u-sea-shop readNotificationButton"
+								id="readNotificationButton-{{:notification_id}}" data-book-id='{{:book_id}}'
+								data-notification-id="{{:notification_id}}"  data-type="{{:type}}">OK</button>
 						</div>
 					</td>
 			</tr>

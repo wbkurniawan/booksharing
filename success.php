@@ -103,10 +103,10 @@ include_once(__DIR__.'/header.php');
                     <button id="continueBrowsingButton"type="button" style="width: 180px" class="btn-u btn-u-sea-shop">Continue browsing</button>
                 </div>
                 <div class="text-left" style="margin-bottom:5px">
-                    <button id="cancelRequestButton" type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Cancel request</button>
+                    <button data-book-id={{:book_id}} id="cancelRequestButton" type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Cancel request</button>
                 </div>
                 <div class="text-left" style="margin-bottom:5px">
-                    <button id="contactAdminButton" type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Contact admin</button>
+                    <button data-book-id={{:book_id}} id="contactAdminButton" type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Contact admin</button>
                 </div>
             </div>
         </div>

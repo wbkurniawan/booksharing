@@ -86,7 +86,7 @@ if(isset($_SESSION["user"])){
     </table>
 	<div class="popup-menu-header">
 	    <div><a href="list.php">My Books</a><div>
-	    <div><a href="notification.php">Activites</a><div>
+	    <div><a href="notification.php" id="newNotificationLink" >Activities</a><div>
 	    <div><a href="user.php">Personal Data</a><div>
 	    <div><a href="model/logout.php">Log out</a><div>
 	</div>
@@ -133,7 +133,7 @@ if(isset($_SESSION["user"])){
                 <div class="shop-badge badge-icons pull-right">
 <!--                    <a href="#">--><?//=$userGreeting?><!--<i class="fa fa-user" id="userIcon" --><?//=$loginIconStyle?><!-- ></i></a>-->
                     <i class="fa fa-user" id="userIcon" <?=$loginIconStyle?> ></i>
-                    <i class="fa fa-envelope-o" aria-hidden="true"></i><span id="newNotification" class="badge badge-notification">0</span>
+                    <i class="fa fa-bell-o" aria-hidden="true"></i><span id="newNotification" class="badge badge-notification">0</span>
                     <br>
                     <div class="badge-open" id="userInfoContainer">
                         <img class="loader-popup-img" src="assets/plugins/revolution-slider/rs-plugin/assets/loader.gif">

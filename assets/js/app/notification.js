@@ -59,6 +59,27 @@
             });
         });
 
+        $("#notificationContainer").on('click', '.readNotificationButton', function(e) {
+            var notificationId = $(this).data("notification-id");
+            $("#actionButtonDiv-"+notificationId).append("<img src='assets/img/loading.gif'>");
+            $.ajax({
+                method: "POST",
+                url: "model/readNotification.php",
+                data: { notificationId: notificationId}
+            }).done(function( data ) {
+                if(!data.error){
+                    $("#actionButtonDiv-"+notificationId).hide();
+                }else {
+                    if(data.error_code == 403){
+                        console.log(data);
+                        window.location.href = "login.php";
+                    }else{
+                        alertify.error(data.error_message);
+                    }
+                }
+            });
+        });
+
         $("#notificationContainer").on('click', '.rejectButton', function(e) {
             var bookId = $(this).data("book-id");
             var notificationId = $(this).data("notification-id");
@@ -102,22 +123,32 @@
         var approveButton = $("#approveButton-"+notificationId);
         var rejectButton = $("#rejectButton-"+notificationId);
         var returnButton = $("#returnButton-"+notificationId);
+        var readNotificationButton = $("#readNotificationButton-"+notificationId);
 
         var loanStatus = $(notification).data("loan-status");
+        var status = $(notification).data("status");
         var type = notification.data('type');
 
         if(type=='BORROW_REQUEST' && loanStatus == 'REQUESTED'){
             approveButton.show();
             rejectButton.show();
             returnButton.hide();
-        }else if(type=='BORROW_REQUEST' && loanStatus == 'BORROWED' ){
+            readNotificationButton.hide();
+        }else if(type=='BORROW_REQUEST' && loanStatus == 'BORROWED' ) {
             approveButton.hide();
             rejectButton.hide();
             returnButton.show();
+            readNotificationButton.hide();
+        }else if(status=='NEW'){
+            approveButton.hide();
+            rejectButton.hide();
+            returnButton.hide();
+            readNotificationButton.show();
         }else{
             approveButton.hide();
             rejectButton.hide();
             returnButton.hide();
+            readNotificationButton.hide();
         }
 
     }
@@ -130,8 +161,8 @@
             url: "model/loadNotification.json.php",
             data: {bookId:bookId}
         }).done(function( data ) {
+            $.views.settings.allowCode(true);
             var template = $.templates("#notificationTemplate");
-
             var htmlOutput = template.render(data);
             $("#notificationContainer").html(htmlOutput);
             $(".notification-tr").each(function( index ) {
@@ -139,14 +170,14 @@
             });
         });
 
-        $.ajax({
-            method: "POST",
-            url: "model/setNotificationStatus.php",
-            data: {status: 'READ' }
-        }).done(function( data ) {
-            if(data==0){
-                console.log("Warning: can not update the notification status");
-            }
-        });
+        // $.ajax({
+        //     method: "POST",
+        //     url: "model/setNotificationStatus.php",
+        //     data: {status: 'READ' }
+        // }).done(function( data ) {
+        //     if(data==0){
+        //         console.log("Warning: can not update the notification status");
+        //     }
+        // });
     }
 }();

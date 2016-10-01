@@ -127,7 +127,7 @@ class Notifications
                     FROM `booksharing`.`notification`
                     LEFT JOIN `booksharing`.`loan` ON `notification`.`loan_id` = `loan`.`loan_id` 
                     LEFT JOIN `booksharing`.`book` ON `notification`.`book_id` = `book`.`book_id` 
-                    ".$filterQuery." ORDER BY `loan`.`status` ASC, `notification`.`timestamp` DESC ".$limitQuery.";";
+                    ".$filterQuery." ORDER BY `notification`.`timestamp` DESC ".$limitQuery.";";
 
         $this->notifications = $this->db->selectArray($query);
         $this->calculateTimeElapsed();

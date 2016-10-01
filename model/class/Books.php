@@ -267,8 +267,25 @@ class Books
         //todo: get message from dictionary
         $this->handleRequest(LOAN_STATUS_REQUESTED,LOAN_STATUS_BORROWED,true,false,$period,BOOK_STATUS_BORROWED,NOTIFICATION_TYPE_BORROW_ACCEPT,"Your request has been accepted");
     }
-    public function cancelRequest(){
-        $this->handleRequest(LOAN_STATUS_REQUESTED,LOAN_STATUS_CANCELED,false,false,null,BOOK_STATUS_AVAILABLE,null,null);
+    public function cancelRequest($userId){
+        if(isset($this->bookId)){
+            $query = " SELECT 
+                            loan_id
+                        FROM
+                            booksharing.loan
+                        WHERE
+                            status = ".$this->db->quote(LOAN_STATUS_REQUESTED)." AND user_id = ".$userId." AND book_id = ".$this->bookId;
+            $loanId = $this->db->selectValue($query);
+            if($loanId==false){
+                throw new Exception ("book is not reserved or user invalid");
+            }else{
+                $this->handleRequest(LOAN_STATUS_REQUESTED,LOAN_STATUS_CANCELED,false,false,null,BOOK_STATUS_AVAILABLE,null,null);
+            }
+        }else{
+            throw new Exception ("bookId required");
+        }
+
+
     }
 
     public function returnBook(){
@@ -297,6 +314,11 @@ class Books
             $query = "UPDATE booksharing.loan SET 
                         status = ".$this->db->quote($loanStatusAfter)."  ".$periodQuery ." ".$startDateQuery ." ".$endDateQuery."
                       WHERE loan_id = " .$loanId;
+            $this->db->execute($query);
+
+            //update notification status
+            $query = "UPDATE booksharing.notification SET status = ".$this->db->quote(NOTIFICATION_STATUS_PROCESSED)." WHERE 
+                      loan_id = " .$loanId;
             $this->db->execute($query);
 
             //update book status

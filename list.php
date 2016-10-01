@@ -202,7 +202,7 @@ include_once(__DIR__.'/header.php');
 			</div>
 		</div>
 	{{/for}}
-	{{if filter != "CATEGORY"}}
+	{{if filter != "CATEGORY" && data.length >= 4}}
 		<div class="margin-bottom-40">
 				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="addButton" data-book-id='{{:book_id}}'>ADD NEW BOOK</button>
         </div>
@@ -229,6 +229,9 @@ include_once(__DIR__.'/header.php');
 							{{else status=="RESERVED"}}
 								Requested by me at {{:~dateFormat(loan[0].timestamp)}}
 								for {{:loan_period}} days
+								<div class="action-button-div">
+									<button  class="cancelRequestButton btn-u btn-u-sea-shop" data-book-id='{{:book_id}}'>CANCEL</button>
+								</div>
 							{{/if}}
 						</div>
 					</div>

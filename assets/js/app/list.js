@@ -99,6 +99,33 @@
                 }
             });
         });
+        $("#eventWrapper").on('click', '.cancelRequestButton', function(e){
+            e.preventDefault();
+            var bookId = $(this).data('book-id');
+
+            alertify.confirm("Cancel request","Do you want to cancel your request?",
+                function(){
+                    $.ajax({
+                        method: "POST",
+                        url: "model/cancel.php",
+                        data: {bookId:bookId}
+                    }).done(function( data ) {
+                        if(!data.error){
+                            window.location.href = "list.php";
+                        }else {
+                            if(data.error_code == 403){
+                                console.log(data);
+                                window.location.href = "login.php";
+                            }else{
+                                alert(data.error_message);
+                            }
+                        }
+                    });
+                },
+                function(){
+                    alertify.error('Cancel');
+                });
+        });
     });
 
     function dateFormat(value) {
