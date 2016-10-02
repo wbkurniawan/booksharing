@@ -130,7 +130,7 @@ class Books
         return $this->getResult();
     }
     public function getBooksLatest(){
-
+        $this->filters[] = "`book`.`status` IN ('".BOOK_STATUS_AVAILABLE."','".BOOK_STATUS_RESERVED."','".BOOK_STATUS_BORROWED."') ";
         $this->orders = ["`book`.`enter_date` DESC"];
         $this->loadBooks(1,BOOKS_VIEW_LIMIT_LATEST);
         return $this->getResult();

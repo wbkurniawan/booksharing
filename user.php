@@ -100,8 +100,8 @@ include_once(__DIR__.'/header.php');
 <!--<script src="assets/js/plugins/style-switcher.js"></script>-->
 <script>
     jQuery(document).ready(function() {
-        App.init();
-        App.initScrollBar();
+//        App.init();
+//        App.initScrollBar();
 //		Load Carousel after books -> moved to book.js
 //		OwlCarousel.initOwlCarousel();
 //        StyleSwitcher.initStyleSwitcher();
@@ -125,14 +125,14 @@ include_once(__DIR__.'/header.php');
 						<label for="email">Email*: </label>
 						<input type="text" id="emailInput" name="email" value="{{:email}}" class="form-control" placeholder="Email">
 					</div>
-					<div class="form-group">
-						<label for="password">Password*: </label>
-						<input type="password" id="passwordInput" name="password" class="form-control" placeholder="Change password">
-					</div>
-					<div class="form-group">
-						<label for="retype-password">Re-type password*: </label>
-						<input type="password"  id="retypePasswordInput" name="retype-password" class="form-control" placeholder="Retype password">
-					</div>
+<!--					<div class="form-group">-->
+<!--						<label for="password">Password*: </label>-->
+<!--						<input type="password" id="passwordInput" name="password" class="form-control" placeholder="Change password">-->
+<!--					</div>-->
+<!--					<div class="form-group">-->
+<!--						<label for="retype-password">Re-type password*: </label>-->
+<!--						<input type="password"  id="retypePasswordInput" name="retype-password" class="form-control" placeholder="Retype password">-->
+<!--					</div>-->
 					<div class="form-group">
 						<label for="phone">Phone: </label>
 						<input type="text" name="phone" value="{{:phone}}" class="form-control" placeholder="Phone">
@@ -141,6 +141,7 @@ include_once(__DIR__.'/header.php');
 		{{/for}}
 		<div class="margin-bottom-40">
 			<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="saveButton">SAVE</button>
+			<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="changePasswordButton" style="float:right">CHANGE PASSWORD</button>
 		</div>
 	</div>
 

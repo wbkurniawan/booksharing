@@ -37,7 +37,8 @@ class User
                 "email"=>$this->email,
                 "status"=>$this->status,
                 "total_borrowed"=>$this->totalBorrowed,
-                "admin"=>$this->admin
+                "admin"=>$this->admin,
+                "phone"=>$this->phone
             ];
         }else{
             return null;
@@ -84,7 +85,7 @@ class User
         $this->db->execute($query);
     }
 
-    public function update($firstName,$lastName,$password,$email,$phone=""){
+    public function update($firstName,$lastName,$email,$phone=""){
         if(isset($this->userId)){
             $ta = new TableAdapter($this->db,'booksharing','user');
             $newUser = ["user_id" => $this->userId,
@@ -93,11 +94,33 @@ class User
                 "email"=>$email,
                 "phone"=>$phone];
             $ta->insert($newUser,true);
-            $query = "UPDATE booksharing.user 
-                  SET password = AES_ENCRYPT(".$this->db->quote($password).",
+        }else{
+            throw new Exception("user id not found");
+        }
+    }
+
+    public function updatePassword($oldPassword,$newPassword){
+        if(isset($this->userId)){
+
+            $query = "SELECT 
+                `user_id`
+            FROM
+                booksharing.user
+            WHERE
+                user_id = ".$this->userId." 
+                AND password = AES_ENCRYPT(".$this->db->quote($oldPassword).",
+                    SHA2('mCe3AAtKLnRt7NskAXmufJMDCgqA73tQ5sQ4Uc3Wumr4W6QyAe',512));";
+            $row = $this->db->select($query);
+
+            if(count($row)>0){
+                $query = "UPDATE booksharing.user 
+                  SET password = AES_ENCRYPT(".$this->db->quote($newPassword).",
                       SHA2('mCe3AAtKLnRt7NskAXmufJMDCgqA73tQ5sQ4Uc3Wumr4W6QyAe',512))
                   WHERE user_id = " .$this->userId;
-            $this->db->execute($query);
+                $this->db->execute($query);
+            }else{
+                throw new Exception("user id not found or password doesn't match");
+            }
         }else{
             throw new Exception("user id not found");
         }

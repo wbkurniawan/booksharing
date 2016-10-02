@@ -24,13 +24,10 @@ if(!isset($_SESSION["user"])){
 $userSession =  unserialize($_SESSION["user"]);
 $userId = $userSession->userId;
 
-$firstName = isset($_POST["firstName"])?trim($_POST["firstName"]):"";
-$lastName = isset($_POST["lastName"])?trim($_POST["lastName"]):"";
-$email = isset($_POST["email"])?trim($_POST["email"]):"";
-//$password = isset($_POST["password"])?trim($_POST["password"]):"";
-$phone = isset($_POST["phone"])?trim($_POST["phone"]):"";
+$password = isset($_POST["password"])?trim($_POST["password"]):"";
+$newPassword = isset($_POST["new-password"])?trim($_POST["new-password"]):"";
 
-if($firstName=="" or $lastName=="" or $email==""){
+if($password=="" or $newPassword==""){
     $response = array('error' => true,
         'error_message' => 'parameter missing',
         'error_code' => 403);
@@ -40,7 +37,7 @@ if($firstName=="" or $lastName=="" or $email==""){
 
 try{
     $user = new User($userId);
-    $user->update($firstName,$lastName,$email,$phone);
+    $user->updatePassword($password,$newPassword);
 
     $response = array('error' => false,
         'error_message' => '');

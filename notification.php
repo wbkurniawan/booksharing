@@ -106,6 +106,8 @@ if($bookId>0){
 						src="assets/img/accept.png"
 					{{else type=='BORROW_REQUEST' && loan_status=='RETURNED'}}
 						src="assets/img/accept.png"
+					{{else type=='BORROW_REQUEST' && loan_status=='CANCELED'}}
+						src="assets/img/reject.png"
 					{{else type=='BORROW_ACCEPT'}}
 						src="assets/img/accept.png"
 					{{else type=='BORROW_STATUS' && loan_status=='RETURNED'}}
@@ -136,6 +138,8 @@ if($bookId>0){
                     			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; accepted your request for <strong>"{{:title}}"</strong>
                     		{{else type=='BORROW_STATUS' && loan_status=='RETURNED'}}
                     			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has marked <strong>"{{:title}}"</strong> as returned from you.
+							{{else type=='BORROW_REQUEST' && loan_status=='CANCELED'}}
+								You have canceled your request to borrow <strong>"{{:title}}"</strong>.
 							{{else type=='BORROW_STATUS'}}
                     			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; reminds you about the due date of <strong>"{{:title}}"</strong>
                     		{{else type=='BOOK_APPROVAL_REQUEST'}}

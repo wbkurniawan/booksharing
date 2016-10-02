@@ -9,19 +9,24 @@
 
         loadUser();
 
+        $("#eventWrapper").on('click', '#changePasswordButton', function(e) {
+            e.preventDefault();
+            window.location.href="changePassword.php";
+        });
+
         $("#eventWrapper").on('click', '#saveButton', function(e){
             e.preventDefault();
             if(!validateEmail($("#emailInput").val())){
                 alertify.error("email invalid");
                 return false;
             }
-            if($("#passwordInput").val()!=$("#retypePasswordInput").val()){
-                alertify.error("password and retyped password don't match");
-                return false;
-            }
+            // if($("#passwordInput").val()!=$("#retypePasswordInput").val()){
+            //     alertify.error("password and retyped password don't match");
+            //     return false;
+            // }
             if($("#firstNameInput").val().length==0
             || $("#lastNameInput").val().length==0
-            || $("#passwordInput").val().length==0
+            // || $("#passwordInput").val().length==0
             ){
                 alertify.error("please feel in all mandatory fields");
                 return false;
