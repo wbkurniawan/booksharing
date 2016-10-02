@@ -69,8 +69,8 @@ include_once(__DIR__.'/header.php');
 				<div class="row">
 					<div class="col-md-6">
 						<p>
-							2014 &copy; Unify. ALL Rights Reserved.
-							<a target="_blank" href="https://twitter.com/htmlstream">Htmlstream</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+							2016 &copy; FeG Immanuel Berlin. ALL Rights Reserved.
+							<a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
 						</p>
 					</div>
 					<div class="col-md-6">

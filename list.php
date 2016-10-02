@@ -2,11 +2,12 @@
 include_once(__DIR__.'/model/class/UserSession.php');
 
 $categoryId = isset($_GET["categoryId"])?(integer)$_GET["categoryId"]:-1;
+$authorId = isset($_GET["authorId"])?(integer)$_GET["authorId"]:-1;
 $userId = isset($_GET["userId"])?(integer)$_GET["userId"]:0;
 $lock = false;
 include_once (__DIR__.'/lock.php');
 
-if($categoryId==-1 and $userId==0){
+if($categoryId==-1 and $authorId==-1 and $userId==0){
 	if(!isset($_SESSION["user"])){
 		header('Location: /booksharing/index.php');
 		die();
@@ -34,6 +35,7 @@ include_once(__DIR__.'/header.php');
 
 	<input type="hidden" id="categoryId" value="<?=$categoryId?>">
 	<input type="hidden" id="userId" value="<?=$userId?>">
+	<input type="hidden" id="authorId" value="<?=$authorId?>">
     <!--=== Shop Product ===-->
     <div class="shop-product" >
         <!-- Breadcrumbs v5 -->
@@ -66,8 +68,8 @@ include_once(__DIR__.'/header.php');
 				<div class="row">
 					<div class="col-md-6">
 						<p>
-							2014 &copy; Unify. ALL Rights Reserved.
-							<a target="_blank" href="https://twitter.com/htmlstream">Htmlstream</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+							2016 &copy; FeG Immanuel Berlin. ALL Rights Reserved.
+							<a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
 						</p>
 					</div>
 					<div class="col-md-6">
@@ -133,16 +135,20 @@ include_once(__DIR__.'/header.php');
 				{{if ~root.data[0]}}
 					{{:data[0].categories[0].name}}
 				{{/if}}
+			{{else filter=="AUTHOR"}}
+				{{if ~root.data[0]}}
+					{{:data[0].authors}}
+				{{/if}}
 			{{else}}
 				My Books
 			{{/if}}
 		</h2>
 	</div>
-	{{if filter != "CATEGORY"}}
+	{{if filter != "CATEGORY" && filter != "AUTHOR"}}
 		<div class="margin-bottom-40">
 				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="addButton" data-book-id='{{:book_id}}'>ADD NEW BOOK</button>
         </div>
-	{{else}}
+	{{else filter == "CATEGORY" }}
 		<form id="search-form" class="form-inline">
 			<div class="form-group">
 				<label class="sr-only" for="search-input">Search</label>
@@ -164,7 +170,7 @@ include_once(__DIR__.'/header.php');
 			<div class="product-description product-description-brd product-title">
 				<div class="overflow-h margin-bottom-5">
 					<div class="pull-left">
-						{{if ~root.filter!="CATEGORY"}}
+						{{if ~root.filter!="CATEGORY" && ~root.filter!="AUTHOR"}}
 							{{if loan_status=="REQUESTED"}}
 								<div>
 									<div>
@@ -193,7 +199,7 @@ include_once(__DIR__.'/header.php');
 						{{/if}}
 					</div>
 				</div>
-				{{if ~root.filter!="CATEGORY"}}
+				{{if ~root.filter!="CATEGORY" &&  ~root.filter!="AUTHOR"}}
 					<ul class="list-inline product-ratings edit-book-button">
 						<li class="like-icon"><a href="notification.php?bookId={{:book_id}}"><i class="fa fa-history" aria-hidden="true" title="Loan history"></i></a></li>
 						<li class="like-icon"><a href="edit.php?id={{:book_id}}"><i class="fa fa-pencil" title="Edit" aria-hidden="true"></i></a></li>
@@ -202,7 +208,7 @@ include_once(__DIR__.'/header.php');
 			</div>
 		</div>
 	{{/for}}
-	{{if filter != "CATEGORY" && data.length >= 4}}
+	{{if filter != "CATEGORY" && filter != "AUTHOR" && data.length >= 4}}
 		<div class="margin-bottom-40">
 				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="addButton" data-book-id='{{:book_id}}'>ADD NEW BOOK</button>
         </div>

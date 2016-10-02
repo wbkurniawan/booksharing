@@ -79,7 +79,12 @@ $app->get('/books', function (Request $request) use ($app) {
         $response->setContent($result);
         return $response;
     }
-
+    $authorId = $request->get('authorId');
+    if(isset($authorId) and empty($search)){
+        $result = $book->getBooksByAuthor($authorId,1,BOOKS_VIEW_LIMIT_LIST);
+        $response->setContent($result);
+        return $response;
+    }
     if(isset($search)){
         $result = $book->search($search,1,BOOKS_VIEW_LIMIT_LIST);
         $response->setContent($result);

@@ -153,11 +153,15 @@
     function loadBooks(search) {
         var categoryId = $('#categoryId').val();
         var userId = $('#userId').val();
+        var authorId = $('#authorId').val();
         var url ="";
         var filter = "";
         if(categoryId!="-1"){
             url = "api/books?categoryId="+categoryId+"&search="+search;
             filter = "CATEGORY";
+        }else if(authorId!="-1"){
+            url = "api/books?authorId="+authorId;
+            filter = "AUTHOR";
         }else if(userId!="0"){
             url = "api/books?userId="+userId;
             filter = "USER";
@@ -169,24 +173,30 @@
             var template = $.templates("#bookListTemplate");
             data["filter"]=filter;
             data["categoryId"]=categoryId;
+            data["authorId"]=authorId;
             data["search"]=search;
             var htmlOutput = template.render(data);
             $("#bookListContainer").html(htmlOutput);
-            if(filter=="CATEGORY"){
-                if(parseInt(categoryId)==0) {
+            if(filter=="CATEGORY") {
+                if (parseInt(categoryId) == 0) {
                     $("#breadcrumbCategoryName").text("All Books");
-                    $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId="+0);
-                }else{
+                    $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId=" + 0);
+                } else {
                     var categoryName = "";
-                    if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["name"])){
+                    if (!jQuery.isEmptyObject(data["data"][0]["categories"][0]["name"])) {
                         categoryName = data["data"][0]["categories"][0]["name"];
                         $("#breadcrumbCategoryName").text(categoryName);
                     }
                     var loadedCategoryId = "";
-                    if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["category_id"])){
+                    if (!jQuery.isEmptyObject(data["data"][0]["categories"][0]["category_id"])) {
                         loadedCategoryId = data["data"][0]["categories"][0]["category_id"];
-                        $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId="+loadedCategoryId);
+                        $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId=" + loadedCategoryId);
                     }
+                }
+            }else if(filter=="AUTHOR"){
+                if (!jQuery.isEmptyObject(data["data"][0]["authors"])) {
+                    var authorName = data["data"][0]["authors"];
+                    $("#breadcrumbCategoryName").text(authorName);
                 }
             }else{
                 $("#breadcrumbCategoryName").text("My Books");

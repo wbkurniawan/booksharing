@@ -87,6 +87,16 @@ class Books
         $this->loadBooks($this->page,$limit);
         return $this->getResult();
     }
+    public function getBooksByAuthor($authorId,$page=1,$limit=BOOKS_VIEW_LIMIT_DEFAULT)
+    {
+        $this->page = $page;
+        if($authorId>0){
+            $this->filters = ["`book_author`.`author_id` = " . $authorId];
+        }
+        $this->filters[] = "`book`.`status` IN ('".BOOK_STATUS_AVAILABLE."','".BOOK_STATUS_RESERVED."','".BOOK_STATUS_BORROWED."') ";
+        $this->loadBooks($this->page,$limit);
+        return $this->getResult();
+    }
     public function search($key,$page=1,$limit=BOOKS_VIEW_LIMIT_DEFAULT)
     {
         $this->page = $page;
