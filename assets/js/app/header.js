@@ -13,8 +13,12 @@
             var isHeader= parseInt($(this).data("header"));
             if(isMobile ) {
                 return false;
-            }else if(isHeader ){
+            }else if(isHeader==1){
                 window.location = "list.php?categoryId=0";
+            }else if(isHeader==2){
+                window.location = "faq.php";
+            }else if(isHeader==3){
+                window.location = "about.php";
             }
         });
         checkNotification();

@@ -161,8 +161,46 @@
         }else{
             $("#titleInput").css('background-color', 'white');
         }
+
+        var isbn = $("#isbnInput").val();
+        if(isbn!=""){
+            result = isValidISBN(isbn);
+            if(!result){
+                $("#isbnInput").css('background-color', '#f0ad4e');
+                alertify.error("ISBN invalid");
+            }else {
+                $("#isbnInput").css('background-color', 'white');
+            }
+        }
+
+        var loanPeriod = $('#loanPeriodInput').val();
+        if(!(Math.floor(loanPeriod) == loanPeriod && $.isNumeric(loanPeriod))){
+            result = false;
+            $("#loanPeriodInput").css('background-color', '#f0ad4e');
+            alertify.error("Loan period invalid");
+        }else{
+            $("#loanPeriodInput").css('background-color', 'white');
+        }
+
         return result;
     }
+
+    function isValidISBN (isbn) {
+        isbn = isbn.replace(/[^\dX]/gi, '');
+        if(isbn.length != 10){
+            return false;
+        }
+        var chars = isbn.split('');
+        if(chars[9].toUpperCase() == 'X'){
+            chars[9] = 10;
+        }
+        var sum = 0;
+        for (var i = 0; i < chars.length; i++) {
+            sum += ((10-i) * parseInt(chars[i]));
+        };
+        return ((sum % 11) == 0);
+    }
+
     function getBookSkeleton(){
         var bookSkeleton = {
             "data": [
@@ -175,7 +213,7 @@
                     "publisher_id": null,
                     "language": "DE",
                     "user_id": "1",
-                    "status": "",
+                    "status": "NEW",
                     "loan_period": "7",
                     "enter_date": "",
                     "recommended": "0",

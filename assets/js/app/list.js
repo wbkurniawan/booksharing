@@ -184,7 +184,7 @@
                     }
                     var loadedCategoryId = "";
                     if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["category_id"])){
-                        categoryId = data["data"][0]["categories"][0]["category_id"];
+                        loadedCategoryId = data["data"][0]["categories"][0]["category_id"];
                         $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId="+loadedCategoryId);
                     }
                 }

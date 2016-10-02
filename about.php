@@ -1,13 +1,11 @@
 <?php
-$bookId = isset($_GET["id"])?$_GET["id"]:0;
 $lock = false;
 include_once(__DIR__.'/header.php');
 ?>
-	<input type="hidden" id="bookId" value="<?=$bookId?>">
     <!--=== Breadcrumbs v4 ===-->
     <div class="breadcrumbs-v4">
         <div class="container">
-            <h1>Book<span class="shop-green">Sharing</span> Confirmation</h1> 
+            <h1>About Us</h1>
         </div><!--/end container-->
     </div>
     <!--=== End Breadcrumbs v4 ===-->
@@ -15,6 +13,17 @@ include_once(__DIR__.'/header.php');
     <!--=== Content Medium Part ===-->
     <div class="content-md margin-bottom-30" id="eventWrapper">
         <div class="container" id="bookContainer">
+            <ul class="faq-ol">
+                <li>Just like the church has a library, some of the church members surely have a collection of spiritual books on christianity theme. The concept of book sharing is to share and exchange books between readers, especially for those who want to read books relating to the struggles he/she is experiencing and also for those with a deeper longing to learn more about specific themes of the Bible. The church library team hopes to facilitate the readers by means of this book sharing website.</li>
+            </ul>
+            <br>
+            <ul class="faq-ol">
+                <li>Seperti gereja memiliki sebuah perpustakaan, sebagian orang juga mempunyai koleksi buku-buku rohani. Membaca buku yang berkenaan dengan pergumulan yang dialami saat itu, keingintahuan yang lebih mendalam tentang tema tertentu dalam Alkitab yang berbeda pada setiap orang, maka konsep book sharing diharapkan bisa memperkaya kita dalam hal membaca buku-buku rohani yang telah menjadi berkat bagi orang lain. Komisi perpustakaan memfasilitasi para pembaca buku dengan sarana website book sharing untuk saling berbagi dengan saling meminjamkan buku rohani.</li>
+            </ul>
+            <br><br>
+            <div style="margin-bottom:50px" class="row">
+
+            </div>
         </div>
     </div>
     <!--=== End Shop Suvbscribe ===-->
@@ -52,65 +61,17 @@ include_once(__DIR__.'/header.php');
 <!-- Get the data -->
 <script src="assets/js/jsrender.js"></script>
 <script src="assets/js/app/header.js"></script>
-<script src="assets/js/app/success.js"></script>
 
 <!-- JS Implementing Plugins -->
 <script src="assets/plugins/back-to-top.js"></script>
 <script src="assets/plugins/smoothScroll.js"></script>
 <script src="assets/plugins/jquery-steps/build/jquery.steps.js"></script>
 <script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+
 <!-- JS Customization -->
 <script src="assets/js/custom.js"></script>
 <!-- JS Page Level -->
-<script src="assets/js/shop.app.js"></script>
-<script src="assets/js/forms/page_login.js"></script>
-<script src="assets/js/plugins/stepWizard.js"></script>
-<script src="assets/js/forms/product-quantity.js"></script>
-<script src="assets/js/plugins/style-switcher.js"></script>
-<script>
-    jQuery(document).ready(function() {
-        App.init();
-        Login.initLogin();
-        App.initScrollBar();
-        StepWizard.initStepWizard();
-        StyleSwitcher.initStyleSwitcher();
-});
-</script>
-<script id="bookTemplate" type="text/x-jsrender">
-	{{for data}}
-        <h1>Your request has been successfully submitted and is in progress.</h1>
-                <br><br>
 
-        <div style="margin-bottom:50px" class="row">
-            <div class="col-md-3">
-                <img src="assets/img/book/{{:image}}" width="80%" alt="Cover">
-            </div>
-
-            <div class="col-md-9">
-                <div class="shop-product-heading">
-                    <h2>{{:title}}</h2>
-                    <p class="wishlist-category"><strong>Authors:</strong>
-                    {{for authors}}<a href="#">{{>name}}</a> {{/for}}
-                    </p>
-                </div><!--/end shop product social-->
-
-                <p>Owner: <strong>{{for user}}{{>first_name}} {{>last_name}}{{/for}}</strong></p>
-                <p style="margin-bottom:30px">Lending period: {{:loan_period}} days</p>
-
-                <div class="text-left" style="margin-bottom:5px">
-                    <button id="continueBrowsingButton"type="button" style="width: 180px" class="btn-u btn-u-sea-shop">Continue browsing</button>
-                </div>
-                <div class="text-left" style="margin-bottom:5px">
-                    <button data-book-id={{:book_id}} id="cancelRequestButton" type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Cancel request</button>
-                </div>
-                <div class="text-left" style="margin-bottom:5px">
-                    <button data-book-id={{:book_id}} id="contactAdminButton" type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Contact admin</button>
-                </div>
-            </div>
-        </div>
-	{{/for}}
-</script>
 <!--[if lt IE 9]>
     <script src="assets/plugins/respond.js"></script>
     <script src="assets/plugins/html5shiv.js"></script>

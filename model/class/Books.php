@@ -83,6 +83,7 @@ class Books
         if($categoryId>0){
             $this->filters = ["`book`.`category_id` = " . $categoryId];
         }
+        $this->filters[] = "`book`.`status` IN ('".BOOK_STATUS_AVAILABLE."','".BOOK_STATUS_RESERVED."','".BOOK_STATUS_BORROWED."') ";
         $this->loadBooks($this->page,$limit);
         return $this->getResult();
     }
@@ -224,7 +225,7 @@ class Books
             if(isset($user)){
                 $totalBorrowed = $user["total_borrowed"];
                 if($totalBorrowed>=MAX_BORROWED_BOOK){
-                    throw new Exception ("Maximum book ".MAX_BORROWED_BOOK);
+                    throw new Exception ("Maximum book per user is ".MAX_BORROWED_BOOK);
                 }
             }else{
                 throw new Exception ("User not found");

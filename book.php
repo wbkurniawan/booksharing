@@ -11,7 +11,7 @@ include_once(__DIR__.'/header.php');
         <div class="container">
             <ul class="breadcrumb-v5">
                 <li><a href="index.php"><i class="fa fa-home"></i></a></li>
-                <li><a href="#">Books</a></li>
+                <li><a href="list.php?categoryId=0">Books</a></li>
                 <li class="active"><a href="#" id="breadcrumbCategoryName"></a></li>
             </ul>
         </div>
@@ -119,7 +119,7 @@ include_once(__DIR__.'/header.php');
 		<li class="item">
 			<div class="product-img">
 				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
-				<a class="add-to-cart" href="book.php?id={{:book_id}}"><i class="fa fa-book"></i>Borrow book</a>
+				<a class="add-to-cart" href="book.php?id={{:book_id}}"><i class="fa fa-book"></i>VIEW DETAILS</a>
 				<div class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}}  rgba-banner">{{:status}}</div>
 			</div>
 			<div class="product-description product-description-brd">
@@ -150,11 +150,15 @@ include_once(__DIR__.'/header.php');
 			</div><!--/end shop product social-->
 
 			<ul class="list-inline product-ratings margin-bottom-30">
-				<li><small class="shop-bg-green time-day-left">{{:status}}</small></li>
+				<li><small class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}} time-day-left">{{:status}}</small></li>
 			</ul><!--/end shop product ratings-->
-			{{:description}}
+			<div class="book-description-detail">{{:description}}</div>
 			<div class="margin-bottom-40">
-				<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="borrowButton" data-book-id='{{:book_id}}'>BORROW</button>
+				{{if status=="AVAILABLE"}}
+					<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="borrowButton" data-book-id='{{:book_id}}'>BORROW</button>
+				{{else}}
+					<button type="button" disabled class="btn-u btn-u-sea-shop btn-u-lg btn-disabled" id="borrowButton" data-book-id='{{:book_id}}'>BORROW</button>
+				{{/if}}
 			</div><!--/end product quantity-->
 
 			<ul class="list-inline add-to-wishlist add-to-wishlist-brd">

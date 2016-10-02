@@ -203,3 +203,28 @@ a#add-new-author {
 label.input {
     display: inherit;
 }
+
+div#userInfoContainer {
+    z-index: 100;
+}
+em.invalid {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+button.btn-disabled {
+    background: lightgray !important;
+}
+
+button.btn-disabled:hover {
+    background: lightgray !important;
+}
+
+.book-description-detail {
+    margin-bottom: 15px;
+}
+
+ol.faq-ol > li {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
