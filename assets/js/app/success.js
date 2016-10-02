@@ -9,16 +9,10 @@
         loadBook();
 
         $("#eventWrapper").on('click', '#continueBrowsingButton', function(e){
-            //Todo: implement the cancel process
-            alert("Todo: redirect to referrer page?");
-            return false;
-            //==================//
+            window.location.href = "list.php?categoryId=0";
         });
         $("#eventWrapper").on('click', '#contactAdminButton', function(e){
-            //Todo: redirect to contact admin page
-            alert("Todo: redirect to contact page or compose notification popup?");
-            return false;
-            //==================//
+            window.location.href = "contact.php";
         });
 
         $("#eventWrapper").on('click', '#cancelRequestButton', function(e){

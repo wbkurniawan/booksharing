@@ -125,25 +125,25 @@ if($bookId>0){
                     	<div>
 
                     		{{if type=='BORROW_REQUEST' && loan_status=='REQUESTED'}}
-                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; is requesting <strong>"{{:title}}"</strong>
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; is requesting <a href="book.php?id={{:book_id}}" target="_blank"><a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a></a>
 							{{else type=='BORROW_REQUEST' && loan_status=='REJECTED'}}
-								You have rejected the request from {{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; to borrow <strong>"{{:title}}"</strong>
+								You have rejected the request from {{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; to borrow <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a>
                     		{{else type=='BORROW_REJECT'}}
-                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; rejected your request to borrow <strong>"{{:title}}"</strong> with a message: <strong>{{:message}}</strong>
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; rejected your request to borrow <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a> with a message: <strong>{{:message}}</strong>
                     		{{else type=='BORROW_REQUEST' && loan_status=='BORROWED'}}
-                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; is currently borrowing your book <strong>"{{:title}}"</strong>
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; is currently borrowing your book <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a>
                     		{{else type=='BORROW_REQUEST' && loan_status=='RETURNED'}}
-                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has returned your book <strong>"{{:title}}"</strong>
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has returned your book <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a>
                     		{{else type=='BORROW_ACCEPT'}}
-                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; accepted your request for <strong>"{{:title}}"</strong>
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; accepted your request for <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a>
                     		{{else type=='BORROW_STATUS' && loan_status=='RETURNED'}}
-                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has marked <strong>"{{:title}}"</strong> as returned from you.
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has marked <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a> as returned from you.
 							{{else type=='BORROW_REQUEST' && loan_status=='CANCELED'}}
-								You have canceled your request to borrow <strong>"{{:title}}"</strong>.
+								You have canceled your request to borrow <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a>.
 							{{else type=='BORROW_STATUS'}}
-                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; reminds you about the due date of <strong>"{{:title}}"</strong>
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; reminds you about the due date of <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a>
                     		{{else type=='BOOK_APPROVAL_REQUEST'}}
-                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has added a new book <strong>"{{:title}}"</strong> you need to approve
+                    			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has added a new book <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a> you need to approve
                     		{{else type=='SYSTEM'}}
                     			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has sent system notification: <strong>{{:message}}</strong>
                     		{{/if}}

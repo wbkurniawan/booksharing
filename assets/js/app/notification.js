@@ -139,6 +139,11 @@
             rejectButton.hide();
             returnButton.show();
             readNotificationButton.hide();
+        }else if(type=='BOOK_APPROVAL_REQUEST' && status=='NEW' ) {
+            approveButton.show();
+            rejectButton.show();
+            returnButton.hide();
+            readNotificationButton.hide();
         }else if(status=='NEW'){
             approveButton.hide();
             rejectButton.hide();
