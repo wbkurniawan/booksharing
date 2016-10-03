@@ -232,3 +232,7 @@ ol.faq-ol > li {
 .shop-badge.badge-icons.pull-right {
     right: 0px;
 }
+
+button#privateUseButton {
+    float: right;
+}

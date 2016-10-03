@@ -34,6 +34,35 @@
                 }
             });
         });
+        $("#eventWrapper").on('click', '#privateUseButton', function(e){
+            e.preventDefault();
+            var bookId = $(this).data('book-id');
+            var status = $(this).data('status');
+
+            $.ajax({
+                method: "POST",
+                url: "model/setPrivateUse.php",
+                data: { bookId : bookId,
+                        status : status}
+            }).done(function( data ) {
+                if(!data.error){
+                    if(status=='PRIVATE'){
+                        alertify.success("Book status changed to private");
+                    }else if(status=='AVAILABLE'){
+                        alertify.success("Book status changed to available");
+                    }
+                    window.location.href = "edit.php?id="+bookId;
+                }else {
+                    if(data.error_code == 403){
+                        console.log(data);
+                        window.location.href = "login.php";
+                    }else{
+                        alertify.error(data.error_message);
+                    }
+                }
+            });
+        });
+
         $("#eventWrapper").on('click', '#deleteButton', function(e){
             e.preventDefault();
             var bookId = $(this).data('book-id');

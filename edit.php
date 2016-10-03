@@ -146,7 +146,7 @@ include_once(__DIR__.'/header.php');
                         <label for="titleInput">Title: </label><input id="titleInput" name="title" type="text" class="form-control" value="{{:title}}">
                     </div><!--/end shop product social-->
                     <ul class="list-inline product-ratings">
-                        <li><small class="shop-bg-green time-day-left">{{:status}}</small></li>
+                        <li><small class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}} time-day-left">{{:status}}</small></li>
                     </ul>
                     <div  class="input-group book-edit-full-width">
                          <p class="wishlist-category">
@@ -205,6 +205,13 @@ include_once(__DIR__.'/header.php');
                     <div class="margin-bottom-40">
                         <button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="saveButton" data-book-id='{{:book_id}}'>SAVE</button>
                         <button type="button" class="btn-u btn-u-red btn-u-lg" id="deleteButton" data-book-id='{{:book_id}}'>DELETE</button>
+                        {{if status=="AVAILABLE"}}
+                            <button type="button" class="btn-u btn-u-orange btn-u-lg" id="privateUseButton" data-book-id='{{:book_id}}' data-status='PRIVATE'>PRIVATE USE</button>
+                        {{else status=="PRIVATE"}}
+                            <button type="button" class="btn-u btn-u-orange btn-u-lg" id="privateUseButton" data-book-id='{{:book_id}}' data-status='AVAILABLE'>MAKE AVAILABLE</button>
+                        {{else}}
+                            <button type="button" class="btn-u btn-u-orange btn-u-lg btn-disabled"  disabled id="privateUseButton" data-book-id='{{:book_id}}'>PRIVATE USE</button>
+                        {{/if}}
                     </div>
                 </div>
             </form>

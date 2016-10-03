@@ -351,6 +351,9 @@ class Books
     public function delete(){
         $this->setStatus(BOOK_STATUS_DELETED);
     }
+    public function privateUse(){
+        $this->setStatus(BOOK_STATUS_PRIVATE);
+    }
     public function makeAvailable(){
         $this->setStatus(BOOK_STATUS_AVAILABLE);
     }
