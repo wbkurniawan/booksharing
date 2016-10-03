@@ -35,22 +35,29 @@
         var bookId = $('#bookId').val();
         $.ajax({
             method: "GET",
-            url: "api/books/"+bookId
+            url: "model/loadBook.php?bookId="+bookId
         }).done(function( data ) {
             var template = $.templates("#bookTemplate");
 
             var htmlOutput = template.render(data);
             $("#bookContainer").html(htmlOutput);
-            var categoryName = "";
-            if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["name"])){
-                categoryName = data["data"][0]["categories"][0]["name"];
-                $("#breadcrumbCategoryName").text(categoryName);
+
+            var title = "";
+            if(!jQuery.isEmptyObject(data["data"][0]["title"])){
+                title = data["data"][0]["title"];
+                $("#breadcrumbCategoryName").text(title);
             }
-            var categoryId = "";
-            if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["category_id"])){
-                categoryId = data["data"][0]["categories"][0]["category_id"];
-                $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId="+categoryId);
-            }
+
+            // var categoryName = "";
+            // if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["name"])){
+            //     categoryName = data["data"][0]["categories"][0]["name"];
+            //     $("#breadcrumbCategoryName").text(categoryName);
+            // }
+            // var categoryId = "";
+            // if(!jQuery.isEmptyObject(data["data"][0]["categories"][0]["category_id"])){
+            //     categoryId = data["data"][0]["categories"][0]["category_id"];
+            //     $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId="+categoryId);
+            // }
         });
     }
 

@@ -154,7 +154,7 @@ include_once(__DIR__.'/header.php');
 			</ul><!--/end shop product ratings-->
 			<div class="book-description-detail">{{:description}}</div>
 			<div class="margin-bottom-40">
-				{{if status=="AVAILABLE"}}
+				{{if status=="AVAILABLE" && ~root.owner==0}}
 					<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="borrowButton" data-book-id='{{:book_id}}'>BORROW</button>
 				{{else}}
 					<button type="button" disabled class="btn-u btn-u-sea-shop btn-u-lg btn-disabled" id="borrowButton" data-book-id='{{:book_id}}'>BORROW</button>
@@ -170,6 +170,12 @@ include_once(__DIR__.'/header.php');
 					<i class="fa fa-calendar"></i>
 					Loan period: <strong>{{:loan_period}} days</strong>
 				</li>
+				{{if ~root.editable==1}}
+					<li class="compare-in">
+						<a href="edit.php?id={{:book_id}}"><i class="fa fa-pencil"></i>
+						Edit</strong></a>
+					</li>
+				{{/if}}
 			</ul>
 		</div>
 	{{/for}}

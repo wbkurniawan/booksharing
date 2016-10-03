@@ -228,3 +228,7 @@ ol.faq-ol > li {
     margin-top: 20px;
     margin-bottom: 5px;
 }
+
+.shop-badge.badge-icons.pull-right {
+    right: 0px;
+}
