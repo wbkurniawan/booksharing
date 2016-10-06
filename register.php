@@ -27,25 +27,7 @@ include_once(__DIR__.'/header.php');
                     <p>Got some good books worth reading? Or wanna find books of various categories? 
                        Become part of a growing community, share them with us or let others share them to you.
                     </p><br>
-                    <div class="row margin-bottom-50">
-                        <div class="col-sm-4 md-margin-bottom-20">
-                            <div class="site-statistics">
-                                <span>321</span>
-                                <small>titles</small>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 md-margin-bottom-20">
-                            <div class="site-statistics">
-                                <span>22</span>
-                                <small>categories</small>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="site-statistics">
-                                <span>1</span>
-                                <small>purpose</small>
-                            </div>
-                        </div>
+                    <div class="row margin-bottom-50" id="statsContainer">
                     </div>
                     <div class="members-number">
                         <h3>Soli <span class="shop-green">Deo</span> Gloria</h3>
@@ -92,7 +74,7 @@ include_once(__DIR__.'/header.php');
                             </section>
                             <section class="register-section">
                                 <label class="input">
-                                    <input type="tel" name="phone" placeholder="Phonenumber" class="form-control">
+                                    <input type="tel" name="phone" placeholder="Phone number" class="form-control">
                                 </label>
                             </section>
                             <section class="register-section">
@@ -148,6 +130,27 @@ include_once(__DIR__.'/header.php');
 	<!--=== End Footer v4 ===-->
 
 </div><!--/wrapper-->
+
+<script id="statsTemplate" type="text/x-jsrender">
+    <div class="col-sm-4 md-margin-bottom-20">
+        <div class="site-statistics">
+            <span><a href="list.php?categoryId=0">{{:total_book}}</a></span>
+            <small>titles</small>
+        </div>
+    </div>
+    <div class="col-sm-4 md-margin-bottom-20">
+        <div class="site-statistics">
+            <span><a href="list.php?categoryId=0">{{:total_category}}</a></span>
+            <small>categories</small>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="site-statistics">
+            <span>1</span>
+            <small>purpose</small>
+        </div>
+    </div>
+</script>
 
 <!-- JS Global Compulsory -->
 <script src="assets/plugins/jquery/jquery.min.js"></script>

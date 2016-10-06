@@ -7,6 +7,9 @@
 !function(){
 
     $(document).ready(function(){
+
+        loadStats();
+
         $("#sky-form4").validate({
             submitHandler: function(form) {
                 var data = $("#sky-form4").serialize();
@@ -105,4 +108,16 @@
             }
         });
     });
+    function loadStats(){
+        $.ajax({
+            method: "GET",
+            url: "model/loadStats.json.php"
+        }).done(function( data ) {
+            if(!data.error){
+                var template = $.templates("#statsTemplate");
+                var htmlOutput = template.render(data);
+                $("#statsContainer").html(htmlOutput);
+            }
+        });
+    }
 }();

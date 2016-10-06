@@ -384,6 +384,24 @@ class Books
         }
     }
 
+    public function getStats(){
+        $query = "SELECT 
+                        COUNT(book_id) AS total_book,
+                        (SELECT 
+                                COUNT(category_id)
+                            FROM
+                                booksharing.category) AS total_category
+                    FROM
+                        booksharing.book
+                    WHERE
+                        `status` <> '".BOOK_STATUS_DELETED."'";
+        $rows = $this->db->select($query);
+        $result = ["total_book"=>0,"total_category"=>0];
+        if(count($rows)>0){
+            $result = ["total_book"=>$rows[0]->total_book,"total_category"=>$rows[0]->total_category];
+        }
+        return $result;
+    }
     public function setTitle($title){
         if(isset($this->bookId)){
             $this->properties["title"]=$title;

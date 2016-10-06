@@ -25,26 +25,7 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
                     <p>Got some good books worth reading? Or wanna find books of various categories? 
                        Become part of a growing community, share them with us or let others share them with you.
                     </p><br>
-                    <div class="row margin-bottom-50">
-                        <div class="col-sm-4 md-margin-bottom-20">
-                            <div class="site-statistics">
-                                <span>321</span>
-                                <small>titles</small>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 md-margin-bottom-20">
-                            <div class="site-statistics">
-                                <span>22</span>
-                                <small>categories</small>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="site-statistics">
-                                <span>1</span>
-                                <small>purpose:</small>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="row margin-bottom-50" id="statsContainer"></div>
                     <div class="members-number">
                         <h3>Soli <span class="shop-green">Deo</span> Gloria</h3>
                     </div>
@@ -128,6 +109,27 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 	</div>
 	<!--=== End Footer v4 ===-->
 </div><!--/wrapper-->
+
+<script id="statsTemplate" type="text/x-jsrender">
+    <div class="col-sm-4 md-margin-bottom-20">
+        <div class="site-statistics">
+            <span><a href="list.php?categoryId=0">{{:total_book}}</a></span>
+            <small>titles</small>
+        </div>
+    </div>
+    <div class="col-sm-4 md-margin-bottom-20">
+        <div class="site-statistics">
+            <span><a href="list.php?categoryId=0">{{:total_category}}</a></span>
+            <small>categories</small>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="site-statistics">
+            <span>1</span>
+            <small>purpose:</small>
+        </div>
+    </div>
+</script>
 
 <!-- JS Global Compulsory -->
 <script src="assets/plugins/jquery/jquery.min.js"></script>
