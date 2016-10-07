@@ -19,7 +19,7 @@
                     data : data
                 }).done(function( data ) {
                     if(!data.error){
-                        window.location.href = '/booksharing/index.php';
+                        window.location.href = '/index.php';
                     }else {
                         alertify.error(data.error_message);
                     }

@@ -180,7 +180,7 @@
             if(filter=="CATEGORY") {
                 if (parseInt(categoryId) == 0) {
                     $("#breadcrumbCategoryName").text("All Books");
-                    $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId=" + 0);
+                    $("#breadcrumbCategoryName").attr("href", "/list.php?categoryId=" + 0);
                 } else {
                     var categoryName = "";
                     if (!jQuery.isEmptyObject(data["data"][0]["categories"][0]["name"])) {
@@ -190,7 +190,7 @@
                     var loadedCategoryId = "";
                     if (!jQuery.isEmptyObject(data["data"][0]["categories"][0]["category_id"])) {
                         loadedCategoryId = data["data"][0]["categories"][0]["category_id"];
-                        $("#breadcrumbCategoryName").attr("href", "/booksharing/list.php?categoryId=" + loadedCategoryId);
+                        $("#breadcrumbCategoryName").attr("href", "/list.php?categoryId=" + loadedCategoryId);
                     }
                 }
             }else if(filter=="AUTHOR"){

@@ -77,7 +77,7 @@ if(isset($_SESSION["user"])){
 
 <script id="categoriesTemplate" type="text/x-jsrender">
 	{{for data}}
-		<li><a href="/booksharing/list.php?categoryId={{:category_id}}" data-category-id="{{:category_id}}">{{:name}}</a></li>
+		<li><a href="/list.php?categoryId={{:category_id}}" data-category-id="{{:category_id}}">{{:name}}</a></li>
 	{{/for}}
 </script>
 <script id="userInfoTemplate" type="text/x-jsrender">

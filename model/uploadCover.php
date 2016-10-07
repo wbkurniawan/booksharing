@@ -104,7 +104,7 @@ try {
     // generate thumbnail
     $img->GenerateThumbFile(__DIR__."/../assets/img/book/".$fileName, __DIR__."/../assets/img/book/s_".$fileName);
 
-    header("Location: /booksharing/edit.php?id=".$bookId);
+    header("Location: /edit.php?id=".$bookId);
 
 } catch (RuntimeException $e) {
 

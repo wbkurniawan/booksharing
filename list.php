@@ -9,7 +9,7 @@ include_once (__DIR__.'/lock.php');
 
 if($categoryId==-1 and $authorId==-1 and $userId==0){
 	if(!isset($_SESSION["user"])){
-		header('Location: /booksharing/index.php');
+		header('Location: /index.php');
 		die();
 	}else{
 		$userSession =  unserialize($_SESSION["user"]);
@@ -19,13 +19,13 @@ if($categoryId==-1 and $authorId==-1 and $userId==0){
 
 //
 //if($userId>0 and  !isset($_SESSION["user"])){
-//	header('Location: /booksharing/index.php');
+//	header('Location: /index.php');
 //	die();
 //}else{
 //	$userSession =  unserialize($_SESSION["user"]);
 //	$currentUserId = $userSession->userId;
 //	if($userId<>$currentUserId){
-//		header('Location: /booksharing/index.php');
+//		header('Location: /index.php');
 //		die();
 //	}
 //}

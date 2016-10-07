@@ -13,4 +13,4 @@ $_SESSION["user"] = null;
 $_SESSION["categories"] = null;
 
 session_destroy();
-header("Location: /booksharing/login.php");
+header("Location: /login.php");

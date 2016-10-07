@@ -5,7 +5,7 @@ $lock = true;
 include_once (__DIR__.'/lock.php');
 
 if(!isset($_SESSION["user"])){
-	header('Location: /booksharing/index.php');
+	header('Location: /index.php');
 	die();
 }else{
 	$userSession =  unserialize($_SESSION["user"]);

@@ -23,7 +23,7 @@ if($bookId!=0){
     }
 }
 
-$json = file_get_contents("http://$_SERVER[HTTP_HOST]/booksharing/api/categories");
+$json = file_get_contents("http://$_SERVER[HTTP_HOST]/api/categories");
 $categories= json_decode($json);
 
 $author = new Authors();
