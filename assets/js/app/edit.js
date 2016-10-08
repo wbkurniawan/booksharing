@@ -191,16 +191,16 @@
             $("#titleInput").css('background-color', 'white');
         }
 
-        var isbn = $("#isbnInput").val();
-        if(isbn!=""){
-            result = isValidISBN(isbn);
-            if(!result){
-                $("#isbnInput").css('background-color', '#f0ad4e');
-                alertify.error("ISBN invalid");
-            }else {
-                $("#isbnInput").css('background-color', 'white');
-            }
-        }
+        // var isbn = $("#isbnInput").val();
+        // if(isbn!=""){
+        //     result = isValidISBN(isbn);
+        //     if(!result){
+        //         $("#isbnInput").css('background-color', '#f0ad4e');
+        //         alertify.error("ISBN invalid");
+        //     }else {
+        //         $("#isbnInput").css('background-color', 'white');
+        //     }
+        // }
 
         var loanPeriod = $('#loanPeriodInput').val();
         if(!(Math.floor(loanPeriod) == loanPeriod && $.isNumeric(loanPeriod))){

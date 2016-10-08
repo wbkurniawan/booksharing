@@ -94,20 +94,8 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
     </div>-->
     <!--=== End Shop Suvbscribe ===-->
 
-	<!--=== Footer v4 ===-->
-	<div class="footer-v4">
-		<div class="copyright">
-			<div class="container">
-				<div class="row">
-					<p align="center">
-						&copy; 2016 FeG Immanuel Berlin |
-						<a target="_blank" href="https://twitter.com/htmlstream">Disclaimer</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--=== End Footer v4 ===-->
+<?php include_once(__DIR__.'/footer.php'); ?>
+
 </div><!--/wrapper-->
 
 <script id="statsTemplate" type="text/x-jsrender">

@@ -125,6 +125,7 @@ class Books
     public function getBooksRecomended(){
 
         $this->filters = ["`book`.`recommended` = 1"];
+        $this->orders = ["rand()"];
         $this->loadBooks(1,BOOKS_VIEW_LIMIT_RECOMMENDED);
         return $this->getResult();
     }
