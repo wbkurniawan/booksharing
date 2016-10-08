@@ -116,7 +116,7 @@ include_once(__DIR__.'/header.php');
 <script id="bookTemplate" type="text/x-jsrender">
 	{{for data}}
 		<div class="col-md-4">
-			<img src="assets/img/book/{{:image}}" max-width="100%" alt="{{:title}}">
+			<img src="assets/img/book/{{:image}}" class="main-cover full-width img-responsive" width="100%" alt="{{:title}}">
 		</div>
 
 		<div class="col-md-8">

@@ -241,3 +241,22 @@ button#privateUseButton {
     font-size: 30px;
     color: white;
 }
+
+
+@media (max-width: 991px) {
+    .main-cover {
+        max-width:50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-cover {
+        max-width:50%;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-cover {
+        max-width:100%;
+    }
+}
