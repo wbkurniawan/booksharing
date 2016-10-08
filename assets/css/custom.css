@@ -236,3 +236,8 @@ ol.faq-ol > li {
 button#privateUseButton {
     float: right;
 }
+
+.quotes-div {
+    font-size: 30px;
+    color: white;
+}

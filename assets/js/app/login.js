@@ -6,6 +6,7 @@
 !function(){
 
     $(document).ready(function(){
+        loadQuotes();
         loadStats();
         $("#sky-form1").validate({
             submitHandler: function(form) {
@@ -77,4 +78,19 @@
             }
         });
     }
+
+    function loadQuotes() {
+        $.ajax({
+            method: "GET",
+            url: "model/loadQuotes.json.php"
+        }).done(function( data ) {
+            if(!data.error){
+                var template = $.templates("#quotesTemplate");
+                var htmlOutput = template.render(data);
+                $("#quotesContainer").html(htmlOutput);
+            }
+        });
+    }
+
+
 }();

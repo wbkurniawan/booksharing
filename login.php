@@ -9,10 +9,7 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 
     <!--=== Breadcrumbs v4 ===-->
     <div class="breadcrumbs-v4">
-        <div class="container">
-            <h1>"Thy word is a lamp unto my feet,<br>and a light unto my path."</h1>
-            <span class="page-name"><i>- Psalm 119:105 -</i></span>
-        </div>
+        <div class="container" id="quotesContainer"></div>
     </div>
     <!--=== End Breadcrumbs v4 ===-->
 
@@ -117,6 +114,10 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
             <small>purpose:</small>
         </div>
     </div>
+</script>
+<script id="quotesTemplate" type="text/x-jsrender">
+        <div class="quotes-div">{{:content}}</div>
+        <span class="page-name"><i>{{:source}}</i></span>
 </script>
 
 <!-- JS Global Compulsory -->

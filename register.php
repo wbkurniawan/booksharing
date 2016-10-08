@@ -6,7 +6,7 @@ include_once(__DIR__.'/header.php');
     <!--=== Breadcrumbs v4 ===-->
     <div class="breadcrumbs-v4">
         <div class="container">
-            <span class="page-name">Log In</span>
+            <span class="page-name">Register</span>
             <h1>BOOK <span class="shop-green">SHARING</span></h1>
             <!--
             <ul class="breadcrumb-v4-in">
