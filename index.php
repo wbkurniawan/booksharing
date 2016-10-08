@@ -166,7 +166,7 @@ include_once(__DIR__.'/header.php');
 
 		<div class="heading heading-v1 margin-bottom-20">
 			<h2>Recommended Books</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed odio elit, ultrices vel cursus sed, placerat ut leo. Phasellus in magna erat. Etiam gravida convallis augue non tincidunt. Nunc lobortis dapibus neque quis lacinia. Nam dapibus tellus sit amet odio venenatis</p>
+			<p>Our picks for the books most likely to shape your evangelical life, thought, and culture.</p>
 		</div>
 
 		<!--=== Illustration v2 ===-->

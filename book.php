@@ -33,7 +33,7 @@ include_once(__DIR__.'/header.php');
     <div class="container">
 		<div class="heading heading-v1 margin-bottom-20">
 			<h2>Books You May Like</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed odio elit, ultrices vel cursus sed, placerat ut leo. Phasellus in magna erat. Etiam gravida convallis augue non tincidunt. Nunc lobortis dapibus neque quis lacinia. Nam dapibus tellus sit amet odio venenatis</p>
+			<p></p>
 		</div>
 
 		<!--=== Illustration v2 ===-->
@@ -116,7 +116,7 @@ include_once(__DIR__.'/header.php');
 <script id="bookTemplate" type="text/x-jsrender">
 	{{for data}}
 		<div class="col-md-4">
-			<img src="assets/img/book/{{:image}}" width="100%" alt="lorem ipsum dolor sit">
+			<img src="assets/img/book/{{:image}}" max-width="100%" alt="{{:title}}">
 		</div>
 
 		<div class="col-md-8">

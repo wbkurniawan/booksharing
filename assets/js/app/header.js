@@ -11,7 +11,7 @@
         });
         $(document).on('click','.dropdown-toggle', function(e){
             var isHeader= parseInt($(this).data("header"));
-            if(isMobile ) {
+            if(isMobile && isHeader==1 ) {
                 return false;
             }else if(isHeader==1){
                 window.location = "list.php?categoryId=0";
