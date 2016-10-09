@@ -1,5 +1,6 @@
 <?php
 $lock = false;
+$faqMenu = true;
 include_once(__DIR__.'/header.php');
 ?>
     <!--=== Breadcrumbs v4 ===-->

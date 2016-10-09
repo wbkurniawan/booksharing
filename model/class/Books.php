@@ -84,6 +84,7 @@ class Books
             $this->filters = ["`book`.`category_id` = " . $categoryId];
         }
         $this->filters[] = "`book`.`status` IN ('".BOOK_STATUS_AVAILABLE."','".BOOK_STATUS_RESERVED."','".BOOK_STATUS_BORROWED."') ";
+        $this->orders = ["`book`.`title` ASC"];
         $this->loadBooks($this->page,$limit);
         return $this->getResult();
     }

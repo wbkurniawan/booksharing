@@ -21,7 +21,7 @@ class Categories
     {
         $this->language = $language;
         $this->db = new Connect(Connect::DBSERVER);
-        $query = "SELECT 
+        $query = "SELECT * FROM (SELECT 
                         a.category_id, COALESCE(b.translation, a.name) as name, c.total
                     FROM
                         booksharing.category a
@@ -35,7 +35,7 @@ class Categories
 							WHERE status in ('".BOOK_STATUS_RESERVED."','".BOOK_STATUS_BORROWED."',
 							'".BOOK_STATUS_AVAILABLE."')
 							GROUP by category_id                                
-						) c ON a.category_id = c.category_id;";
+						) c ON a.category_id = c.category_id) x ORDER BY name";
 
         $this->categories = $this->db->selectArray($query,["index"=>"category_id"]);
     }

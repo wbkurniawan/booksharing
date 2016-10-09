@@ -19,11 +19,11 @@
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <ul class="list-inline sponsors-icons pull-right">
-                            <li><i class="fa fa-facebook-square"></i></li>
-                            <li><i class="fa fa-twitter-square"></i></li>
-                            <li><i class="fa fa-pinterest-square"></i></li>
-                        </ul>
+<!--                        <ul class="list-inline sponsors-icons pull-right">-->
+<!--                            <li><i class="fa fa-facebook-square"></i></li>-->
+<!--                            <li><i class="fa fa-twitter-square"></i></li>-->
+<!--                            <li><i class="fa fa-pinterest-square"></i></li>-->
+<!--                        </ul>-->
                     </div>
                 </div>
             </div>

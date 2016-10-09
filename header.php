@@ -19,6 +19,20 @@ if(isset($_SESSION["user"])){
     $loginToken = uniqid();
 }
 
+$bookMenuStatus = "active";
+$faqMenuStatus = "";
+$aboutMenuStatus = "";
+if(isset($faqMenu)){
+    $bookMenuStatus = "";
+    $faqMenuStatus = "active";
+    $aboutMenuStatus = "";
+}elseif(isset($aboutMenu)){
+    $bookMenuStatus = "";
+    $faqMenuStatus = "";
+    $aboutMenuStatus = "active";
+}
+
+
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -152,7 +166,7 @@ if(isset($_SESSION["user"])){
                     <!-- Nav Menu -->
                     <ul class="nav navbar-nav">
                         <!-- Pages -->
-                        <li class="dropdown active">
+                        <li class="dropdown <?=$bookMenuStatus?>">
                             <a href="#" class="dropdown-toggle" data-header="1" data-hover="dropdown" data-toggle="dropdown">
                                 Books
                             </a>
@@ -162,7 +176,7 @@ if(isset($_SESSION["user"])){
                         <!-- End Pages -->
 
                         <!-- Promotion -->
-                        <li class="dropdown">
+                        <li class="dropdown <?=$faqMenuStatus?>">
                             <a href="faq.php"  data-header="2" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
                                 FAQ
                             </a>
@@ -170,7 +184,7 @@ if(isset($_SESSION["user"])){
                         <!-- End Promotion -->
 
                         <!-- Gifts -->
-                        <li class="dropdown mega-menu-fullwidth">
+                        <li class="dropdown mega-menu-fullwidth <?=$aboutMenuStatus?>">
                             <a href="javascript:void(0);"  data-header="3" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
                                 About
                             </a>
