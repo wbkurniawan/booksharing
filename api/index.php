@@ -70,30 +70,32 @@ $app->get('/books', function (Request $request) use ($app) {
 
     $book = new Books();
     $book->setInJson();
+    $book->setReturnStats(true);
 
     $categoryId = $request->get('categoryId');
     $search = $request->get('search');
+    $page = $request->get('page',1);
 
     if(isset($categoryId) and empty($search)){
-        $result = $book->getBooksByCategory($categoryId,1,BOOKS_VIEW_LIMIT_LIST);
+        $result = $book->getBooksByCategory($categoryId,$page,BOOKS_VIEW_LIMIT_LIST);
         $response->setContent($result);
         return $response;
     }
     $authorId = $request->get('authorId');
     if(isset($authorId) and empty($search)){
-        $result = $book->getBooksByAuthor($authorId,1,BOOKS_VIEW_LIMIT_LIST);
+        $result = $book->getBooksByAuthor($authorId,$page,BOOKS_VIEW_LIMIT_LIST);
         $response->setContent($result);
         return $response;
     }
     if(isset($search)){
-        $result = $book->search($search,1,BOOKS_VIEW_LIMIT_LIST);
+        $result = $book->search($search,$page,BOOKS_VIEW_LIMIT_LIST);
         $response->setContent($result);
         return $response;
     }
 
     $userId = $request->get('userId');
     if(isset($userId)){
-        $result = $book->getBooksByOwner($userId,1,BOOKS_VIEW_LIMIT_LIST);
+        $result = $book->getBooksByOwner($userId,$page,BOOKS_VIEW_LIMIT_LIST);
         $response->setContent($result);
         return $response;
     }
@@ -119,7 +121,6 @@ $app->get('/books', function (Request $request) use ($app) {
         return $response;
     }
 
-    $page = $request->get('page');
     if(isset($page)){
         $result = $book->getBooksByPage($page);
         $response->setContent($result);

@@ -13,6 +13,7 @@
         loadBorrowedBook();
         loadBooks("");
 
+
         $("#eventWrapper").on('click', '#addButton', function(e){
             e.preventDefault();
             window.location.href = "edit.php?id=0";
@@ -22,6 +23,30 @@
             e.preventDefault();
             var search = $("#search-input").val();
             loadBooks(search);
+        });
+
+        $("#eventWrapper").on('click', '#nextButton', function(e){
+            e.preventDefault();
+            var search = $("#search-input").val();
+            var page = $('#page').val();
+            page = parseInt(page)+1;
+            $('#page').val(page);
+            $("#prevButton").data("page",page-1);
+            $("#nextButton").data("page",page+1);
+            loadBooks(search);
+            $("html, body").animate({ scrollTop: 0 }, 1000);
+        });
+
+        $("#eventWrapper").on('click', '#prevButton', function(e){
+            e.preventDefault();
+            var search = $("#search-input").val();
+            var page = $('#page').val();
+            page = parseInt(page)-1;
+            $('#page').val(page);
+            $("#prevButton").data("page",page-1);
+            $("#nextButton").data("page",page+1);
+            loadBooks(search);
+            $("html, body").animate({ scrollTop: 0 }, 1000);
         });
 
         $("#eventWrapper").on('click', '.acceptButton', function(e) {
@@ -133,6 +158,24 @@
         return day.toLocaleString();
     }
 
+    function loadPageButton(total){
+        var page = $('#page').val();
+        var bookViewLimitList = $('#bookViewLimitList').val();
+        // $("#prevButton").data("page",parseInt(page)-1);
+        // $("#nextButton").data("page",parseInt(page)+1);
+
+        if(page=="1"){
+            $("#prevButton").hide();
+        }else{
+            $("#prevButton").show();
+        }
+        if(parseInt(page) * parseInt(bookViewLimitList) >= total){
+            $("#nextButton").hide();
+        }else{
+            $("#nextButton").show();
+        }
+    }
+
     function loadBorrowedBook(search) {
         var categoryId = $('#categoryId').val();
         var userId = $('#userId').val();
@@ -154,16 +197,17 @@
         var categoryId = $('#categoryId').val();
         var userId = $('#userId').val();
         var authorId = $('#authorId').val();
+        var page = $('#page').val();
         var url ="";
         var filter = "";
         if(categoryId!="-1"){
-            url = "api/books?categoryId="+categoryId+"&search="+search;
+            url = "api/books?categoryId="+categoryId+"&page="+page+"&search="+search;
             filter = "CATEGORY";
         }else if(authorId!="-1"){
-            url = "api/books?authorId="+authorId;
+            url = "api/books?authorId="+authorId+"&page="+page;
             filter = "AUTHOR";
         }else if(userId!="0"){
-            url = "api/books?userId="+userId;
+            url = "api/books?userId="+userId+"&page="+page;
             filter = "USER";
         }
         $.ajax({
@@ -175,6 +219,7 @@
             data["categoryId"]=categoryId;
             data["authorId"]=authorId;
             data["search"]=search;
+            loadPageButton(data.stats.total);
             var htmlOutput = template.render(data);
             $("#bookListContainer").html(htmlOutput);
             if(filter=="CATEGORY") {

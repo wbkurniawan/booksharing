@@ -260,3 +260,7 @@ button#privateUseButton {
         max-width:100%;
     }
 }
+
+.pageButtonContainer {
+    float: right;
+}

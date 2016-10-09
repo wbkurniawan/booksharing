@@ -167,7 +167,7 @@ class Books
         $result = ['data'=>$this->books,
                    'page'=>$this->page];
         if($this->returnStats){
-            $result[0]['stats'] = ['total'=>$this->foundRows];
+            $result['stats'] = ['total'=>$this->foundRows];
         }
         return json_encode($result);
     }

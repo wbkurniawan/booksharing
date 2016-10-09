@@ -101,7 +101,7 @@ include_once(__DIR__.'/header.php');
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6">
-						<a href="#" class="btn-u btn-brd btn-brd-hover btn-u-light">FAQ</a>
+						<a href="faq.php" class="btn-u btn-brd btn-brd-hover btn-u-light">FAQ</a>
 					</div>
 				</li>
 				<!-- END SLIDE 2-->
@@ -150,7 +150,7 @@ include_once(__DIR__.'/header.php');
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6">
-						<a href="#" class="btn-u btn-brd btn-brd-hover btn-u-light">ABOUT</a>
+						<a href="about.php" class="btn-u btn-brd btn-brd-hover btn-u-light">ABOUT</a>
 					</div>
 				</li>
 				<!-- END SLIDE3 -->

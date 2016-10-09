@@ -1,9 +1,11 @@
 <?php
 include_once(__DIR__.'/model/class/UserSession.php');
+include_once(__DIR__.'/config/global.php');
 
 $categoryId = isset($_GET["categoryId"])?(integer)$_GET["categoryId"]:-1;
 $authorId = isset($_GET["authorId"])?(integer)$_GET["authorId"]:-1;
 $userId = isset($_GET["userId"])?(integer)$_GET["userId"]:0;
+$page = isset($_GET["page"])?(integer)$_GET["page"]:1;
 $lock = false;
 include_once (__DIR__.'/lock.php');
 
@@ -36,6 +38,8 @@ include_once(__DIR__.'/header.php');
 	<input type="hidden" id="categoryId" value="<?=$categoryId?>">
 	<input type="hidden" id="userId" value="<?=$userId?>">
 	<input type="hidden" id="authorId" value="<?=$authorId?>">
+	<input type="hidden" id="page" value="<?=$page?>">
+	<input type="hidden" id="bookViewLimitList" value="<?= BOOKS_VIEW_LIMIT_LIST ?>">
     <!--=== Shop Product ===-->
     <div class="shop-product" >
         <!-- Breadcrumbs v5 -->
@@ -60,7 +64,12 @@ include_once(__DIR__.'/header.php');
     <div class="container" id="eventWrapper">
 		<div id="borrowedBookContainer"></div>
 		<div id="bookListContainer"></div>
+        <div class="pageButtonContainer">
+            <button  id="prevButton" class="prevButton btn-u btn-u-sea-shop" data-page='<?php echo $page-1;?>'><< PREV</button>
+            <button  id="nextButton" class="nextButton btn-u btn-u-sea-shop" data-page='<?php echo $page+1;?>'>NEXT >></button>
+        </div>
 	</div>
+
 <?php include_once(__DIR__.'/footer.php'); ?>
 
 </div><!--/wrapper-->
