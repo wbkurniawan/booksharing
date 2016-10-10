@@ -135,7 +135,7 @@ include_once(__DIR__.'/header.php');
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6">
-						Who are we?
+						What and why?
 					</div>
 
 					<!-- LAYER -->
