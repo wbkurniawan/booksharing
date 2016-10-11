@@ -105,7 +105,7 @@ include_once(__DIR__.'/header.php');
 <script id="bookTemplate" type="text/x-jsrender">
 	{{for data}}
             <div class="col-md-4">
-                <img src="assets/img/book/{{:image}}" width="100%" alt="Cover">
+                <img src="assets/img/book/{{:image}}" class="main-cover full-width img-responsive" width="100%" alt="Cover">
                 <form id="upload-cover-form" data-book-id="{{:book_id}}" action="model/uploadCover.php" method="post" enctype="multipart/form-data" class="form-inline">
                     <input type="hidden" name="bookId" value="{{:book_id}}">
                     <div class="input-group" id="edit-input-group-div">

@@ -103,8 +103,9 @@ class Books
         $this->page = $page;
         if(!empty($key)){
             $key = str_replace(" ","%",$key);
-            $this->filters = ["`book`.`title` like '%" . $key ."%' OR `book`.`isbn` like '%" . $key ."%' OR `author`.`name` like '%" . $key ."%' "];
+            $this->filters = ["(`book`.`title` like '%" . $key ."%' OR `book`.`isbn` like '%" . $key ."%' OR `author`.`name` like '%" . $key ."%')"];
         }
+        $this->filters[] = "`book`.`status` IN ('".BOOK_STATUS_AVAILABLE."','".BOOK_STATUS_RESERVED."','".BOOK_STATUS_BORROWED."') ";
         $this->loadBooks($this->page,$limit);
         return $this->getResult();
     }

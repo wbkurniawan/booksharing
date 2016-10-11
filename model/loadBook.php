@@ -25,6 +25,9 @@ if(!isset($_SESSION["user"])){
 try{
     $book = new Books();
     $bookArray = $book->getBookById($bookId);
+    if(isset($bookArray[0]["description"])){
+        $bookArray[0]["description"] = nl2br($bookArray[0]["description"]);
+    }
     $response = ['data'=>$bookArray];
     if($isAdmin==1){
         $response["editable"] = 1;
