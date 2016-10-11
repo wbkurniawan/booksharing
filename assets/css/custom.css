@@ -264,3 +264,11 @@ button#privateUseButton {
 .pageButtonContainer {
     float: right;
 }
+
+.image-container {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
