@@ -2,7 +2,7 @@
 $lock = false;
 include_once(__DIR__.'/header.php');
 ?>
-
+    <link rel="stylesheet" href="assets/css/pages/log-reg-v3.css">
     <!--=== Breadcrumbs v4 ===-->
     <div class="breadcrumbs-v4">
         <div class="container">
@@ -31,7 +31,6 @@ include_once(__DIR__.'/header.php');
                     </div>
                     <div class="members-number">
                         <h3>Soli <span class="shop-green">Deo</span> Gloria</h3>
-                        <img class="img-responsive" src="assets/img/map.png" alt="">
                     </div>
                 </div>
 

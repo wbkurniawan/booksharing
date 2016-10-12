@@ -237,7 +237,7 @@ include_once(__DIR__.'/header.php');
 	{{for data}}
 		<li class="item">
 			<div class="product-img">
-				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
+				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="http://booksharing.immanuel-berlin.de/assets/img/book/{{:image}}" alt=""></a>
 				<a class="add-to-cart" href="book.php?id={{:book_id}}"><i class="fa fa-book"></i>VIEW DETAILS</a>
 				<div class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}}  rgba-banner">{{:status}}</div>
 			</div>
@@ -258,7 +258,7 @@ include_once(__DIR__.'/header.php');
 	{{for data}}
 		<div class="col-md-3 col-sm-6 md-margin-bottom-30">
 			<div class="product-img">
-				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="assets/img/book/{{:image}}" alt=""></a>
+				<a href="book.php?id={{:book_id}}"><img class="full-width img-responsive" src="http://booksharing.immanuel-berlin.de/assets/img/book/{{:image}}" alt=""></a>
 				<a class="add-to-cart" href="book.php?id={{:book_id}}"><i class="fa fa-book"></i>VIEW DETAILS</a>
 				<div class="{{if status=="AVAILABLE"}}shop-rgba-dark-green{{else}}shop-rgba-red{{/if}}  rgba-banner">{{:status}}</div>
 			</div>

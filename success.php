@@ -63,7 +63,7 @@ include_once(__DIR__.'/header.php');
 
         <div style="margin-bottom:50px" class="row">
             <div class="col-md-3">
-                <img src="assets/img/book/{{:image}}" width="80%" alt="Cover">
+                <img src="http://booksharing.immanuel-berlin.de/assets/img/book/{{:image}}" width="80%" alt="Cover">
             </div>
 
             <div class="col-md-9">

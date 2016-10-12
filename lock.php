@@ -9,7 +9,7 @@
 session_start();
 if(isset($lock)){
     if($lock and !isset($_SESSION["user"])){
-        header("Location: /booksharing/login.php");
+        header("Location: /login.php");
         die();
     }
 }
