@@ -57,3 +57,4 @@ define('USER_STATUS_SUSPENDED','SUSPENDED');
 define('USER_STATUS_DELETED','DELETED');
 
 define('ADMIN_EMAIL','komisiperpustakaan@immanuel-berlin.de');
+define('ADMIN_EMAIL_NAME','Komisi Perpustakaan FEGIB');

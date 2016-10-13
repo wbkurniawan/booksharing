@@ -1,0 +1,20 @@
+<p>
+Halo {{first_name}},
+</p>
+<p>
+kami ingin mengingatkan bahwa buku {{title}} akan segera habis masa pinjamnya.
+Jangan lupa untuk membuat janji dengan pemilik buku untuk mengembalikan buku.
+</p>
+<p>
+Apabila buku tersebut belum selesai anda baca, silakan menghubungi pemilik buku untuk menanyakan apakah ada kemungkinan untuk memperpanjang waktu peminjaman buku.
+</p>
+<p>
+
+Terima kasih!
+</p>
+<p>
+Salam hangat,
+</p>
+<p>
+Komisi Perpustakaan FEGIB
+</p>

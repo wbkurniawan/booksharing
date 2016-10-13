@@ -1,0 +1,17 @@
+<p>
+Halo {{first_name}},
+</p>
+<p>
+Buku {{title}} sangat disayangkan tidak dapat dipinjamkan dengan alasan berikut
+{{message}}
+</p>
+<p>
+Apabila ada pertanyaan maupun hal-hal yang kurang jelas silakan menghubungi kami melalui email komisiperpustakaan@immanuel-berlin.de.
+</p>
+<p>
+Salam hangat,
+</p>
+<p>
+
+Komisi Perpustakaan FEGIB
+</p>

@@ -1,0 +1,17 @@
+<p>
+Halo {{first_name}},
+</p>
+
+<p>
+{{sender_first_name}} {{sender_last_name}} ingin meminjam buku {{title}}. Mohon lihat akun anda di situs <a href=’http://booksharing.immanuel-berlin.de’>Book Sharing</a> untuk menerima atau menolak peminjaman buku tersebut. Apabila buku anda (sedang) tidak dapat dipinjamkan silakan memberikan alasan yang jelas dan dapat diterima.
+</p>
+
+<p>
+Terima kasih!
+</p>
+<p>
+Salam hangat,
+</p>
+<p>
+Komisi Perpustakaan FEGIB
+<p>
