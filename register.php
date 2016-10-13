@@ -112,7 +112,7 @@ include_once(__DIR__.'/header.php');
     <div class="col-sm-4 md-margin-bottom-20">
         <div class="site-statistics">
             <span><a href="list.php?categoryId=0">{{:total_book}}</a></span>
-            <small>titles</small>
+            <small>books</small>
         </div>
     </div>
     <div class="col-sm-4 md-margin-bottom-20">
