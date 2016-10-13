@@ -178,7 +178,7 @@ include_once(__DIR__.'/header.php');
                     <ul class="list-inline add-to-wishlist add-to-wishlist-brd">
                         <li class="compare-in">
                             <i class="fa fa-calendar"></i>
-                            Loan period days: <strong><input type="number" name="loanPeriod" id="loanPeriodInput" min="1" max="30" value="{{:loan_period}}"  class="form-control" ></strong>
+                            Reading time days: <strong><input type="number" name="loanPeriod" id="loanPeriodInput" min="1" max="30" value="{{:loan_period}}"  class="form-control" ></strong>
                         </li>
                     </ul>
                     <div class="margin-bottom-40">

@@ -132,6 +132,12 @@ class User
         return $valid==1?true:false;
     }
 
+    public function isEmailAvailable($email){
+        $query = "SELECT count(*) as total FROM booksharing.user WHERE email = ".$this->db->quote(trim($email)).";";
+        $total = (integer) $this->db->selectValue($query);
+        return $total==0?true:false;
+    }
+
     private function loadUser($userId){
         $query = "SELECT `user`.`user_id`,
                     `user`.`first_name`,

@@ -55,3 +55,5 @@ define('USER_STATUS_NOT_VERIFIED','NOT_VERIFIED');
 define('USER_STATUS_ACTIVE','ACTIVE');
 define('USER_STATUS_SUSPENDED','SUSPENDED');
 define('USER_STATUS_DELETED','DELETED');
+
+define('ADMIN_EMAIL','komisiperpustakaan@immanuel-berlin.de');

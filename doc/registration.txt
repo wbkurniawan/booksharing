@@ -1,0 +1,16 @@
+<p>
+Halo {{first_name}},
+</p>
+<p>
+Terima kasih sudah mendaftar menjadi anggota Book Sharing! Dengan ini kami dari Tim Admin Book sharing ingin mengucapkan selamat bergabung. Semoga melalui komunitas ini Saudara/i boleh semakin bertumbuh secara rohani dan semakin dipakai Tuhan dalam kehidupan Saudara/i.
+</p>
+<p>
+Segera setelah ini anda dapat segera menggunakan layanan Book Sharing untuk meminjam dan meminjamkan buku antar jemaat/pengunjung FeG Immanuel Berlin. Kami dari Tim Admin Book Sharing menghimbau agar semua buku yang dipinjamkan dijaga dengan baik seperti layaknya milik sendiri dan dikembalikan pada waktunya. Keterangan lebih lanjut tentang hal-hal yang perlu diperhatikan baik peminjam maupun pemilik buku dapat anda temui di halaman FAQ. Jika ada pertanyaan silahkan menghubungi salah satu Tim Admin Book Sharing (Susy Kusuma, Yus Tanni dan Linda Tjipto) secara pribadi atau melalui email komisiperpustakaan@immanuel-berlin.de.
+</p>
+<p>
+Tuhan memberkati!
+</p>
+<p>
+Salam hangat,
+Tim Admin Book Sharing
+</p>

@@ -10,6 +10,8 @@ include_once(__DIR__.'/../model/class/UserSession.php');
 include_once(__DIR__.'/../model/class/User.php');
 include_once(__DIR__.'/../library/db/Connect.class.php');
 include_once(__DIR__.'/../lock.php');
+include_once(__DIR__.'/../library/sendMail.php');
+
 header('Content-type: application/json');
 
 $invitation = isset($_POST["invitation"])?trim($_POST["invitation"]):"";
@@ -41,6 +43,10 @@ try{
     if(!$user->validateInvitation($invitation)){
         throw new Exception("invitation invalid");
     }
+    if(!$user->isEmailAvailable($email)){
+        throw new Exception("email address has already been used");
+    }
+
 
     $user->add($firstName,$lastName,$password,$email,USER_STATUS_NOT_VERIFIED,$phone,$newsletterSubscriber,$invitation);
     $result = $user->login($email,$password);
@@ -48,6 +54,9 @@ try{
         $_SESSION["user"] = serialize($user->getUserSession());
     }
 
+    $emailMessage = file_get_contents(__DIR__."/../doc/registration.txt");
+    $emailMessage = str_replace("{{first_name}}",$firstName,$emailMessage);
+    sendMail($email,"Booksharing: Registration successful",$emailMessage);
     $response = array('error' => false,
         'error_message' => '');
 }catch(Exception $e) {

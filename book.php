@@ -146,7 +146,7 @@ include_once(__DIR__.'/header.php');
 				</li>
 				<li class="compare-in">
 					<i class="fa fa-calendar"></i>
-					Loan period: <strong>{{:loan_period}} days</strong>
+					Reading time: <strong>{{:loan_period}} days</strong>
 				</li>
 				{{if ~root.editable==1}}
 					<li class="compare-in">

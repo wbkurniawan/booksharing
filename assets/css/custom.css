@@ -272,3 +272,11 @@ button#privateUseButton {
     justify-content: center;
     margin-top: 50px;
 }
+
+img.book-cover-thumbnail-img.activity-icon {
+    width: 30px;
+}
+
+td.book-cover-thumbnail-td.td-vertical-align-middle {
+    vertical-align: middle;
+}

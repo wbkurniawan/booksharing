@@ -206,7 +206,7 @@
         if(!(Math.floor(loanPeriod) == loanPeriod && $.isNumeric(loanPeriod))){
             result = false;
             $("#loanPeriodInput").css('background-color', '#f0ad4e');
-            alertify.error("Loan period invalid");
+            alertify.error("Reading time invalid");
         }else{
             $("#loanPeriodInput").css('background-color', 'white');
         }

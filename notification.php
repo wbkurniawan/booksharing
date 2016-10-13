@@ -72,9 +72,9 @@ if($bookId>0){
 				data-notification-id="{{:notification_id}}"
 			  	data-book-id="{{:book_id}}" data-loan-id="{{:loan_id}}" data-loan-status="{{:loan_status}}"
 			  	data-type="{{:type}}"  data-status="{{:status}}">
-				<td class="book-cover-thumbnail-td">
+				<td class="book-cover-thumbnail-td td-vertical-align-middle">
 <!--				<img class="book-cover-thumbnail-img" src="assets/img/book/s_{{:image}}"></td>-->
-				<img class="book-cover-thumbnail-img"
+				<img class="book-cover-thumbnail-img activity-icon"
 					{{if type=='BORROW_REQUEST' && loan_status=='REQUESTED'}}
 						src="assets/img/question.png"
 					{{else type=='BORROW_REQUEST' && loan_status=='REJECTED'}}

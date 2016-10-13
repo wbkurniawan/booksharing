@@ -75,7 +75,7 @@ include_once(__DIR__.'/header.php');
                 </div><!--/end shop product social-->
 
                 <p>Owner: <strong>{{for user}}{{>first_name}} {{>last_name}}{{/for}}</strong></p>
-                <p style="margin-bottom:30px">Lending period: {{:loan_period}} days</p>
+                <p style="margin-bottom:30px">Reading period: {{:loan_period}} days</p>
 
                 <div class="text-left" style="margin-bottom:5px">
                     <button id="continueBrowsingButton"type="button" style="width: 180px" class="btn-u btn-u-sea-shop">Continue browsing</button>

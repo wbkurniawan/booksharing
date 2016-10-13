@@ -458,7 +458,7 @@ class Books
     }
     public function setLoanPeriod($loanPeriod){
         if(!is_numeric($loanPeriod)){
-            throw new Exception ("loan period not numeric");
+            throw new Exception ("Reading time not numeric");
         }
         if(isset($this->bookId)){
             $this->properties["loan_period"]=$loanPeriod;
