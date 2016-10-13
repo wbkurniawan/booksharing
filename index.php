@@ -8,14 +8,13 @@ include_once(__DIR__.'/header.php');
 			<ul>
 				
 				<!-- SLIDE 1-->
-				<li class="revolution-mch-1" data-transition="fade" data-slotamount="3" data-masterspeed="1000" data-title="Books">
+				<li class="revolution-mch-1" data-transition="fade" data-slotamount="3" data-masterspeed="1000" data-title="FAQ">
 					<!-- MAIN IMAGE -->
-					<img src="assets/img/2.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-
-					<div class="tp-caption revolution-ch5 sft start"
-						data-x="left"
-						data-hoffset="0"
-						data-y="140"
+					<img src="assets/img/books.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="right top" data-bgrepeat="no-repeat">
+					<div class="tp-caption revolution-ch8 sft start"
+						data-x="right"
+						data-hoffset="5"
+						data-y="130"
 						data-speed="1500"
 						data-start="500"
 						data-easing="Back.easeInOut"
@@ -23,11 +22,10 @@ include_once(__DIR__.'/header.php');
 						data-endspeed="300">
 						Growing <br> <strong>Collection</strong>
 					</div>
-
 					<!-- LAYER -->
-					<div class="tp-caption revolution-ch4 sft"
-						data-x="left"
-						data-hoffset="-14"
+					<div class="tp-caption revolution-ch7 sft"
+						data-x="right"
+						data-hoffset="0"
 						data-y="210"
 						data-speed="1400"
 						data-start="2000"
@@ -37,16 +35,15 @@ include_once(__DIR__.'/header.php');
 						data-captionhidden="off"
 						style="z-index: 6">
 						From apologetics-themed books to books<br> 
-						for your little ones, you can find them here.
+						for your little ones; browse through our collection.
 					</div>
-
 					<!-- LAYER -->
 					<div class="tp-caption sft"
-						data-x="left"
+						data-x="right"
 						data-hoffset="0"
 						data-y="300"
 						data-speed="1600"
-						data-start="1800"
+						data-start="2800"
 						data-easing="Power4.easeOut"
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
@@ -60,12 +57,11 @@ include_once(__DIR__.'/header.php');
 				<!-- SLIDE 2-->
 				<li class="revolution-mch-1" data-transition="fade" data-slotamount="3" data-masterspeed="1000" data-title="FAQ">
 					<!-- MAIN IMAGE -->
-					<img src="assets/img/10.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="right top" data-bgrepeat="no-repeat">
-
-					<div class="tp-caption revolution-ch8 sft start"
-						data-x="right"
-						data-hoffset="5"
-						data-y="130"
+					<img src="assets/img/faq.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+					<div class="tp-caption revolution-ch5 sft start"
+						data-x="left"
+						data-hoffset="0"
+						data-y="140"
 						data-speed="1500"
 						data-start="500"
 						data-easing="Back.easeInOut"
@@ -73,11 +69,10 @@ include_once(__DIR__.'/header.php');
 						data-endspeed="300">
 						How Can<br>We <strong>Help</strong>?
 					</div>
-
 					<!-- LAYER -->
-					<div class="tp-caption revolution-ch7 sft"
-						data-x="right"
-						data-hoffset="0"
+					<div class="tp-caption revolution-ch4 sft"
+						data-x="left"
+						data-hoffset="-14"
 						data-y="210"
 						data-speed="1400"
 						data-start="2000"
@@ -88,14 +83,13 @@ include_once(__DIR__.'/header.php');
 						style="z-index: 6">
 						Troubles using the website?
 					</div>
-
 					<!-- LAYER -->
 					<div class="tp-caption sft"
-						data-x="right"
+						data-x="left"
 						data-hoffset="0"
 						data-y="300"
 						data-speed="1600"
-						data-start="2800"
+						data-start="1800"
 						data-easing="Power4.easeOut"
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
@@ -109,7 +103,7 @@ include_once(__DIR__.'/header.php');
 				<!-- SLIDE 3 -->
 				<li class="revolution-mch-1" data-transition="fade" data-slotamount="3" data-masterspeed="1000" data-title="About">
 					<!-- MAIN IMAGE -->
-					<img src="assets/img/6.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+					<img src="assets/img/about.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 
 					<div class="tp-caption revolution-ch3 sft start"
 						data-x="center"
@@ -120,7 +114,7 @@ include_once(__DIR__.'/header.php');
 						data-easing="Back.easeInOut"
 						data-endeasing="Power1.easeIn"
 						data-endspeed="300">
-						Book<br><strong>Sharing</strong>
+						<strong>Sharing</strong> is <strong>Caring</strong>
 					</div>
 
 					<!-- LAYER -->
