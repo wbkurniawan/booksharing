@@ -116,7 +116,6 @@ include_once(__DIR__.'/header.php');
 						data-endspeed="300">
 						<strong>Sharing</strong> is <strong>Caring</strong>
 					</div>
-
 					<!-- LAYER -->
 					<div class="tp-caption revolution-ch6 sft"
 						data-x="center"
@@ -129,9 +128,8 @@ include_once(__DIR__.'/header.php');
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6">
-						What is BookSharing?
+						What is BookSharing and why?
 					</div>
-
 					<!-- LAYER -->
 					<div class="tp-caption sft"
 						data-x="center"
