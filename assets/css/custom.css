@@ -279,10 +279,25 @@ button#privateUseButton {
     margin-top: 50px;
 }
 
-img.book-cover-thumbnail-img.activity-icon {
-    width: 30px;
+.success-ol {
+    color: #ccc;
+    list-style-type: none;
 }
 
-td.book-cover-thumbnail-td.td-vertical-align-middle {
-    vertical-align: middle;
+ol.success-ol > li {
+    position: relative;
+    font: bold italic 35px 'Open Sans', sans-serif;
+    padding-bottom:24px;
 }
+
+ol.success-ol > li > p {
+    font: 14px 'Open Sans', sans-serif;
+    padding-left: 50px;
+    padding-top: 5px;
+    color: #687074;
+}
+
+ol.success-ol > li > span {
+  position: absolute;
+}
+

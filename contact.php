@@ -15,15 +15,16 @@ include_once(__DIR__.'/header.php');
     <!--=== Content Medium Part ===-->
     <div class="log-reg-v3 content-md margin-bottom-30">
          <div class="container">
-            <div class="col-md-7 md-margin-bottom-50">
-                <form id="sky-form4" class="log-reg-block sky-form">
-                    <div class="login-input reg-input">
-                        <section class="register-section">
-                                <textarea class="form-control" rows="3"></textarea>
-                        </section>
-                    </div>
-                    <button class="btn-u btn-u-sea-shop btn-block margin-bottom-20 margin-top-20" type="submit">Send</button>
-                </form>
+            <div class="col-md-9 md-margin-bottom-50">
+                Kalau anda memiliki pertanyaan atau masalah dalam menggunakan Book Sharing, silakan hubungi Tim Admin di alamat email <a href="mailto:komisiperpustakaan@immanuel-berlin.de">komisiperpustakaan@immanuel-berlin.de</a>.
+                <br><br>
+                Tim Admin adalah:
+                <ul>
+                    <li>Yus Tanni</li>
+                    <li>Susy Kusuma</li>
+                    <li>Linda Tjiptowijojo</li>
+                </ul>
+                
             </div>
         </div>
     </div>

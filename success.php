@@ -58,33 +58,38 @@ include_once(__DIR__.'/header.php');
 </script>
 <script id="bookTemplate" type="text/x-jsrender">
 	{{for data}}
-        <h1>Your request has been successfully submitted and is in progress.</h1>
+        <h1>Halo! Kita sudah berhasil menerima permohonan anda untuk meminjam buku.</h1>
                 <br><br>
 
+        <h4>Selanjutnya:</h4> <br>
         <div style="margin-bottom:50px" class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
+                <ol class="success-ol">
+                    <li><span>1.</span><p>Pemilik buku akan diberi tahu.</p></li>
+                    <li><span>2.</span><p>Anda akan mendapat konfirmasi lewat email apakah permohonan ini diterima atau ditolak.</p></li>
+                    <li><span>3.</span><p>Bila diterima, anda akan mendapat kontak pemilik buku, supaya anda dapat membuat janji untuk mendapatkan buku tersebut.</p></li>
+                </ol>
+                <div class="text-left" style="margin-bottom:5px; padding-left:40px">
+                    <button id="continueBrowsingButton"type="button" style="width: 180px" class="btn-u btn-u-sea-shop">Continue browsing</button>
+                </div>
+            </div>
+            <div class="col-md-1"> </div>
+            <div class="col-md-2">
                 <img src="http://booksharing.immanuel-berlin.de/assets/img/book/{{:image}}" width="80%" alt="Cover">
             </div>
-
-            <div class="col-md-9">
+            <div class="col-md-3">
                 <div class="shop-product-heading">
-                    <h2>{{:title}}</h2>
+                    <h4>{{:title}}</h4>
                     <p class="wishlist-category"><strong>Authors:</strong>
                     {{for authors}}<a href="#">{{>name}}</a> {{/for}}
                     </p>
                 </div><!--/end shop product social-->
 
                 <p>Owner: <strong>{{for user}}{{>first_name}} {{>last_name}}{{/for}}</strong></p>
-                <p style="margin-bottom:30px">Reading period: {{:loan_period}} days</p>
+                <p style="margin-bottom:30px">Reading Time: {{:loan_period}} days</p>
 
                 <div class="text-left" style="margin-bottom:5px">
-                    <button id="continueBrowsingButton"type="button" style="width: 180px" class="btn-u btn-u-sea-shop">Continue browsing</button>
-                </div>
-                <div class="text-left" style="margin-bottom:5px">
                     <button data-book-id={{:book_id}} id="cancelRequestButton" type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Cancel request</button>
-                </div>
-                <div class="text-left" style="margin-bottom:5px">
-                    <button data-book-id={{:book_id}} id="contactAdminButton" type="button" style="width: 180px" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop">Contact admin</button>
                 </div>
             </div>
         </div>
