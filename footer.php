@@ -15,7 +15,7 @@
                     <div class="col-md-6">
                         <p>
                             2016 &copy; FeG Immanuel Berlin. ALL Rights Reserved.
-                            <a href="privacyPolicy.php">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="contact.php">Contact Us</a>
+                            <a href="privacyPolicy.php">Privacy Policy</a> | <a href="termCondition.php">Terms of Service</a> | <a href="contact.php">Contact Us</a>
                         </p>
                     </div>
                     <div class="col-md-6">

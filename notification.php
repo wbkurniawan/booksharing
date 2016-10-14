@@ -118,7 +118,7 @@ if($bookId>0){
                     		{{else type=='BORROW_STATUS' && loan_status=='RETURNED'}}
                     			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has marked <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a> as returned from you.
 							{{else type=='BORROW_REQUEST' && loan_status=='CANCELED'}}
-								You have canceled your request to borrow <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a>.
+								{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; has canceled his/her request to borrow <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a>.
 							{{else type=='BORROW_STATUS'}}
                     			{{:sender.first_name}} {{:sender.last_name}} &lt;{{:sender.email}}&gt; reminds you about the due date of <a href="book.php?id={{:book_id}}" target="_blank"><strong>"{{:title}}"</strong></a>
                     		{{else type=='BOOK_APPROVAL_REQUEST'}}

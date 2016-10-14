@@ -93,7 +93,7 @@ include_once(__DIR__.'/header.php');
                         <label class="checkbox margin-bottom-20">
                             <input type="checkbox" name="terms"/>
                             <i></i>
-                            I have read agreed with the <a href="#">terms &amp; conditions</a>
+                            I have read agreed with the <a href="termCondition.php" target="_blank">terms &amp; conditions</a>
                         </label>
                         <button class="btn-u btn-u-sea-shop btn-block margin-bottom-20" type="submit">Create Account</button>
                     </form>
