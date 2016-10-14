@@ -17,10 +17,11 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
     <div class="log-reg-v3 content-md">
         <div class="container">
             <div class="row">
-                <div class="col-md-7 md-margin-bottom-50">
+
+                <div class="col-md-7 md-margin-bottom-50 login-welcome-text-responsive">
                     <h2 class="welcome-title">Welcome to our Book-Sharing Community</h2>
-                    <p>Got some good books worth reading? Or wanna find books of various categories? 
-                       Become part of a growing community, share them with us or let others share them with you.
+                    <p>Got some good books worth reading? Or wanna find books of various categories?
+                        Become part of a growing community, share them with us or let others share them with you.
                     </p><br>
                     <div class="row margin-bottom-50" id="statsContainer"></div>
                     <div class="members-number">
@@ -28,10 +29,12 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
                     </div>
                 </div>
 
-                <div class="col-md-5">
+
+
+                <div class="col-md-5 login-form-responsive">
                     <form id="sky-form1" class="log-reg-block sky-form">
                         <h2>Login to your account</h2>
-						<input type="hidden" id="referer" name="referer" value="<?=$referer?>">
+                        <input type="hidden" id="referer" name="referer" value="<?=$referer?>">
                         <section>
                             <label class="input login-input">
                                 <div class="input-group">
@@ -49,16 +52,16 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
                             </label>
                         </section>
                         <div class="row margin-bottom-5">
-<!--                            <div class="col-xs-6">-->
-<!--                                <label class="checkbox">-->
-<!--                                    <input type="checkbox" name="checkbox"/>-->
-<!--                                    <i></i>-->
-<!--                                    Remember me-->
-<!--                                </label>-->
-<!--                            </div>-->
-<!--                            <div class="col-xs-6 text-right">-->
-<!--                                <a href="#">Forgot your Password?</a>-->
-<!--                            </div>-->
+                            <!--                            <div class="col-xs-6">-->
+                            <!--                                <label class="checkbox">-->
+                            <!--                                    <input type="checkbox" name="checkbox"/>-->
+                            <!--                                    <i></i>-->
+                            <!--                                    Remember me-->
+                            <!--                                </label>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="col-xs-6 text-right">-->
+                            <!--                                <a href="#">Forgot your Password?</a>-->
+                            <!--                            </div>-->
                         </div>
                         <button class="btn-u btn-u-sea-shop btn-block margin-bottom-20" type="submit">Log in</button>
                     </form>
@@ -66,6 +69,10 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
                     <div class="margin-bottom-20"></div>
                     <p class="text-center">Don't have an account yet? <a href="register.php">Sign up for a new account</a></p>
                 </div>
+
+
+
+
             </div><!--/end row-->
         </div><!--/end container-->
     </div>

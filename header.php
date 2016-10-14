@@ -90,6 +90,7 @@ if(isset($faqMenu)){
 <body class="header-fixed" data-token="<?=$loginToken?>">
 
 <script id="categoriesTemplate" type="text/x-jsrender">
+    <li><a href="/list.php?categoryId=0" data-category-id="{{:0}}">All Books</a></li>
 	{{for data}}
 		<li><a href="/list.php?categoryId={{:category_id}}" data-category-id="{{:category_id}}">{{:name}}</a></li>
 	{{/for}}

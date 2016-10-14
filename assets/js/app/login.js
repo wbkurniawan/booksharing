@@ -18,7 +18,7 @@
                     data : data
                 }).done(function( data ) {
                     if(!data.error){
-                        if(referer.indexOf("login.php") !== -1){
+                        if(referer.indexOf("login.php") == -1){
                             window.location.href = decodeURIComponent(referer);
                         }else{
                             window.location.href = "index.php";

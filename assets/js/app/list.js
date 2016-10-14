@@ -179,8 +179,11 @@
     function loadBorrowedBook(search) {
         var categoryId = $('#categoryId').val();
         var userId = $('#userId').val();
+        var authorId = $('#authorId').val();
 
         if(categoryId!="-1"){
+            return false;
+        }else if(authorId!="-1"){
             return false;
         }else if(userId!="0"){
             $.ajax({
