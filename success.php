@@ -58,16 +58,16 @@ include_once(__DIR__.'/header.php');
 </script>
 <script id="bookTemplate" type="text/x-jsrender">
 	{{for data}}
-        <h1>Halo! Kita sudah berhasil menerima permohonan anda untuk meminjam buku.</h1>
+        <h1>Halo! Permohonan anda untuk meminjam buku ini sudah kami terima.</h1>
                 <br><br>
 
         <h4>Selanjutnya:</h4> <br>
         <div style="margin-bottom:50px" class="row">
             <div class="col-md-6">
                 <ol class="success-ol">
-                    <li><span>1.</span><p>Pemilik buku akan diberi tahu.</p></li>
-                    <li><span>2.</span><p>Anda akan mendapat konfirmasi lewat email apakah permohonan ini diterima atau ditolak.</p></li>
-                    <li><span>3.</span><p>Bila diterima, anda akan mendapat kontak pemilik buku, supaya anda dapat membuat janji untuk mendapatkan buku tersebut.</p></li>
+                    <li><span>1.</span><p>Kami akan memberi tahu pada pemilik buku bahwa anda ingin meminjam buku ini.</p></li>
+                    <li><span>2.</span><p>Anda akan mendapat konfirmasi lewat email apakah permohonan ini diterima atau ditolak oleh pemilik buku.</p></li>
+                    <li><span>3.</span><p>Bila diterima, anda akan menerima kontak pemilik buku agar dapat membuat janji untuk mendapatkan buku tersebut.</p></li>
                 </ol>
                 <div class="text-left" style="margin-bottom:5px; padding-left:40px">
                     <button id="continueBrowsingButton"type="button" style="width: 180px" class="btn-u btn-u-sea-shop">Continue browsing</button>
@@ -75,7 +75,7 @@ include_once(__DIR__.'/header.php');
             </div>
             <div class="col-md-1"> </div>
             <div class="col-md-2">
-                <img src="http://booksharing.immanuel-berlin.de/assets/img/book/{{:image}}" width="80%" alt="Cover">
+                <img src="http://booksharing.immanuel-berlin.de/assets/img/book/{{:image}}" width="100%" alt="Cover">
             </div>
             <div class="col-md-3">
                 <div class="shop-product-heading">
