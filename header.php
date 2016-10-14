@@ -99,10 +99,10 @@ if(isset($faqMenu)){
         <tr><th colspan="2"><?=$userGreeting?></th></tr>
     </table>
 	<div class="popup-menu-header">
-	    <div><a href="list.php">My Books</a><div>
-	    <div><a href="notification.php" id="newNotificationLink" >Activities</a><div>
-	    <div><a href="user.php">Personal Data</a><div>
-	    <div><a href="model/logout.php">Log out</a><div>
+	    <div class="dropdown-menu-div"><a href="list.php">My Books</a></div>
+	    <div class="dropdown-menu-div"><a href="notification.php" id="newNotificationLink" >Activities</a></div>
+	    <div class="dropdown-menu-div"><a href="user.php">Personal Data</a></div>
+	    <div class="dropdown-menu-div"><a href="model/logout.php">Log out</a></div>
 	</div>
 </script>
 
