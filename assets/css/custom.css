@@ -265,6 +265,9 @@ button#privateUseButton {
     .main-cover {
         max-width:100%;
     }
+    .login-welcome-text-responsive {
+        display: none;
+    }
 }
 
 .pageButtonContainer {
@@ -301,3 +304,10 @@ ol.success-ol > li > span {
   position: absolute;
 }
 
+td.book-cover-thumbnail-td.td-vertical-align-middle {
+    vertical-align: middle;
+}
+
+img.activity-icon {
+    width: 30px;
+}

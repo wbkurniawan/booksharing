@@ -1,0 +1,18 @@
+<p>
+Halo {{first_name}},
+</p>
+<p>
+Kami ingin mengkonfirmasi, bahwa buku <i>{{title}}</i> sudah dikembalikan kepada {{sender_first_name}}.
+</p>
+<p>
+Terima kasih telah menggunakan layanan Book Sharing!
+</p>
+<p>
+Tuhan memberkati!
+</p>
+<p>
+Salam hangat,
+</p>
+<p>
+Komisi Perpustakaan FEGIB
+</p>

@@ -2,7 +2,7 @@
 Halo {{first_name}},
 </p>
 <p>
-{{sender_first_name}} sudah mengkonfirmasi bahwa dia bersedia meminjamkan buku {{title}} pada anda.
+{{sender_first_name}} sudah mengkonfirmasi bahwa dia bersedia meminjamkan buku <i>{{title}}</i> pada anda.
 Silakan menghubungi pemilik buku melalui {{sender_email}} / {{sender_phone}} untuk menerima buku tersebut.
 </p>
 <p>

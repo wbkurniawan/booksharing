@@ -3,7 +3,7 @@ Halo {{sender_first_name}},
 </p>
 
 <p>
-kami sudah memberitahu pemilik buku {{title}} bahwa anda tertarik untuk meminjamnya. Dalam waktu dekat anda akan diberitahu apakah buku tersebut dapat dipinjamkan atau tidak. Bila anda tidak mendapat jawaban dalam tiga hari, silakan hubungi kami di komisiperpustakaan@immanuel-berlin.de.
+kami sudah memberitahu pemilik buku <i>{{title}}</i> bahwa anda tertarik untuk meminjamnya. Dalam waktu dekat anda akan diberitahu apakah buku tersebut dapat dipinjamkan atau tidak. Bila anda tidak mendapat jawaban dalam tiga hari, silakan hubungi kami di komisiperpustakaan@immanuel-berlin.de.
 </p>
 
 <p>

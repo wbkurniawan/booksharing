@@ -25,6 +25,8 @@ $query = "SELECT
                 c.email as sender_email,
                 c.phone as sender_phone,
                 d.title,
+                a.timestamp,
+                e.status as loan_status,    
                 if(a.type='BORROW_REJECT',a.message,'') as message
             FROM
                 booksharing.notification a
@@ -34,6 +36,8 @@ $query = "SELECT
                 booksharing.user c ON a.sender_user_id = c.user_id
                     LEFT JOIN
                 booksharing.book d ON a.book_id = d.book_id
+                    LEFT JOIN
+                booksharing.loan e on a.loan_id = e.loan_id
             WHERE
                 a.email_sent = 0;";
 
@@ -59,9 +63,16 @@ foreach ($rows as $row){
             sendMail($row->email,"Book Approval Request from ".$row->sender_first_name,$emailBody);
             break;
         case NOTIFICATION_TYPE_BORROW_STATUS:
-            $emailBody = render($row,"borrowStatus.txt");
-            sendMail($row->email,"Book Approval Reminder",$emailBody);
-            break;
+            $loanStatus = isset($row->loan_status)?$row->loan_status:"";
+            if($loanStatus==LOAN_STATUS_RETURNED){
+                $emailBody = render($row,"returned.txt");
+                sendMail($row->email,"Book Returned",$emailBody);
+                break;
+            }else{
+                $emailBody = render($row,"borrowStatus.txt");
+                sendMail($row->email,"Book Approval Reminder",$emailBody);
+                break;
+            }
     }
     $query = "UPDATE booksharing.notification SET email_sent = 1 WHERE notification_id = " . $row->notification_id;
     $db->execute($query);

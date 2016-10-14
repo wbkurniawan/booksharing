@@ -22,10 +22,11 @@ include_once(__DIR__.'/header.php');
     <div class="log-reg-v3 content-md margin-bottom-30">
         <div class="container">
             <div class="row">
-                <div class="col-md-7 md-margin-bottom-50">
+
+                <div class="col-md-7 md-margin-bottom-50 login-welcome-text-responsive">
                     <h2 class="welcome-title">Welcome to our Booksharing Community</h2>
-                    <p>Got some good books worth reading? Or wanna find books of various categories? 
-                       Become part of a growing community, share them with us or let others share them to you.
+                    <p>Got some good books worth reading? Or wanna find books of various categories?
+                        Become part of a growing community, share them with us or let others share them to you.
                     </p><br>
                     <div class="row margin-bottom-50" id="statsContainer">
                     </div>
@@ -34,7 +35,8 @@ include_once(__DIR__.'/header.php');
                     </div>
                 </div>
 
-                <div class="col-md-5">
+
+                <div class="col-md-5 login-form-responsive">
                     <form id="sky-form4" class="log-reg-block sky-form">
                         <h2>Create New Account</h2>
 
@@ -99,6 +101,8 @@ include_once(__DIR__.'/header.php');
                     <div class="margin-bottom-20"></div>
                     <p class="text-center">Already have an account? <a href="login.php">Sign In</a></p>
                 </div>
+
+
             </div><!--/end row-->
         </div><!--/end container-->
     </div>
