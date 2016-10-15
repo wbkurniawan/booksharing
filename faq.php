@@ -7,6 +7,7 @@ include_once(__DIR__.'/header.php');
     <div class="breadcrumbs-v4">
         <div class="container">
             <h1>Frequently Asked Questions</h1>
+            <h3>Troubles Using the Website?</h3>
         </div><!--/end container-->
     </div>
     <!--=== End Breadcrumbs v4 ===-->
