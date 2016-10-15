@@ -65,9 +65,9 @@ include_once(__DIR__.'/header.php');
                     </ul>
                 </div>
                 <li><a name="3">Apakah ada jangka waktu peminjaman yang baku?</a></li>
-                <div>Tidak, karena Book Sharing berfungsi seolah anda meminjam buku dari seorang teman. Walau demikian pemilik buku sudah menetapkan prakiraan berapa lama waktu yang dibutuhkan untuk menyelesaikan buku tersebut, dan kami mohon anda untuk memperhatikan itu. Apabila anda membutuhkan waktu untuk menyelesaikannya, silakan tanyakan pada pemilik buku apakah dia bersedia untuk meminjamkannya lebih lama - tetapi mohon diperhatikan bahwa kemungkina orang lain juga ingin meminjamnya.</div>
+                <div>Tidak, karena Book Sharing berfungsi seolah anda meminjam buku dari seorang teman. Walau demikian pemilik buku sudah menetapkan prakiraan berapa lama waktu yang dibutuhkan untuk menyelesaikan buku tersebut, dan kami mohon anda untuk memperhatikan itu. Apabila anda membutuhkan waktu untuk menyelesaikannya, silakan tanyakan pada pemilik buku apakah dia bersedia untuk meminjamkannya lebih lama - tetapi mohon diperhatikan bahwa kemungkinan orang lain juga ingin meminjamnya.</div>
                 <li><a name="4">Apakah arti status pada buku?</a></li>
-                <div><strong>Available</strong> - dapat dipinjam. <strong>Reserved</strong> - buku sudah direservasi namun belum diberikan ke peminjam. <strong>Borrowed</strong> - buku sedang dipinjam.</div>
+                <div><strong>Available</strong> - dapat dipinjam. <strong>Reserved</strong> - buku sudah direservasi namun belum diberikan ke peminjam. <strong>Borrowed</strong> - buku sedang dipinjam. <strong>Pending Admin Approval</strong> - buku sedang menunggu persetujuan Admin untuk dapat dipinjamkan. <strong>Private</strong> - buku sedang digunakan oleh pemilik buku sendiri atau sedang dipinjamkan di luar sistem Book Sharing.</div>
                 <li><a name="5">Berapa banyak buku yang bisa dipinjam?</a></li>
                 <div>Saat ini setiap orang hanya dapat meminjam 1 buku. Ketika jumlah buku yang terdaftar sudah lebih banyak, maka Admin akan mempertimbangkan untuk mengijinkan peminjaman lebih dari satu buku.</div>
                 <li><a name="6">Apakah ada syarat tertentu untuk dapat meminjam buku?</a></li>
@@ -99,7 +99,7 @@ include_once(__DIR__.'/header.php');
                 <li><a name="4">Apakah buku yang saya pinjamkan harus saya berikan ke admin?</a></li>
                 <div>Tidak. Buku tersebut tetap berada di pemilik buku. Pemilik buku akan diberi tahu kalau ada yg berminat meminjam buku tersebut.</div>
                 <li><a name="5">Apakah arti status pada buku?</a></li>
-                <div><strong>Available</strong> - dapat dipinjam. <strong>Reserved</strong> - buku sudah direservasi namun belum diberikan ke peminjam. <strong>Borrowed</strong> - buku sedang dipinjam. <strong>Pending Admin Approval</strong> - buku sedang menunggu persetujuan Admin untuk dapat dipinjamkan. <strong>Borrowed</strong> - buku sedang dipinjam. <strong>Private</strong> - buku sedang digunakan oleh pemilik buku sendiri atau sedang dipinjamkan di luar sistem Book Sharing.</div>
+                <div><strong>Available</strong> - dapat dipinjam. <strong>Reserved</strong> - buku sudah direservasi namun belum diberikan ke peminjam. <strong>Borrowed</strong> - buku sedang dipinjam. <strong>Pending Admin Approval</strong> - buku sedang menunggu persetujuan Admin untuk dapat dipinjamkan. <strong>Private</strong> - buku sedang digunakan oleh pemilik buku sendiri atau sedang dipinjamkan di luar sistem Book Sharing.</div>
                 <li><a name="6">Mengapa buku yang saya daftarkan untuk dipinjamkan belum dapat dipinjam?</a></li>
                 <div>Karena admin perlu memeriksa dahulu kelayakan buku tersebut untuk dapat dimasukkan ke dalam sistem.</div>
                 <li><a name="7">Apakah buku yang saya pinjamkan akan dijaga dengan baik oleh peminjam?</a></li>
