@@ -8,7 +8,7 @@ include_once(__DIR__.'/header.php');
 			<ul>
 				
 				<!-- SLIDE 1-->
-				<li class="revolution-mch-1" data-transition="fade" data-slotamount="3" data-masterspeed="1000" data-title="FAQ">
+				<li class="revolution-mch-1" data-transition="fade" data-slotamount="3" data-masterspeed="1000" data-title="Books">
 					<!-- MAIN IMAGE -->
 					<img src="assets/img/books.jpg"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="right top" data-bgrepeat="no-repeat">
 					<div class="tp-caption revolution-ch8 sft start"
