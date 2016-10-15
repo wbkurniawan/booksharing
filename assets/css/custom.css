@@ -331,4 +331,5 @@ button#saveButton {
 
 .buechertisch {
     max-width: 100%;
+    display: block;
 }
