@@ -68,7 +68,7 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 
                     <div class="margin-bottom-20"></div>
 
-                        <ul class="list-inline add-to-wishlist">
+                        <ul class="list-inline add-to-wishlist forgot-password">
                             <li><a href="register.php">Sign up for a new account</a></li>
                             <li><a href="#" id="forgot-password-link">Forgot password?</a></li>
                         </ul>
