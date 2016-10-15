@@ -316,3 +316,15 @@ img.activity-icon {
 ul.list-inline.add-to-wishlist {
     text-align: center;
 }
+
+.password-max300 {
+    max-width: 300px;
+}
+
+button#changePasswordButton {
+    margin: 5px;
+}
+
+button#saveButton {
+    margin: 5px;
+}

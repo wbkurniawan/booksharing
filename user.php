@@ -121,7 +121,7 @@ include_once(__DIR__.'/header.php');
 		{{/for}}
 		<div class="margin-bottom-40">
 			<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="saveButton">SAVE</button>
-			<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="changePasswordButton" style="float:right">CHANGE PASSWORD</button>
+			<button type="button" class="btn-u btn-u-sea-shop btn-u-lg" id="changePasswordButton">CHANGE PASSWORD</button>
 		</div>
 	</div>
 
