@@ -3,10 +3,20 @@ Halo {{first_name}},
 </p>
 
 <p>
+<<<<<<< Updated upstream
 {{sender_first_name}} {{sender_last_name}} sudah membuat buku <i>{{title}}</i>.
 Mohon lihat akun anda di situs <a href=’https://booksharing.immanuel-berlin.de’>Book Sharing</a> untuk menerima atau menolak buku tersebut.
+=======
+<<<<<<< HEAD
+{{sender_first_name}} {{sender_last_name}} baru saja menambahkan buku <i>{{title}}</i>.
+Mohon lihat akun anda di situs <a href=’http://booksharing.immanuel-berlin.de’>Book Sharing</a> untuk menerima atau menolak buku tersebut.
+=======
+{{sender_first_name}} {{sender_last_name}} sudah membuat buku <i>{{title}}</i>.
+Mohon lihat akun anda di situs <a href=’https://booksharing.immanuel-berlin.de’>Book Sharing</a> untuk menerima atau menolak buku tersebut.
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 </p>
-
+<br>
 <p>
 Terima kasih!
 </p>
