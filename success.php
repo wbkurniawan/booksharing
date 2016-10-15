@@ -75,7 +75,7 @@ include_once(__DIR__.'/header.php');
             </div>
             <div class="col-md-1"> </div>
             <div class="col-md-2">
-                <img src="http://booksharing.immanuel-berlin.de/assets/img/book/{{:image}}" width="100%" alt="Cover">
+                <img src="https://booksharing.immanuel-berlin.de/assets/img/book/{{:image}}" width="100%" alt="Cover">
             </div>
             <div class="col-md-3">
                 <div class="shop-product-heading">
