@@ -43,16 +43,16 @@ include_once(__DIR__.'/header.php');
 				<div class="edit-user-div">
 					<form id="changePasswordForm" class="form-horizontal">
 						<div class="form-group">
-							<label for="password">Password*: </label>
-							<input type="password" id="passwordInput" name="password" class="form-control" placeholder="current password">
+							<label for="password">Change Password*: </label>
+							<input type="password" id="passwordInput" name="password" class="form-control" placeholder="Enter current password">
 						</div>
 						<div class="form-group">
 							<label for="password">New Password*: </label>
-							<input type="password" id="newPasswordInput" name="new-password" class="form-control" placeholder="new password">
+							<input type="password" id="newPasswordInput" name="new-password" class="form-control" placeholder="Enter new password">
 						</div>
 						<div class="form-group">
-							<label for="retype-password">Re-type new password*: </label>
-							<input type="password"  id="retypeNewPasswordInput" name="retype-password" class="form-control" placeholder="Retype password">
+							<label for="retype-password">Confirm new password*: </label>
+							<input type="password"  id="retypeNewPasswordInput" name="retype-password" class="form-control" placeholder="Confirm new password">
 						</div>
 					</form>
 					<div class="margin-bottom-40">
