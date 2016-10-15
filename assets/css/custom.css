@@ -328,3 +328,7 @@ button#changePasswordButton {
 button#saveButton {
     margin: 5px;
 }
+
+.buechertisch {
+    max-width: 100%;
+}
