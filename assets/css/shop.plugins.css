@@ -124,7 +124,7 @@
   max-width: 300px;
   line-height: 30px;
   text-align: left;
-  margin-left: 30px;
+  margin-left: 20px;
   position: relative;
   font-weight: normal;
   font-family: "Open Sans", sans-serif;
@@ -144,9 +144,9 @@
 .revolution-ch6 {
   color: #fff;
   font-size: 18px;
-  max-width: 300px;
   line-height: 30px;
   text-align: center;
+  margin-left: 30px;
   font-weight: normal;
   font-family: "Open Sans", sans-serif;
 }
@@ -154,10 +154,9 @@
 .revolution-ch7 {
   color: #fff;
   font-size: 18px;
-  max-width: 300px;
   line-height: 30px;
-  text-align: right;
-  margin-right: 30px;
+  text-align: center;
+  margin-right: 0px;
   position: relative;
   font-weight: normal;
   font-family: "Open Sans", sans-serif;
@@ -173,7 +172,6 @@
   font-family: "Open Sans", sans-serif;
    margin-top: -50px;
 }
-
 
 /*Back to top Button
 ------------------------------------*/
