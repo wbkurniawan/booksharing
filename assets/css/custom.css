@@ -1,4 +1,8 @@
 /* Add here all your css styles (customizations) */
+.buechertisch {
+ max-width: 100%;   
+}
+
 span#newNotification {
     background: red;
     position: relative;
