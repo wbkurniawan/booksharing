@@ -18,9 +18,15 @@
                     data : data
                 }).done(function( data ) {
                     if(!data.error){
-                        if(referer.indexOf("login.php") == -1){
+                        if(referer==""){
+                            console.log("index.php");
+                            window.location.href = "index.php";
+                        }
+                        else if(referer.indexOf("login.php") == -1){
+                            console.log(referer);
                             window.location.href = decodeURIComponent(referer);
                         }else{
+                            console.log("index.php");
                             window.location.href = "index.php";
                         }
                     }else {

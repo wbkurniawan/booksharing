@@ -78,26 +78,6 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
     </div>
     <!--=== End Login ===-->
 
-    <!--=== Shop Suvbscribe ===
-    <div class="shop-subscribe">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 md-margin-bottom-20">
-                    <h2>subscribe to our weekly <strong>newsletter</strong></h2>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Email your email...">
-                        <span class="input-group-btn">
-                            <button class="btn" type="button"><i class="fa fa-envelope-o"></i></button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    <!--=== End Shop Suvbscribe ===-->
-
 <?php include_once(__DIR__.'/footer.php'); ?>
 
 </div><!--/wrapper-->
@@ -141,7 +121,7 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 <script src="assets/js/app/login.js"></script>
 
 <!-- JS Implementing Plugins -->
-<script src="assets/plugins/back-to-top.js"></script>
+<!--<script src="assets/plugins/back-to-top.js"></script>-->
 <!--<script src="assets/plugins/smoothScroll.js"></script>-->
 <!--<script src="assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>-->
 <script src="assets/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"></script>
@@ -149,13 +129,13 @@ $referer = isset($_SERVER['HTTP_REFERER'])?urlencode($_SERVER['HTTP_REFERER']):"
 <!-- JS Customization -->
 <script src="assets/js/custom.js"></script>
 <!-- JS Page Level -->
-<script src="assets/js/shop.app.js"></script>
+<!--<script src="assets/js/shop.app.js"></script>-->
 <!--<script src="assets/js/forms/page_login.js"></script>-->
 <!--<script src="assets/js/plugins/style-switcher.js"></script>-->
 <!--<script src="assets/js/forms/page_contact_form.js"></script>-->
 <script>
     jQuery(document).ready(function() {
-        App.init();
+//        App.init();
 //        Login.initLogin();
 //        App.initScrollBar();
 //        StyleSwitcher.initStyleSwitcher();
