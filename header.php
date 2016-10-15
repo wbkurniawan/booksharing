@@ -97,7 +97,7 @@ if(isset($faqMenu)){
 </script>
 <script id="userInfoTemplate" type="text/x-jsrender">
     <table class="table table-hover table-condensed notification-popup-table">
-        <tr><th colspan="2"><?=$userGreeting?></th></tr>
+        <tr><th colspan="2"><div class="user-greeting"><?=$userGreeting?></div></th></tr>
     </table>
 	<div class="popup-menu-header">
 	    <div class="dropdown-menu-div"><a href="list.php">My Books</a></div>

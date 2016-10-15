@@ -21,6 +21,8 @@ class User
     private $totalBorrowed;
     private $admin;
 
+    private $key = "mCe3AAtKLnRt7NskAXmufJMDCgqA73tQ5sQ4Uc3Wumr4W6QyAe";
+
     public function __construct($userId=null)
     {
         $this->db = new Connect(Connect::DBSERVER);
@@ -54,7 +56,7 @@ class User
             WHERE
                 email = ".$this->db->quote($email)." AND status IN ('ACTIVE' , 'NOT_VERIFIED')
                     AND password = AES_ENCRYPT(".$this->db->quote($password).",
-                    SHA2('mCe3AAtKLnRt7NskAXmufJMDCgqA73tQ5sQ4Uc3Wumr4W6QyAe',512));";
+                    SHA2('".$this->key."',512));";
         $row = $this->db->select($query);
 
         if(count($row)>0){
@@ -80,7 +82,7 @@ class User
         $query = "UPDATE booksharing.user 
                   SET email = " . $this->db->quote($email). ", 
                       password = AES_ENCRYPT(".$this->db->quote($password).",
-                      SHA2('mCe3AAtKLnRt7NskAXmufJMDCgqA73tQ5sQ4Uc3Wumr4W6QyAe',512))
+                      SHA2('".$this->key."',512))
                   WHERE email = " .$this->db->quote($token);
         $this->db->execute($query);
     }
@@ -109,13 +111,13 @@ class User
             WHERE
                 user_id = ".$this->userId." 
                 AND password = AES_ENCRYPT(".$this->db->quote($oldPassword).",
-                    SHA2('mCe3AAtKLnRt7NskAXmufJMDCgqA73tQ5sQ4Uc3Wumr4W6QyAe',512));";
+                    SHA2('".$this->key."',512));";
             $row = $this->db->select($query);
 
             if(count($row)>0){
                 $query = "UPDATE booksharing.user 
                   SET password = AES_ENCRYPT(".$this->db->quote($newPassword).",
-                      SHA2('mCe3AAtKLnRt7NskAXmufJMDCgqA73tQ5sQ4Uc3Wumr4W6QyAe',512))
+                      SHA2('".$this->key."',512))
                   WHERE user_id = " .$this->userId;
                 $this->db->execute($query);
             }else{
@@ -194,5 +196,45 @@ class User
         }else{
             return 0;
         }
+    }
+
+    public function requestResetPassword($email){
+        if($this->isEmailAvailable($email)){
+            throw new Exception ("email not found");
+        }
+        $code = uniqid();
+        $query = " INSERT INTO `booksharing`.`reset_password` (`email`,`code`,`status`)
+                   VALUES (".$this->db->quote($email).",".$this->db->quote($code).",'REQUESTED');";
+        $this->db->execute($query);
+
+        return $code;
+    }
+
+    public function getEmailByResetPasswordCode($code){
+        $query = "SELECT email FROM `booksharing`.`reset_password` WHERE status = 'REQUESTED' AND `code` = " . $this->db->quote($code);
+        $email = $this->db->selectValue($query);
+        if($email==false){
+            throw new Exception ("Reset code invalid");
+        }
+        return $email;
+    }
+
+    public function resetPassword($email){
+        if($this->isEmailAvailable($email)){
+            throw new Exception ("email not found");
+        }
+
+        $newPassword = uniqid();
+
+        $query = "UPDATE booksharing.user 
+                  SET password = AES_ENCRYPT(".$this->db->quote($newPassword).",
+                      SHA2('".$this->key."',512))
+                  WHERE email = " .$this->db->quote($email);
+        $this->db->execute($query);
+
+        $query = "UPDATE `booksharing`.`reset_password` SET status = 'DONE' WHERE email = ". $this->db->quote($email);
+        $this->db->execute($query);
+
+        return $newPassword;
     }
 }

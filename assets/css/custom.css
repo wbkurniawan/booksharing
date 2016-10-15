@@ -14,9 +14,11 @@ span#newNotification {
 
 table.table.table-hover.table-condensed.notification-popup-table {
     font-size: 13px;
+    /*margin-left: 5px;*/
+}
+.user-greeting {
     margin-left: 5px;
 }
-
 .dropdown-menu-div {
     margin-top: 8px;
     margin-left: 5px;
@@ -162,7 +164,7 @@ li.like-icon {
 }
 
 .edit-user-div {
-    margin: 0px 200px 0px 200px;
+    margin: 0px 20px 0px 20px;
 }
 .product-description.product-description-brd.product-title {
     position: relative;
@@ -310,4 +312,7 @@ td.book-cover-thumbnail-td.td-vertical-align-middle {
 
 img.activity-icon {
     width: 30px;
+}
+ul.list-inline.add-to-wishlist {
+    text-align: center;
 }

@@ -8,6 +8,28 @@
     $(document).ready(function(){
         loadQuotes();
         loadStats();
+
+        $(document).on('click', '#forgot-password-link', function(e){
+            e.preventDefault();
+            alertify.prompt("Reset Password","Please enter your email. A link to reset your password will be sent.", "",
+                function(evt, value ){
+                    $.ajax({
+                        method: "POST",
+                        url: "model/forgotPassword.php",
+                        data : {email:value}
+                    }).done(function( data ) {
+                        if(!data.error){
+                            alertify.success('Email has been successfully sent to ' + value + '. Please check to proceed.');
+                        }else {
+                            alertify.alert(data.error_message);
+                        }
+                    });
+                },
+                function(){
+                    alertify.error('Cancel');
+                });
+        });
+
         $("#sky-form1").validate({
             submitHandler: function(form) {
                 var referer = $("#referer").val();
@@ -18,7 +40,7 @@
                     data : data
                 }).done(function( data ) {
                     if(!data.error){
-                        if(referer==""){
+                        if(referer=="" || referer.indexOf("resetPassword.php") != -1){
                             console.log("index.php");
                             window.location.href = "index.php";
                         }

@@ -95,27 +95,27 @@ include_once(__DIR__.'/header.php');
 				<form id="updatePersonalDataForm" class="form-horizontal">
 					<div class="form-group">
 						<label for="firstName">First Name*: </label>
-						<input type="text" id="firstNameInput" name="firstName" value="{{:first_name}}" class="form-control" placeholder="First name">
+						<input type="text" id="firstNameInput" name="firstName" value="{{:first_name}}" class=" user-input-form form-control" placeholder="First name">
 					</div>
 					<div class="form-group">
 						<label for="last_name">Last Name*: </label>
-						<input type="text" id="lastNameInput" name="lastName" value="{{:last_name}}" class="form-control" placeholder="Last name">
+						<input type="text" id="lastNameInput" name="lastName" value="{{:last_name}}" class=" user-input-form form-control" placeholder="Last name">
 					</div>
 					<div class="form-group">
 						<label for="email">Email*: </label>
-						<input type="text" id="emailInput" name="email" value="{{:email}}" class="form-control" placeholder="Email">
+						<input type="text" id="emailInput" name="email" value="{{:email}}" class=" user-input-form form-control" placeholder="Email">
 					</div>
 <!--					<div class="form-group">-->
 <!--						<label for="password">Password*: </label>-->
-<!--						<input type="password" id="passwordInput" name="password" class="form-control" placeholder="Change password">-->
+<!--						<input type="password" id="passwordInput" name="password" class=" user-input-form form-control" placeholder="Change password">-->
 <!--					</div>-->
 <!--					<div class="form-group">-->
 <!--						<label for="retype-password">Re-type password*: </label>-->
-<!--						<input type="password"  id="retypePasswordInput" name="retype-password" class="form-control" placeholder="Retype password">-->
+<!--						<input type="password"  id="retypePasswordInput" name="retype-password" class=" user-input-form form-control" placeholder="Retype password">-->
 <!--					</div>-->
 					<div class="form-group">
 						<label for="phone">Phone: </label>
-						<input type="text" name="phone" value="{{:phone}}" class="form-control" placeholder="Phone">
+						<input type="text" name="phone" value="{{:phone}}" class=" user-input-form form-control" placeholder="Phone">
 					</div>
 				</form>
 		{{/for}}
