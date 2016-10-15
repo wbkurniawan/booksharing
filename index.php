@@ -114,7 +114,7 @@ include_once(__DIR__.'/header.php');
 						data-easing="Back.easeInOut"
 						data-endeasing="Power1.easeIn"
 						data-endspeed="300">
-						<strong>Sharing</strong> is <strong>Caring</strong>
+						<strong>Sharing</strong><br>is <strong>Caring</strong>
 					</div>
 					<!-- LAYER -->
 					<div class="tp-caption revolution-ch6 sft"
