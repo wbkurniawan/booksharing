@@ -7,7 +7,13 @@ Halo {{first_name}},
 Mohon lihat akun anda di situs <a href=’http://booksharing.immanuel-berlin.de’>Book Sharing</a> untuk menerima atau menolak buku tersebut.
 </p>
 
-<br>
 <p>
 Terima kasih!
+</p>
+
+<p>
+Salam hangat,
+</p>
+<p>
+Sistem Book Sharing
 </p>
