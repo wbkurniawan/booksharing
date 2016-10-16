@@ -43,7 +43,7 @@ include_once(__DIR__.'/header.php');
 				<div class="edit-user-div">
 					<form id="changePasswordForm" class="form-horizontal">
 						<div class="form-group password-max300">
-							<label for="password">Change Password*: </label>
+							<label for="password">Current Password*: </label>
 							<input type="password" id="passwordInput" name="password" class="form-control  user-input-form" placeholder="Enter current password">
 						</div>
 						<div class="form-group password-max300">
