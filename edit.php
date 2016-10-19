@@ -43,7 +43,7 @@ include_once(__DIR__.'/header.php');
         <div class="container">
             <ul class="breadcrumb-v5">
                 <li><a href="index.php"><i class="fa fa-home"></i></a></li>
-                <li><a href="#">Books</a></li>
+                <li><a href="list.php?categoryId=0">Books</a></li>
                 <li class="active"><a href="#" id="breadcrumbCategoryName"></a></li>
             </ul>
         </div>
